@@ -1,0 +1,17 @@
+name: natcor
+channels:
+  - conda-forge
+dependencies:
+  - jupyterlab=4.0.2
+  - jupyterlab-spellchecker=0.7.3
+  - matplotlib=3.7.1
+  - numpy=1.24.3
+  - pandas=2.0.2
+  - pip=23.1.2
+  - plotly=5.15.0
+  - python=3.9.15
+  - scipy=1.10.1
+  - simpy=4.0.1
+  - pip:
+    - streamlit
+    - treat-sim==0.1.0
