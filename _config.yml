@@ -1,0 +1,43 @@
+# book settings
+title: Introduction to simulation in python
+author: Thomas Monks
+email: t.m.w.monks@exeter.ac.uk
+description: >- # this means to ignore newlines until "baseurl:"
+       An introduction to simulation and SimPy for DES 
+#logo: content/imgs/small_logo.png
+#logo: content/imgs/logo_v1.png
+
+# only build files specified in table of contents file
+only_build_toc_files: true
+
+execute:
+  execute_notebooks: off #cache output from .ipynb files for faster build
+  timeout: -1 #no time restriction on notebook execution
+  
+repository:
+  url: https://github.com/health-data-science-OR/natcor-simpy
+  branch: main
+  
+html:
+  use_repository_button: true
+  use_issues_button: true
+  
+# Configure your Binder links, such as the URL of the BinderHub.
+launch_buttons:
+  binderhub_url: "https://mybinder.org"
+  notebook_interface: "jupyterlab"
+  thebe: true
+  
+# citations
+# In _config.yml
+bibtex_bibfiles:
+   - _bibliography/references.bib
+   
+# latex:
+#   latex_engine                : "xelatex"
+#   latex_documents:
+#     targetname: book.tex
+
+sphinx:
+  config:
+    bibtex_reference_style: author_year
