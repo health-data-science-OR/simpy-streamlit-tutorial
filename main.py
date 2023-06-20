@@ -15,6 +15,8 @@ This will be adapted into a basic streamlit app
 '''
 from treat_sim.model import Scenario, multiple_replications
 
+print('### TREATMENT SIMULATION ###\n')
+
 # set the variables for the run.
 # these are just a subset of the total available for this example...
 triage_bays = 1
@@ -34,7 +36,11 @@ args.n_exam = exam_rooms
 args.n_cubicles_1 = treat_rooms
 args.exam_mean = exam_mean
 
+print("Running multiple replication analysis. Please wait...")
+
 # in this example run a single replication of the model.
 results = multiple_replications(args, n_reps=replications)
 
 print(results.mean().round(1))
+
+print('### TREATMENT SIMULATION COMPLETE.')
