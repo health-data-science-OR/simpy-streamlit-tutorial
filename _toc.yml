@@ -1,0 +1,6 @@
+format: jb-book
+root: content/front_page
+parts:
+- caption: Introduction
+  chapters:
+  - file: content/01_setup/install

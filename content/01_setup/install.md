@@ -22,6 +22,12 @@ Alternatively (and my preference) you can install substantially smaller [Minicon
 
 The code examples in this tutorial have been created using a conda virtual environment called `sim`.  You can think of a virtual environment as box within your operating system.  Inside the box we install a specific version of python along with specific versions of data science and simulation libraries such as `simpy`.  You can have multiple virtual environments within one machine.
 
+```{admonition} Video tutorial
+:class: tip
+[![Watch the video](https://img.youtube.com/vi/8mb_9FDK3qA/0.jpg)](https://www.youtube.com/watch?v=8mb_9FDK3qA)  
+```
+
+
 ### Open a terminal or command prompt on your machine.
 
 We will use `conda` via the command line interface (CLI)
@@ -69,4 +75,12 @@ conda activate sim
 ```
 
 The final command activates the `sim` virtual environment.  
+
+## Launching Jupyter Lab
+
+Once you have activate the correct conda environment then you can launch Jupyter Lab from the command line as follows.
+
+```console
+jupyter-lab
+```
 

@@ -1,5 +1,5 @@
 # book settings
-title: Introduction to simulation in python
+title: Simulation in python
 author: Thomas Monks
 email: t.m.w.monks@exeter.ac.uk
 description: >- # this means to ignore newlines until "baseurl:"
@@ -30,14 +30,14 @@ launch_buttons:
   
 # citations
 # In _config.yml
-bibtex_bibfiles:
-   - _bibliography/references.bib
+#bibtex_bibfiles:
+#   - _bibliography/references.bib
    
 # latex:
 #   latex_engine                : "xelatex"
 #   latex_documents:
 #     targetname: book.tex
 
-sphinx:
-  config:
-    bibtex_reference_style: author_year
+#sphinx:
+#  config:
+#    bibtex_reference_style: author_year
