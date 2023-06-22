@@ -4,3 +4,7 @@ parts:
 - caption: Introduction
   chapters:
   - file: content/01_setup/install
+  - file: content/01_setup/reading
+- caption: Simulation
+  chapters:
+  - file: content/02_simpy/01_sampling
