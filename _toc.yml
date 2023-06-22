@@ -8,3 +8,4 @@ parts:
 - caption: Simulation
   chapters:
   - file: content/02_simpy/01_sampling
+  - file: content/02_simpy/02_basic_simpy
