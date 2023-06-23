@@ -11,6 +11,7 @@ parts:
   - file: content/02_simpy/02_basic_simpy
   - file: content/02_simpy/03_111_model
   - file: content/02_simpy/04_basic_results
+  - file: content/02_simpy/05_experiments
 - caption: Exercises
   chapters:
   - file: content/04_exercises/02_generator
