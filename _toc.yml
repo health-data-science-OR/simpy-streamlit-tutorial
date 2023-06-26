@@ -16,6 +16,8 @@ parts:
 - caption: Exercises
   chapters:
   - file: content/04_exercises/02_generator
+  - file: content/04_exercises/03_basic_results
 - caption: Solutions
   chapters:
   - file: content/05_solutions/02_generator
+  - file: content/05_solutions/03_basic_results
