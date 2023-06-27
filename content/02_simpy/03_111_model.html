@@ -1,0 +1,1219 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>A full model &#8212; Simulation in python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/02_simpy/03_111_model';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Collecting results from a single run" href="04_basic_results.html" />
+    <link rel="prev" title="A first look at simpy" href="02_basic_simpy.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../front_page.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Simulation in python</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../front_page.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_setup/install.html">Install python and an IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_setup/reading.html">Recommended Reading</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_sampling.html">Random variables and simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_basic_simpy.html">A first look at simpy</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">A full model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_basic_results.html">Collecting results from a single run</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_experiments.html">Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_replications.html">Multiple replications</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">streamlit</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/01_intro.html">What is streamlit?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/02_design.html">Main concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/03_experiment.html">The <code class="docutils literal notranslate"><span class="pre">Experiment</span></code> class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/04_wrapper.html">Wrapper functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/05_module.html">Python module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/06_basic_app.html">A first web app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/07_interactive.html">An interactive app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/08_sidebar.html">Tidying up controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/09_adding_text.html">Background text</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/01_sampling.html">Random sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/02_generator.html">Generator exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/03_basic_results.html">Results collection exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/04_callback.html">Adding a patient callback from a nurse</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05_solutions/01_sampling.html">Random sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_solutions/02_generator.html">Generator exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_solutions/03_basic_results.html">Results collection exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_solutions/04_callback.html">Adding a patient callback from a nurse</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/health-data-science-OR/natcor-simpy/main?urlpath=lab/tree/content/02_simpy/03_111_model.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/health-data-science-OR/natcor-simpy" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/health-data-science-OR/natcor-simpy/issues/new?title=Issue%20on%20page%20%2Fcontent/02_simpy/03_111_model.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/02_simpy/03_111_model.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>A full model</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">1. Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-background">2. Problem background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simpy-resources">3. <code class="docutils literal notranslate"><span class="pre">simpy</span></code> resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-service-function">4. The service function.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-generator-function">5. The generator function.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-model">6. Run the model</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="a-full-model">
+<h1>A full model<a class="headerlink" href="#a-full-model" title="Permalink to this heading">#</a></h1>
+<p>We will now build a full <code class="docutils literal notranslate"><span class="pre">simpy</span></code> process model.  In this example we will build a 111 call centre queuing model.  We will include random arrivals and resources.  We will keep this simple, and gradually add in detail and flexibility to our design.</p>
+<section id="imports">
+<h2>1. Imports<a class="headerlink" href="#imports" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">simpy</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="problem-background">
+<h2>2. Problem background<a class="headerlink" href="#problem-background" title="Permalink to this heading">#</a></h2>
+<p>Call operators in an 111 (urgent care) service receive calls at a rate of 100 per hour. Call length can be represented by a triangular distribution.  Calls last between 5 minutes and 15 minutes. Most calls last 7 minutes. There are 13 call operators.</p>
+<blockquote>
+<div><p>We will build a <code class="docutils literal notranslate"><span class="pre">simpy</span></code> model of the process.</p>
+</div></blockquote>
+</section>
+<section id="simpy-resources">
+<h2>3. <code class="docutils literal notranslate"><span class="pre">simpy</span></code> resources<a class="headerlink" href="#simpy-resources" title="Permalink to this heading">#</a></h2>
+<p>To model the call centre we need to introduce a <strong>resource</strong>.  If a resource is not available then a process will pause.  We create a resource as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">operators</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Resource</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When we want to request a resource in our process we create a with block as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">operators</span><span class="o">.</span><span class="n">request</span><span class="p">()</span> <span class="k">as</span> <span class="n">req</span><span class="p">:</span>
+    <span class="k">yield</span> <span class="n">req</span>
+</pre></div>
+</div>
+<p>This tells simpy that your process needs an operator resource to progress.  The code will pause until a resource is yielded. This gives us our queuing effect.  If a resource is not available immediately then the process will wait until one becomes available.  We will practice this a lot in the course so do not worry if this does not make sense immediately.</p>
+</section>
+<section id="the-service-function">
+<h2>4. The service function.<a class="headerlink" href="#the-service-function" title="Permalink to this heading">#</a></h2>
+<p>We will first build the service function. We need to do this because our arrival/generator function will be required to call it.</p>
+<p>We need to include the following logic:</p>
+<ol class="arabic simple">
+<li><p>Request and if necessary wait for a call operator</p></li>
+<li><p>Undergo phone triage (a delay). This is a sample from the Triangular distribution.</p></li>
+<li><p>Exit the system.</p></li>
+</ol>
+<p>We will build this as a simple python function that we will call <code class="docutils literal notranslate"><span class="pre">service</span></code>.  Each patient caller that arrives to the simulation will execute service as a <code class="docutils literal notranslate"><span class="pre">simpy</span></code> process.  We will pass a unique patient identifier, a pool of operator resources and the environment to the function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">service</span><span class="p">(</span><span class="n">identifier</span><span class="p">,</span> <span class="n">operators</span><span class="p">,</span> <span class="n">env</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    simulates the service process for a call operator</span>
+
+<span class="sd">    1. request and wait for a call operator</span>
+<span class="sd">    2. phone triage (triangular)</span>
+<span class="sd">    3. exit system</span>
+<span class="sd">    </span>
+<span class="sd">    Params:</span>
+<span class="sd">    ------</span>
+<span class="sd">    </span>
+<span class="sd">    identifier: int </span>
+<span class="sd">        A unique identifer for this caller</span>
+<span class="sd">        </span>
+<span class="sd">    operators: simpy.Resource</span>
+<span class="sd">        The pool of call operators that answer calls</span>
+<span class="sd">        These are shared across resources.</span>
+<span class="sd">        </span>
+<span class="sd">    env: simpy.Environment</span>
+<span class="sd">        The current environent the simulation is running in</span>
+<span class="sd">        We use this to pause and restart the process after a delay.</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># record the time that call entered the queue</span>
+    <span class="n">start_wait</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">now</span>
+
+    <span class="c1"># request an operator</span>
+    <span class="k">with</span> <span class="n">operators</span><span class="o">.</span><span class="n">request</span><span class="p">()</span> <span class="k">as</span> <span class="n">req</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">req</span>
+
+        <span class="c1"># record the waiting time for call to be answered</span>
+        <span class="n">waiting_time</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">now</span> <span class="o">-</span> <span class="n">start_wait</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;operator answered call </span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s1"> at &#39;</span> \
+              <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="c1"># sample call duration.</span>
+        <span class="n">call_duration</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">triangular</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="mf">7.0</span><span class="p">,</span>
+                                             <span class="n">right</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
+        
+        <span class="c1"># schedule process to begin again after call_duration</span>
+        <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">call_duration</span><span class="p">)</span>
+
+        <span class="c1"># print out information for patient.</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;call </span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s1"> ended </span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">; &#39;</span> \
+              <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;waiting time was </span><span class="si">{</span><span class="n">waiting_time</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-generator-function">
+<h2>5. The generator function.<a class="headerlink" href="#the-generator-function" title="Permalink to this heading">#</a></h2>
+<p>The generator function is very similar to the pharamacy example.  In fact you can just cut, paste and modify.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">arrivals_generator</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">operators</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    IAT is exponentially distributed</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    ------</span>
+<span class="sd">    env: simpy.Environment</span>
+<span class="sd">        The simpy environment for the simulation</span>
+
+<span class="sd">    operators: simpy.Resource</span>
+<span class="sd">        the pool of call operators.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="c1"># use itertools as it provides an infinite loop </span>
+    <span class="c1"># with a counter variable that we can use for unique Ids</span>
+    <span class="k">for</span> <span class="n">caller_count</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+
+        <span class="c1"># 100 calls per hour (units = hours). </span>
+        <span class="c1"># Time between calls is 1/100</span>
+        <span class="n">inter_arrival_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">60</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">inter_arrival_time</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;call arrives at: </span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="c1"># create a new simpy process for this caller.</span>
+        <span class="c1"># we pass in the caller id, the operator resources, and env.</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">service</span><span class="p">(</span><span class="n">caller_count</span><span class="p">,</span> <span class="n">operators</span><span class="p">,</span> <span class="n">env</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="run-the-model">
+<h2>6. Run the model<a class="headerlink" href="#run-the-model" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># model parameters</span>
+<span class="n">RUN_LENGTH</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">N_OPERATORS</span> <span class="o">=</span> <span class="mi">13</span>
+
+<span class="c1"># create simpy environment and operator resources</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Environment</span><span class="p">()</span>
+<span class="n">operators</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Resource</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="n">N_OPERATORS</span><span class="p">)</span>
+
+<span class="n">env</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">arrivals_generator</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">operators</span><span class="p">))</span>
+<span class="n">env</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">until</span><span class="o">=</span><span class="n">RUN_LENGTH</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;end of run. simulation clock time = </span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>call arrives at: 0.769
+operator answered call 1 at 0.769
+call arrives at: 1.694
+operator answered call 2 at 1.694
+call arrives at: 1.995
+operator answered call 3 at 1.995
+call arrives at: 2.907
+operator answered call 4 at 2.907
+call arrives at: 2.984
+operator answered call 5 at 2.984
+call arrives at: 3.282
+operator answered call 6 at 3.282
+call arrives at: 3.289
+operator answered call 7 at 3.289
+call arrives at: 3.703
+operator answered call 8 at 3.703
+call arrives at: 3.726
+operator answered call 9 at 3.726
+call arrives at: 3.773
+operator answered call 10 at 3.773
+call arrives at: 7.128
+operator answered call 11 at 7.128
+call 1 ended 7.804; waiting time was 0.000
+call arrives at: 8.517
+operator answered call 12 at 8.517
+call arrives at: 9.078
+operator answered call 13 at 9.078
+call 2 ended 9.092; waiting time was 0.000
+call 3 ended 9.150; waiting time was 0.000
+call 10 ended 9.742; waiting time was 0.000
+call 6 ended 9.835; waiting time was 0.000
+call 7 ended 10.034; waiting time was 0.000
+call arrives at: 10.161
+operator answered call 14 at 10.161
+call 4 ended 10.576; waiting time was 0.000
+call 5 ended 11.039; waiting time was 0.000
+call 9 ended 11.413; waiting time was 0.000
+call arrives at: 11.548
+operator answered call 15 at 11.548
+call arrives at: 11.901
+operator answered call 16 at 11.901
+call 8 ended 12.056; waiting time was 0.000
+call arrives at: 12.335
+operator answered call 17 at 12.335
+call arrives at: 13.059
+operator answered call 18 at 13.059
+call arrives at: 13.687
+operator answered call 19 at 13.687
+call arrives at: 14.680
+operator answered call 20 at 14.680
+call 11 ended 15.010; waiting time was 0.000
+call arrives at: 15.495
+operator answered call 21 at 15.495
+call arrives at: 15.673
+operator answered call 22 at 15.673
+call 12 ended 15.852; waiting time was 0.000
+call arrives at: 16.146
+operator answered call 23 at 16.146
+call arrives at: 16.517
+operator answered call 24 at 16.517
+call 14 ended 17.999; waiting time was 0.000
+call 13 ended 18.137; waiting time was 0.000
+call 16 ended 18.615; waiting time was 0.000
+call 15 ended 18.703; waiting time was 0.000
+call arrives at: 19.056
+operator answered call 25 at 19.056
+call arrives at: 19.445
+operator answered call 26 at 19.445
+call arrives at: 20.211
+operator answered call 27 at 20.211
+call 18 ended 20.610; waiting time was 0.000
+call 17 ended 20.684; waiting time was 0.000
+call arrives at: 20.742
+operator answered call 28 at 20.742
+call 20 ended 20.950; waiting time was 0.000
+call arrives at: 21.516
+operator answered call 29 at 21.516
+call arrives at: 21.600
+operator answered call 30 at 21.600
+call 23 ended 21.750; waiting time was 0.000
+call 22 ended 21.969; waiting time was 0.000
+call arrives at: 22.030
+operator answered call 31 at 22.030
+call 19 ended 22.440; waiting time was 0.000
+call arrives at: 22.838
+operator answered call 32 at 22.838
+call 21 ended 23.114; waiting time was 0.000
+call arrives at: 23.287
+operator answered call 33 at 23.287
+call arrives at: 23.718
+operator answered call 34 at 23.718
+call 24 ended 24.233; waiting time was 0.000
+call arrives at: 24.781
+operator answered call 35 at 24.781
+call 26 ended 25.526; waiting time was 0.000
+call arrives at: 25.859
+operator answered call 36 at 25.859
+call arrives at: 26.327
+operator answered call 37 at 26.327
+call 25 ended 27.048; waiting time was 0.000
+call arrives at: 27.424
+operator answered call 38 at 27.424
+call 27 ended 27.878; waiting time was 0.000
+call 28 ended 28.068; waiting time was 0.000
+call 32 ended 28.111; waiting time was 0.000
+call 30 ended 28.517; waiting time was 0.000
+call 31 ended 28.816; waiting time was 0.000
+call 34 ended 29.495; waiting time was 0.000
+call 33 ended 30.292; waiting time was 0.000
+call 29 ended 30.305; waiting time was 0.000
+call arrives at: 30.619
+operator answered call 39 at 30.619
+call arrives at: 30.694
+operator answered call 40 at 30.694
+call arrives at: 31.209
+operator answered call 41 at 31.209
+call arrives at: 31.266
+operator answered call 42 at 31.266
+call arrives at: 31.632
+operator answered call 43 at 31.632
+call 36 ended 31.677; waiting time was 0.000
+call arrives at: 31.839
+operator answered call 44 at 31.839
+call arrives at: 32.344
+operator answered call 45 at 32.344
+call 35 ended 32.748; waiting time was 0.000
+call arrives at: 32.862
+operator answered call 46 at 32.862
+call 37 ended 33.050; waiting time was 0.000
+call arrives at: 33.118
+operator answered call 47 at 33.118
+call 38 ended 33.210; waiting time was 0.000
+call arrives at: 33.698
+operator answered call 48 at 33.698
+call arrives at: 33.850
+operator answered call 49 at 33.850
+call arrives at: 34.192
+operator answered call 50 at 34.192
+call arrives at: 34.688
+operator answered call 51 at 34.688
+call arrives at: 34.694
+call arrives at: 34.878
+call arrives at: 35.146
+call arrives at: 35.375
+call arrives at: 36.496
+call arrives at: 37.201
+call arrives at: 37.215
+call arrives at: 37.826
+call 43 ended 37.960; waiting time was 0.000
+operator answered call 52 at 37.960
+call 40 ended 38.284; waiting time was 0.000
+operator answered call 53 at 38.284
+call arrives at: 38.423
+call 44 ended 38.711; waiting time was 0.000
+operator answered call 54 at 38.711
+call 41 ended 38.876; waiting time was 0.000
+operator answered call 55 at 38.876
+call arrives at: 38.999
+call 45 ended 39.322; waiting time was 0.000
+operator answered call 56 at 39.322
+call 39 ended 39.822; waiting time was 0.000
+operator answered call 57 at 39.822
+call 42 ended 39.899; waiting time was 0.000
+operator answered call 58 at 39.899
+call 47 ended 40.433; waiting time was 0.000
+operator answered call 59 at 40.433
+call 46 ended 40.483; waiting time was 0.000
+operator answered call 60 at 40.483
+call 50 ended 41.057; waiting time was 0.000
+operator answered call 61 at 41.057
+call 51 ended 41.388; waiting time was 0.000
+call 48 ended 41.441; waiting time was 0.000
+call arrives at: 41.752
+operator answered call 62 at 41.752
+call 49 ended 42.643; waiting time was 0.000
+call arrives at: 43.007
+operator answered call 63 at 43.007
+call arrives at: 43.008
+operator answered call 64 at 43.008
+call arrives at: 43.145
+call 52 ended 43.687; waiting time was 3.266
+operator answered call 65 at 43.687
+call arrives at: 44.648
+call arrives at: 45.156
+call arrives at: 45.233
+call 55 ended 46.130; waiting time was 3.501
+operator answered call 66 at 46.130
+call 56 ended 46.949; waiting time was 2.826
+operator answered call 67 at 46.949
+call 53 ended 46.988; waiting time was 3.406
+operator answered call 68 at 46.988
+call 58 ended 47.092; waiting time was 2.684
+call arrives at: 47.133
+operator answered call 69 at 47.133
+call 57 ended 47.249; waiting time was 2.620
+call 59 ended 47.434; waiting time was 2.607
+call 54 ended 47.437; waiting time was 3.565
+call arrives at: 47.580
+operator answered call 70 at 47.580
+call arrives at: 47.707
+operator answered call 71 at 47.707
+call 61 ended 47.840; waiting time was 2.058
+call arrives at: 47.907
+operator answered call 72 at 47.907
+call arrives at: 48.026
+operator answered call 73 at 48.026
+call 62 ended 48.168; waiting time was 0.000
+call arrives at: 48.434
+operator answered call 74 at 48.434
+call arrives at: 48.483
+call 60 ended 48.550; waiting time was 2.059
+operator answered call 75 at 48.550
+call 64 ended 48.650; waiting time was 0.000
+call 65 ended 49.464; waiting time was 0.542
+call arrives at: 49.585
+operator answered call 76 at 49.585
+call arrives at: 49.992
+operator answered call 77 at 49.992
+call arrives at: 50.096
+call arrives at: 50.573
+call arrives at: 51.097
+call 63 ended 51.871; waiting time was 0.000
+operator answered call 78 at 51.871
+call arrives at: 52.521
+call 66 ended 53.220; waiting time was 1.482
+operator answered call 79 at 53.220
+call 68 ended 53.450; waiting time was 1.755
+operator answered call 80 at 53.450
+call arrives at: 53.630
+call arrives at: 53.962
+call arrives at: 54.050
+call 70 ended 54.084; waiting time was 0.000
+operator answered call 81 at 54.084
+call arrives at: 54.179
+call 67 ended 54.214; waiting time was 1.793
+operator answered call 82 at 54.214
+call 73 ended 54.225; waiting time was 0.000
+operator answered call 83 at 54.225
+call 69 ended 54.592; waiting time was 0.000
+operator answered call 84 at 54.592
+call arrives at: 54.657
+call arrives at: 55.236
+call 75 ended 55.404; waiting time was 0.066
+operator answered call 85 at 55.404
+call arrives at: 55.501
+call 71 ended 55.664; waiting time was 0.000
+operator answered call 86 at 55.664
+call 74 ended 55.914; waiting time was 0.000
+operator answered call 87 at 55.914
+call 76 ended 56.226; waiting time was 0.000
+operator answered call 88 at 56.226
+call 72 ended 56.512; waiting time was 0.000
+call 77 ended 57.697; waiting time was 0.000
+call arrives at: 57.979
+operator answered call 89 at 57.979
+call arrives at: 58.201
+operator answered call 90 at 58.201
+call arrives at: 58.619
+call arrives at: 58.707
+call arrives at: 58.717
+call arrives at: 59.326
+call 83 ended 59.614; waiting time was 0.263
+operator answered call 91 at 59.614
+call 79 ended 59.763; waiting time was 2.647
+operator answered call 92 at 59.763
+call arrives at: 60.219
+call 78 ended 60.397; waiting time was 1.775
+operator answered call 93 at 60.397
+call 84 ended 60.519; waiting time was 0.542
+operator answered call 94 at 60.519
+call 82 ended 60.835; waiting time was 0.583
+operator answered call 95 at 60.835
+call 80 ended 61.025; waiting time was 2.353
+call arrives at: 61.226
+operator answered call 96 at 61.226
+call arrives at: 61.328
+call arrives at: 61.482
+call 81 ended 62.105; waiting time was 1.563
+operator answered call 97 at 62.105
+call 87 ended 62.139; waiting time was 0.678
+operator answered call 98 at 62.139
+call 85 ended 62.411; waiting time was 1.224
+call arrives at: 62.487
+operator answered call 99 at 62.487
+call 88 ended 63.320; waiting time was 0.725
+call arrives at: 63.588
+operator answered call 100 at 63.588
+call arrives at: 64.083
+call arrives at: 64.267
+call 86 ended 64.578; waiting time was 1.007
+operator answered call 101 at 64.578
+call arrives at: 64.636
+call 89 ended 64.775; waiting time was 0.000
+operator answered call 102 at 64.775
+call arrives at: 64.812
+call arrives at: 65.731
+call 95 ended 65.908; waiting time was 0.616
+operator answered call 103 at 65.908
+call 90 ended 65.908; waiting time was 0.000
+operator answered call 104 at 65.908
+call 92 ended 65.978; waiting time was 1.056
+operator answered call 105 at 65.978
+call arrives at: 66.434
+call arrives at: 66.724
+call 91 ended 67.354; waiting time was 0.994
+operator answered call 106 at 67.354
+call 93 ended 67.449; waiting time was 1.681
+operator answered call 107 at 67.449
+call 94 ended 67.620; waiting time was 1.193
+call arrives at: 68.018
+operator answered call 108 at 68.018
+call arrives at: 68.192
+call arrives at: 68.641
+call 96 ended 68.705; waiting time was 0.000
+operator answered call 109 at 68.705
+call 97 ended 68.762; waiting time was 0.777
+operator answered call 110 at 68.762
+call arrives at: 68.921
+call arrives at: 69.002
+call arrives at: 69.036
+call 98 ended 69.058; waiting time was 0.657
+operator answered call 111 at 69.058
+call 100 ended 69.485; waiting time was 0.000
+operator answered call 112 at 69.485
+call 101 ended 70.298; waiting time was 0.495
+operator answered call 113 at 70.298
+call 99 ended 70.457; waiting time was 0.000
+call arrives at: 70.898
+operator answered call 114 at 70.898
+call arrives at: 72.169
+call 102 ended 72.318; waiting time was 0.508
+operator answered call 115 at 72.318
+call arrives at: 72.460
+call 104 ended 72.473; waiting time was 1.096
+operator answered call 116 at 72.473
+call 107 ended 72.844; waiting time was 0.725
+call arrives at: 72.988
+operator answered call 117 at 72.988
+call arrives at: 73.507
+call 105 ended 73.890; waiting time was 0.246
+operator answered call 118 at 73.890
+call arrives at: 73.981
+call arrives at: 74.101
+call 103 ended 74.166; waiting time was 1.272
+operator answered call 119 at 74.166
+call arrives at: 74.322
+call arrives at: 74.563
+call 106 ended 74.910; waiting time was 0.920
+operator answered call 120 at 74.910
+call arrives at: 75.117
+call arrives at: 75.427
+call 110 ended 75.663; waiting time was 0.121
+operator answered call 121 at 75.663
+call arrives at: 76.201
+call arrives at: 76.254
+call arrives at: 76.629
+call arrives at: 76.686
+call 108 ended 76.922; waiting time was 0.000
+operator answered call 122 at 76.922
+call 113 ended 76.931; waiting time was 1.262
+operator answered call 123 at 76.931
+call 109 ended 77.046; waiting time was 0.513
+operator answered call 124 at 77.046
+call 114 ended 77.214; waiting time was 0.000
+operator answered call 125 at 77.214
+call 112 ended 77.239; waiting time was 0.484
+operator answered call 126 at 77.239
+call 111 ended 77.454; waiting time was 0.137
+operator answered call 127 at 77.454
+call arrives at: 77.947
+call arrives at: 78.584
+call 117 ended 78.585; waiting time was 0.000
+operator answered call 128 at 78.585
+call 116 ended 79.070; waiting time was 0.014
+operator answered call 129 at 79.070
+call arrives at: 79.304
+call arrives at: 79.348
+call arrives at: 80.065
+call 115 ended 80.430; waiting time was 0.150
+operator answered call 130 at 80.430
+call 118 ended 80.711; waiting time was 0.382
+operator answered call 131 at 80.711
+call arrives at: 81.276
+call 120 ended 81.476; waiting time was 0.810
+operator answered call 132 at 81.476
+call arrives at: 82.168
+call 119 ended 82.209; waiting time was 0.186
+operator answered call 133 at 82.209
+call arrives at: 82.956
+call 121 ended 83.183; waiting time was 1.341
+operator answered call 134 at 83.183
+call 123 ended 83.521; waiting time was 1.814
+operator answered call 135 at 83.521
+call 126 ended 83.801; waiting time was 0.985
+operator answered call 136 at 83.801
+call 125 ended 84.508; waiting time was 1.013
+call 122 ended 84.677; waiting time was 2.359
+call arrives at: 85.104
+operator answered call 137 at 85.104
+call arrives at: 85.206
+operator answered call 138 at 85.206
+call 124 ended 86.334; waiting time was 1.619
+call 127 ended 86.349; waiting time was 0.824
+call arrives at: 86.421
+operator answered call 139 at 86.421
+call 128 ended 86.565; waiting time was 1.899
+call 129 ended 86.572; waiting time was 1.122
+call arrives at: 86.791
+operator answered call 140 at 86.791
+call 131 ended 87.374; waiting time was 1.407
+call arrives at: 87.653
+operator answered call 141 at 87.653
+call arrives at: 87.924
+operator answered call 142 at 87.924
+call 133 ended 88.050; waiting time was 2.145
+call arrives at: 88.053
+operator answered call 143 at 88.053
+call arrives at: 88.117
+operator answered call 144 at 88.117
+call arrives at: 88.218
+call 130 ended 88.249; waiting time was 1.846
+operator answered call 145 at 88.249
+call 134 ended 88.803; waiting time was 1.907
+call arrives at: 88.988
+operator answered call 146 at 88.988
+call 132 ended 89.868; waiting time was 2.128
+call 136 ended 90.150; waiting time was 0.845
+call arrives at: 90.412
+operator answered call 147 at 90.412
+call arrives at: 90.798
+operator answered call 148 at 90.798
+call arrives at: 91.421
+call arrives at: 91.545
+call arrives at: 91.727
+call 135 ended 92.070; waiting time was 1.353
+operator answered call 149 at 92.070
+call 139 ended 92.277; waiting time was 0.000
+operator answered call 150 at 92.277
+call arrives at: 92.304
+call 140 ended 92.474; waiting time was 0.000
+operator answered call 151 at 92.474
+call 137 ended 92.547; waiting time was 0.000
+operator answered call 152 at 92.547
+call 141 ended 93.885; waiting time was 0.000
+call arrives at: 93.910
+operator answered call 153 at 93.910
+call 138 ended 94.054; waiting time was 0.000
+call arrives at: 94.164
+operator answered call 154 at 94.164
+call arrives at: 94.418
+call arrives at: 94.459
+call 143 ended 94.676; waiting time was 0.000
+operator answered call 155 at 94.676
+call 144 ended 94.679; waiting time was 0.000
+operator answered call 156 at 94.679
+call arrives at: 94.758
+call arrives at: 94.799
+call arrives at: 95.297
+call 142 ended 95.727; waiting time was 0.000
+operator answered call 157 at 95.727
+call 146 ended 95.746; waiting time was 0.000
+operator answered call 158 at 95.746
+call arrives at: 95.875
+call 145 ended 96.632; waiting time was 0.031
+operator answered call 159 at 96.632
+call 147 ended 96.718; waiting time was 0.000
+operator answered call 160 at 96.718
+call arrives at: 97.003
+call 148 ended 97.048; waiting time was 0.000
+operator answered call 161 at 97.048
+call arrives at: 97.134
+call arrives at: 97.809
+call arrives at: 97.995
+call arrives at: 98.533
+call arrives at: 98.587
+call 152 ended 98.771; waiting time was 0.243
+operator answered call 162 at 98.771
+call 151 ended 99.094; waiting time was 0.747
+operator answered call 163 at 99.094
+call 149 ended 99.329; waiting time was 0.650
+operator answered call 164 at 99.329
+end of run. simulation clock time = 100
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "health-data-science-OR/natcor-simpy",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/02_simpy"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02_basic_simpy.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">A first look at simpy</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="04_basic_results.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Collecting results from a single run</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">1. Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-background">2. Problem background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simpy-resources">3. <code class="docutils literal notranslate"><span class="pre">simpy</span></code> resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-service-function">4. The service function.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-generator-function">5. The generator function.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-model">6. Run the model</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Thomas Monks
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

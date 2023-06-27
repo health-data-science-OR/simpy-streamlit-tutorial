@@ -1,0 +1,1327 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Multiple replications &#8212; Simulation in python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/02_simpy/06_replications';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="What is streamlit?" href="../03_streamlit/01_intro.html" />
+    <link rel="prev" title="Experiments" href="05_experiments.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../front_page.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Simulation in python</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../front_page.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_setup/install.html">Install python and an IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_setup/reading.html">Recommended Reading</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_sampling.html">Random variables and simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_basic_simpy.html">A first look at simpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_111_model.html">A full model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_basic_results.html">Collecting results from a single run</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_experiments.html">Experiments</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Multiple replications</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">streamlit</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/01_intro.html">What is streamlit?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/02_design.html">Main concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/03_experiment.html">The <code class="docutils literal notranslate"><span class="pre">Experiment</span></code> class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/04_wrapper.html">Wrapper functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/05_module.html">Python module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/06_basic_app.html">A first web app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/07_interactive.html">An interactive app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/08_sidebar.html">Tidying up controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/09_adding_text.html">Background text</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/01_sampling.html">Random sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/02_generator.html">Generator exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/03_basic_results.html">Results collection exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/04_callback.html">Adding a patient callback from a nurse</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05_solutions/01_sampling.html">Random sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_solutions/02_generator.html">Generator exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_solutions/03_basic_results.html">Results collection exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_solutions/04_callback.html">Adding a patient callback from a nurse</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/health-data-science-OR/natcor-simpy/main?urlpath=lab/tree/content/02_simpy/06_replications.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/health-data-science-OR/natcor-simpy" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/health-data-science-OR/natcor-simpy/issues/new?title=Issue%20on%20page%20%2Fcontent/02_simpy/06_replications.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/02_simpy/06_replications.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Multiple replications</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">1. Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-level-variables-constants-and-default-values">2. Notebook level variables, constants, and default values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-classes">3. Distribution classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment-class">3. Experiment class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-code">4. Model code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-multiple-replications-wrapper-function">5. A multiple replications wrapper function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-experiments">6. Multiple experiments</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="multiple-replications">
+<h1>Multiple replications<a class="headerlink" href="#multiple-replications" title="Permalink to this heading">#</a></h1>
+<p>We will extend the <a class="reference internal" href="05_experiments.html"><span class="doc std std-doc">Experiments notebook</span></a> by modifying our <code class="docutils literal notranslate"><span class="pre">single_run</span></code> model wrapper function so that it runs multiple independent replications.</p>
+<blockquote>
+<div><p>For this example, we will ignore common random number streams across scenarios</p>
+</div></blockquote>
+<p>The first part of the notebook is setup in an similar manner to the <a class="reference internal" href="05_experiments.html"><span class="doc std std-doc">Experiments notebook</span></a>.  But we do make one small modification to the <code class="docutils literal notranslate"><span class="pre">Experiment</span></code> class to reset results collection at the start of each replication. The final section modifies <code class="docutils literal notranslate"><span class="pre">single_run</span></code> and creates a new wrapper function and uses it to run multiple independent replications.</p>
+<section id="imports">
+<h2>1. Imports<a class="headerlink" href="#imports" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">simpy</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="notebook-level-variables-constants-and-default-values">
+<h2>2. Notebook level variables, constants, and default values<a class="headerlink" href="#notebook-level-variables-constants-and-default-values" title="Permalink to this heading">#</a></h2>
+<p>A useful first step when setting up a simulation model is to define the base case or as-is parameters.  Here we will create a set of constant/default values for our <code class="docutils literal notranslate"><span class="pre">Experiment</span></code> class, but you could also consider reading these in from a file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># default resources</span>
+<span class="n">N_OPERATORS</span> <span class="o">=</span> <span class="mi">13</span>
+
+<span class="c1"># default mean inter-arrival time (exp)</span>
+<span class="n">MEAN_IAT</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">/</span> <span class="mi">100</span>
+
+<span class="c1">## default service time parameters (triangular)</span>
+<span class="n">CALL_LOW</span> <span class="o">=</span> <span class="mf">5.0</span>
+<span class="n">CALL_MODE</span> <span class="o">=</span> <span class="mf">7.0</span>
+<span class="n">CALL_HIGH</span> <span class="o">=</span> <span class="mf">10.0</span>
+
+<span class="c1"># Seeds for arrival and service time distributions (for repeatable single run)</span>
+<span class="n">ARRIVAL_SEED</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="n">CALL_SEED</span> <span class="o">=</span> <span class="mi">101</span>
+
+<span class="c1"># Boolean switch to simulation results as the model runs</span>
+<span class="n">TRACE</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># run variables</span>
+<span class="n">RESULTS_COLLECTION_PERIOD</span> <span class="o">=</span> <span class="mi">1000</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="distribution-classes">
+<h2>3. Distribution classes<a class="headerlink" href="#distribution-classes" title="Permalink to this heading">#</a></h2>
+<p>We will also define two distribution classes (<code class="docutils literal notranslate"><span class="pre">Triangular</span></code> and <code class="docutils literal notranslate"><span class="pre">Expeonential</span></code>) to encapsulate the random number generation, parameters and random seeds used in the sampling.  This simplifies what we will need to include in the <code class="docutils literal notranslate"><span class="pre">Experiment</span></code> class and as we will see later makes it easier to vary distributions as well as parameters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Triangular</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Convenience class for the triangular distribution.</span>
+<span class="sd">    packages up distribution parameters, seed and random generator.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Constructor. Accepts and stores parameters of the triangular dist</span>
+<span class="sd">        and a random seed.</span>
+<span class="sd">        </span>
+<span class="sd">        Params:</span>
+<span class="sd">        ------</span>
+<span class="sd">        low: float</span>
+<span class="sd">            The smallest values that can be sampled</span>
+<span class="sd">            </span>
+<span class="sd">        mode: float</span>
+<span class="sd">            The most frequently sample value</span>
+<span class="sd">            </span>
+<span class="sd">        high: float</span>
+<span class="sd">            The highest value that can be sampled</span>
+<span class="sd">        </span>
+<span class="sd">        random_seed: int, optional (default=None)</span>
+<span class="sd">            Used with params to create a series of repeatable samples.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rand</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">random_seed</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">low</span> <span class="o">=</span> <span class="n">low</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">high</span> <span class="o">=</span> <span class="n">high</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">mode</span>
+        
+    <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Generate one or more samples from the triangular distribution</span>
+<span class="sd">        </span>
+<span class="sd">        Params:</span>
+<span class="sd">        --------</span>
+<span class="sd">        size: int</span>
+<span class="sd">            the number of samples to return.  If size=None then a single</span>
+<span class="sd">            sample is returned.</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">        -------</span>
+<span class="sd">        float or np.ndarray (if size &gt;=1)</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rand</span><span class="o">.</span><span class="n">triangular</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">low</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">high</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Exponential</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Convenience class for the exponential distribution.</span>
+<span class="sd">    packages up distribution parameters, seed and random generator.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Constructor</span>
+<span class="sd">        </span>
+<span class="sd">        Params:</span>
+<span class="sd">        ------</span>
+<span class="sd">        mean: float</span>
+<span class="sd">            The mean of the exponential distribution</span>
+<span class="sd">        </span>
+<span class="sd">        random_seed: int, optional (default=None)</span>
+<span class="sd">            A random seed to reproduce samples.  If set to none then a unique</span>
+<span class="sd">            sample is created.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rand</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">random_seed</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mean</span> <span class="o">=</span> <span class="n">mean</span>
+        
+    <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Generate a sample from the exponential distribution</span>
+<span class="sd">        </span>
+<span class="sd">        Params:</span>
+<span class="sd">        -------</span>
+<span class="sd">        size: int, optional (default=None)</span>
+<span class="sd">            the number of samples to return.  If size=None then a single</span>
+<span class="sd">            sample is returned.</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">        -------</span>
+<span class="sd">        float or np.ndarray (if size &gt;=1)</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rand</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="experiment-class">
+<h2>3. Experiment class<a class="headerlink" href="#experiment-class" title="Permalink to this heading">#</a></h2>
+<p>An experiment class is useful because it allows use to easily configure and schedule a large number of experiments to occur in a loop.  We set the class up so that it uses the default variables we defined above i.e. as default the model reflects the as-is process.  To run a new experiment we simply override the default values.</p>
+<blockquote>
+<div><p>We have now modified the experiment class to include the <code class="docutils literal notranslate"><span class="pre">init_results_variables()</span></code> method.  We are now going to run experiments multiple times.  This means we need to reset all results data collection <strong>before</strong> the model is run.  Otherwise we will carry over the results from one replication to the next.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Experiment</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Parameter class for 111 simulation model</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_operators</span><span class="o">=</span><span class="n">N_OPERATORS</span><span class="p">,</span> <span class="n">mean_iat</span><span class="o">=</span><span class="n">MEAN_IAT</span><span class="p">,</span> 
+                 <span class="n">call_low</span><span class="o">=</span><span class="n">CALL_LOW</span><span class="p">,</span> <span class="n">call_mode</span><span class="o">=</span><span class="n">CALL_MODE</span><span class="p">,</span> <span class="n">call_high</span><span class="o">=</span><span class="n">CALL_HIGH</span><span class="p">,</span>
+                 <span class="n">arrival_seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">call_seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        The init method sets up our defaults. </span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_operators</span> <span class="o">=</span> <span class="n">n_operators</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arrival_dist</span> <span class="o">=</span> <span class="n">Exponential</span><span class="p">(</span><span class="n">mean_iat</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="n">arrival_seed</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">call_dist</span> <span class="o">=</span> <span class="n">Triangular</span><span class="p">(</span><span class="n">call_low</span><span class="p">,</span> <span class="n">call_mode</span><span class="p">,</span> <span class="n">call_high</span><span class="p">,</span> 
+                                    <span class="n">random_seed</span><span class="o">=</span><span class="n">call_seed</span><span class="p">)</span>
+
+        <span class="c1"># resources: we must init resources inside of the arrivals process.  </span>
+        <span class="c1"># but we will store a placeholder for them for transparency</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">operators</span> <span class="o">=</span> <span class="kc">None</span>
+        
+        <span class="c1"># initialise results to zero</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init_results_variables</span><span class="p">()</span>
+        
+    <span class="c1"># MODIFICATION: method to reset results collection</span>
+    <span class="k">def</span> <span class="nf">init_results_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Initialise all of the experiment variables used in results </span>
+<span class="sd">        collection.  This method is called at the start of each run</span>
+<span class="sd">        of the model</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="c1"># variable used to store results of experiment</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;waiting_times&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="c1"># total operator usage time for utilisation calculation.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;total_call_duration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+        
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="model-code">
+<h2>4. Model code<a class="headerlink" href="#model-code" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">trace</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Turing printing of events on and off.</span>
+<span class="sd">    </span>
+<span class="sd">    Params:</span>
+<span class="sd">    -------</span>
+<span class="sd">    msg: str</span>
+<span class="sd">        string to print to screen.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">TRACE</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">service</span><span class="p">(</span><span class="n">identifier</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">env</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    simulates the service process for a call operator</span>
+
+<span class="sd">    1. request and wait for a call operator</span>
+<span class="sd">    2. phone triage (triangular)</span>
+<span class="sd">    3. exit system</span>
+<span class="sd">    </span>
+<span class="sd">    Params:</span>
+<span class="sd">    ------</span>
+<span class="sd">    </span>
+<span class="sd">    identifier: int </span>
+<span class="sd">        A unique identifer for this caller</span>
+<span class="sd">        </span>
+<span class="sd">    experiment: Experiment</span>
+<span class="sd">        The settings and input parameters for the current experiment</span>
+<span class="sd">        </span>
+<span class="sd">    env: simpy.Environment</span>
+<span class="sd">        The current environent the simulation is running in</span>
+<span class="sd">        We use this to pause and restart the process after a delay.</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="c1"># record the time that call entered the queue</span>
+    <span class="n">start_wait</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">now</span>
+    
+    <span class="c1"># request an operator</span>
+    <span class="k">with</span> <span class="n">args</span><span class="o">.</span><span class="n">operators</span><span class="o">.</span><span class="n">request</span><span class="p">()</span> <span class="k">as</span> <span class="n">req</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">req</span>
+        
+        <span class="c1"># record the waiting time for call to be answered</span>
+        <span class="n">waiting_time</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">now</span> <span class="o">-</span> <span class="n">start_wait</span>
+        
+        <span class="c1"># store the results for an experiment </span>
+        <span class="n">args</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;waiting_times&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">waiting_time</span><span class="p">)</span>
+
+        <span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;operator answered call </span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s1"> at &#39;</span> \
+              <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="c1"># the sample distribution is defined by the experiment.</span>
+        <span class="n">call_duration</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">call_dist</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>       
+        
+        <span class="c1"># schedule process to begin again after call_duration</span>
+        <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">call_duration</span><span class="p">)</span>
+        
+        <span class="c1"># update the total call_duration </span>
+        <span class="n">args</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;total_call_duration&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">call_duration</span>
+        
+        <span class="c1"># print out information for patient.</span>
+        <span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;call </span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s1"> ended </span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">; &#39;</span> \
+              <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;waiting time was </span><span class="si">{</span><span class="n">waiting_time</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">arrivals_generator</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    IAT is exponentially distributed</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    ------</span>
+<span class="sd">    env: simpy.Environment</span>
+<span class="sd">        The simpy environment for the simulation</span>
+
+<span class="sd">    experiment: Experiment</span>
+<span class="sd">        The settings and input parameters for the simulation.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="c1"># use itertools as it provides an infinite loop </span>
+    <span class="c1"># with a counter variable that we can use for unique Ids</span>
+    <span class="k">for</span> <span class="n">caller_count</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+
+        <span class="c1"># MODIFICATION:the sample distribution is defined by the experiment.</span>
+        <span class="n">inter_arrival_time</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">arrival_dist</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+        <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">inter_arrival_time</span><span class="p">)</span>
+
+        <span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;call arrives at: </span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="c1"># MODIFICATION: we pass the experiment to the service function</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">service</span><span class="p">(</span><span class="n">caller_count</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">env</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="a-multiple-replications-wrapper-function">
+<h2>5. A multiple replications wrapper function<a class="headerlink" href="#a-multiple-replications-wrapper-function" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">single_run</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">rc_period</span><span class="o">=</span><span class="n">RESULTS_COLLECTION_PERIOD</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Perform a single run of the model and return the results</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    -----------</span>
+<span class="sd">    </span>
+<span class="sd">    experiment: Experiment</span>
+<span class="sd">        The experiment/paramaters to use with model</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="c1"># results dictionary.  Each KPI is a new entry.</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+    
+    <span class="c1"># reset all results variables to zero and empty</span>
+    <span class="n">experiment</span><span class="o">.</span><span class="n">init_results_variables</span><span class="p">()</span>
+    
+    <span class="c1"># environment is (re)created inside single run</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Environment</span><span class="p">()</span>
+
+    <span class="c1"># we create simpy resource here - this has to be after we</span>
+    <span class="c1"># create the environment object.</span>
+    <span class="n">experiment</span><span class="o">.</span><span class="n">operators</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Resource</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="n">experiment</span><span class="o">.</span><span class="n">n_operators</span><span class="p">)</span>
+    
+    <span class="c1"># we pass the experiment to the arrivals generator</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">arrivals_generator</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">experiment</span><span class="p">))</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">until</span><span class="o">=</span><span class="n">rc_period</span><span class="p">)</span>
+
+    <span class="c1"># end of run results: calculate mean waiting time</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;01_mean_waiting_time&#39;</span><span class="p">]</span> <span class="o">=</span> \
+        <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">experiment</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;waiting_times&#39;</span><span class="p">])</span>
+    
+    <span class="c1"># end of run results: calculate mean operator utilisation</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;02_operator_util&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">experiment</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;total_call_duration&#39;</span><span class="p">]</span> \
+                           <span class="o">/</span> <span class="p">(</span><span class="n">rc_period</span> <span class="o">*</span> <span class="n">experiment</span><span class="o">.</span><span class="n">n_operators</span><span class="p">))</span> <span class="o">*</span> <span class="mf">100.0</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Experiment complete&#39;</span><span class="p">)</span>
+
+    <span class="c1"># return the results from the run of the model</span>
+    <span class="k">return</span> <span class="n">results</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">multiple_replications</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> 
+                          <span class="n">rc_period</span><span class="o">=</span><span class="n">RESULTS_COLLECTION_PERIOD</span><span class="p">,</span>
+                          <span class="n">n_reps</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Perform multiple replications of the model.</span>
+<span class="sd">    </span>
+<span class="sd">    Params:</span>
+<span class="sd">    ------</span>
+<span class="sd">    experiment: Experiment</span>
+<span class="sd">        The experiment/paramaters to use with model</span>
+<span class="sd">    </span>
+<span class="sd">    rc_period: float, optional (default=DEFAULT_RESULTS_COLLECTION_PERIOD)</span>
+<span class="sd">        results collection period.  </span>
+<span class="sd">        the number of minutes to run the model to collect results</span>
+
+<span class="sd">    n_reps: int, optional (default=5)</span>
+<span class="sd">        Number of independent replications to run.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    --------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="c1"># loop over single run to generate results dicts in a python list.</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">single_run</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">rc_period</span><span class="p">)</span> <span class="k">for</span> <span class="n">rep</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_reps</span><span class="p">)]</span>
+        
+    <span class="c1"># format and return results in a dataframe</span>
+    <span class="n">df_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+    <span class="n">df_results</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_results</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">df_results</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;rep&#39;</span>
+    <span class="k">return</span> <span class="n">df_results</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TRACE</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">default_scenario</span> <span class="o">=</span> <span class="n">Experiment</span><span class="p">()</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">multiple_replications</span><span class="p">(</span><span class="n">default_scenario</span><span class="p">)</span>
+<span class="n">results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Experiment complete
+Experiment complete
+Experiment complete
+Experiment complete
+Experiment complete
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>01_mean_waiting_time</th>
+      <th>02_operator_util</th>
+    </tr>
+    <tr>
+      <th>rep</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1.500673</td>
+      <td>89.989236</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.209003</td>
+      <td>92.479653</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.366732</td>
+      <td>90.233296</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.650079</td>
+      <td>91.491755</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2.795821</td>
+      <td>91.674416</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>01_mean_waiting_time</th>
+      <th>02_operator_util</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>5.000000</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>2.104462</td>
+      <td>91.173671</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.651040</td>
+      <td>1.042197</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.366732</td>
+      <td>89.989236</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>1.500673</td>
+      <td>90.233296</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>2.209003</td>
+      <td>91.491755</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>2.650079</td>
+      <td>91.674416</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>2.795821</td>
+      <td>92.479653</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="multiple-experiments">
+<h2>6. Multiple experiments<a class="headerlink" href="#multiple-experiments" title="Permalink to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">single_run</span></code> and <code class="docutils literal notranslate"><span class="pre">multiple_replications</span></code> wrapper functions for the model and the <code class="docutils literal notranslate"><span class="pre">Experiment</span></code> class mean that is very simple to run multiple experiments using replication analysis.  We will define three new functions for running multiple experiments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">get_experiments()</span></code> - this will return a python dictionary containing a unique name for an experiment paired with an <code class="docutils literal notranslate"><span class="pre">Experiment</span></code> object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run_all_experiments()</span></code> - this will loop through the dictionary, run all experiments and return combined results.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">experiment_summary_frame()</span></code> - take the results from each scenario and format into a simple table.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_experiments</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Creates a dictionary object containing</span>
+<span class="sd">    objects of type `Experiment` to run.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    --------</span>
+<span class="sd">    dict</span>
+<span class="sd">        Contains the experiments for the model</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">experiments</span> <span class="o">=</span> <span class="p">{}</span>
+    
+    <span class="c1"># base case</span>
+    <span class="c1"># we will sync scenarios by using seeds</span>
+    <span class="n">experiments</span><span class="p">[</span><span class="s1">&#39;base&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Experiment</span><span class="p">(</span><span class="n">arrival_seed</span><span class="o">=</span><span class="n">ARRIVAL_SEED</span><span class="p">,</span> 
+                                     <span class="n">call_seed</span><span class="o">=</span><span class="n">CALL_SEED</span><span class="p">)</span>
+    
+    <span class="c1"># +1 extra capacity</span>
+    <span class="n">experiments</span><span class="p">[</span><span class="s1">&#39;operators+1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Experiment</span><span class="p">(</span><span class="n">arrival_seed</span><span class="o">=</span><span class="n">ARRIVAL_SEED</span><span class="p">,</span> 
+                                            <span class="n">call_seed</span><span class="o">=</span><span class="n">CALL_SEED</span><span class="p">,</span>
+                                            <span class="n">n_operators</span><span class="o">=</span><span class="n">N_OPERATORS</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">experiments</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run_all_experiments</span><span class="p">(</span><span class="n">experiments</span><span class="p">,</span> <span class="n">rc_period</span><span class="o">=</span><span class="n">RESULTS_COLLECTION_PERIOD</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Run each of the scenarios for a specified results</span>
+<span class="sd">    collection period and replications.</span>
+<span class="sd">    </span>
+<span class="sd">    Params:</span>
+<span class="sd">    ------</span>
+<span class="sd">    experiments: dict</span>
+<span class="sd">        dictionary of Experiment objects</span>
+<span class="sd">        </span>
+<span class="sd">    rc_period: float</span>
+<span class="sd">        model run length</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Model experiments:&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;No. experiments to execute = </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">experiments</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="n">experiment_results</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">exp_name</span><span class="p">,</span> <span class="n">experiment</span> <span class="ow">in</span> <span class="n">experiments</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Running </span><span class="si">{</span><span class="n">exp_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; =&gt; &#39;</span><span class="p">)</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">multiple_replications</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">rc_period</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;done.</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        
+        <span class="c1">#save the results</span>
+        <span class="n">experiment_results</span><span class="p">[</span><span class="n">exp_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All experiments are complete.&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># format thje results</span>
+    <span class="k">return</span> <span class="n">experiment_results</span>
+                    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the experiments</span>
+<span class="n">experiments</span> <span class="o">=</span> <span class="n">get_experiments</span><span class="p">()</span>
+
+<span class="c1">#run the scenario analysis</span>
+<span class="n">experiment_results</span> <span class="o">=</span> <span class="n">run_all_experiments</span><span class="p">(</span><span class="n">experiments</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model experiments:
+No. experiments to execute = 2
+
+Running base =&gt; Experiment complete
+Experiment complete
+Experiment complete
+Experiment complete
+Experiment complete
+done.
+
+Running operators+1 =&gt; Experiment complete
+Experiment complete
+Experiment complete
+Experiment complete
+Experiment complete
+done.
+
+All experiments are complete.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">experiment_results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;base&#39;:      01_mean_waiting_time  02_operator_util
+ rep                                        
+ 1                1.673905         91.990826
+ 2                3.670187         94.173962
+ 3                9.841969         96.770083
+ 4                4.813703         93.538493
+ 5                2.588796         94.288763,
+ &#39;operators+1&#39;:      01_mean_waiting_time  02_operator_util
+ rep                                        
+ 1                0.715242         85.523632
+ 2                1.287553         87.707918
+ 3                1.739517         92.071198
+ 4                1.608727         86.998684
+ 5                0.986897         88.059699}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">experiment_summary_frame</span><span class="p">(</span><span class="n">experiment_results</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Mean results for each performance measure by experiment</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    ----------</span>
+<span class="sd">    experiment_results: dict</span>
+<span class="sd">        dictionary of replications.  </span>
+<span class="sd">        Key identifies the performance measure</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.DataFrame</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">summary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">sc_name</span><span class="p">,</span> <span class="n">replications</span> <span class="ow">in</span> <span class="n">experiment_results</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">summary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">summary</span><span class="p">,</span> <span class="n">replications</span><span class="o">.</span><span class="n">mean</span><span class="p">()],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">columns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sc_name</span><span class="p">)</span>
+
+    <span class="n">summary</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">columns</span>
+    <span class="k">return</span> <span class="n">summary</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># as well as rounding you may want to rename the cols/rows to </span>
+<span class="c1"># more readable alternatives.</span>
+<span class="n">summary_frame</span> <span class="o">=</span> <span class="n">experiment_summary_frame</span><span class="p">(</span><span class="n">experiment_results</span><span class="p">)</span>
+<span class="n">summary_frame</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>base</th>
+      <th>operators+1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>01_mean_waiting_time</th>
+      <td>4.52</td>
+      <td>1.27</td>
+    </tr>
+    <tr>
+      <th>02_operator_util</th>
+      <td>94.15</td>
+      <td>88.07</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "health-data-science-OR/natcor-simpy",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/02_simpy"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="05_experiments.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Experiments</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../03_streamlit/01_intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">What is streamlit?</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">1. Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-level-variables-constants-and-default-values">2. Notebook level variables, constants, and default values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-classes">3. Distribution classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment-class">3. Experiment class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-code">4. Model code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-multiple-replications-wrapper-function">5. A multiple replications wrapper function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-experiments">6. Multiple experiments</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Thomas Monks
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
