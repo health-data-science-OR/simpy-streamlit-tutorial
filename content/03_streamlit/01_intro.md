@@ -18,4 +18,3 @@ In this tutorial we will follow a prescribed process for creating `streamlit` fr
 4. Test all the simulation model can be parameterised and run from a simple python script
 5. Enhance the script with a basic streamlit interactive front end.
 
-![image](../../imgs/streamlit_design.png)
