@@ -23,6 +23,7 @@ parts:
   - file: content/03_streamlit/06_basic_app
   - file: content/03_streamlit/07_interactive
   - file: content/03_streamlit/08_sidebar
+  - file: content/03_streamlit/09_adding_text
 - caption: Exercises
   chapters:
   - file: content/04_exercises/01_sampling
