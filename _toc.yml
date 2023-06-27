@@ -18,6 +18,7 @@ parts:
   - file: content/03_streamlit/01_intro
   - file: content/03_streamlit/02_design
   - file: content/03_streamlit/03_experiment
+  - file: content/03_streamlit/04_wrapper
 - caption: Exercises
   chapters:
   - file: content/04_exercises/01_sampling
