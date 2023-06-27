@@ -15,9 +15,13 @@ parts:
   - file: content/02_simpy/06_replications
 - caption: Exercises
   chapters:
+  - file: content/04_exercises/01_sampling
   - file: content/04_exercises/02_generator
   - file: content/04_exercises/03_basic_results
+  - file: content/04_exercises/04_callback
 - caption: Solutions
   chapters:
+  - file: content/05_solutions/01_sampling
   - file: content/05_solutions/02_generator
   - file: content/05_solutions/03_basic_results
+  - file: content/05_solutions/04_callback
