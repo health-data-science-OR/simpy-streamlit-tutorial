@@ -14,4 +14,4 @@ dependencies:
   - simpy=4.0.1
   - pip:
     - streamlit
-    - treat-sim==0.2.0
+    - treat-sim==1.0.0
