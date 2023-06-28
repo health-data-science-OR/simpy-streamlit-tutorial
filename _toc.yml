@@ -30,9 +30,11 @@ parts:
   - file: content/04_exercises/02_generator
   - file: content/04_exercises/03_basic_results
   - file: content/04_exercises/04_callback
+  - file: content/04_exercises/05_treat_sim
 - caption: Solutions
   chapters:
   - file: content/05_solutions/01_sampling
   - file: content/05_solutions/02_generator
   - file: content/05_solutions/03_basic_results
   - file: content/05_solutions/04_callback
+  - file: content/05_solutions/05_treat_sim
