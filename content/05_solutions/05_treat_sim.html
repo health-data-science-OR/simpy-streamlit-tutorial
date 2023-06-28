@@ -1,0 +1,1437 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>simpy treatment centre model &#8212; Simulation in python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/05_solutions/05_treat_sim';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Adding a patient callback from a nurse" href="04_callback.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../front_page.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Simulation in python</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../front_page.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_setup/install.html">Install python and an IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_setup/reading.html">Recommended Reading</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02_simpy/01_sampling.html">Random variables and simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_simpy/02_basic_simpy.html">A first look at simpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_simpy/03_111_model.html">A full model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_simpy/04_basic_results.html">Collecting results from a single run</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_simpy/05_experiments.html">Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_simpy/06_replications.html">Multiple replications</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">streamlit</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/01_intro.html">What is streamlit?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/02_design.html">Main concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/03_experiment.html">The <code class="docutils literal notranslate"><span class="pre">Experiment</span></code> class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/04_wrapper.html">Wrapper functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/05_module.html">Python module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/06_basic_app.html">A first web app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/07_interactive.html">An interactive app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/08_sidebar.html">Tidying up controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/09_adding_text.html">Background text</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/01_sampling.html">Random sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/02_generator.html">Generator exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/03_basic_results.html">Results collection exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/04_callback.html">Adding a patient callback from a nurse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/05_treat_sim.html"><code class="docutils literal notranslate"><span class="pre">simpy</span></code> treatment centre model</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_sampling.html">Random sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_generator.html">Generator exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_basic_results.html">Results collection exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_callback.html">Adding a patient callback from a nurse</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">simpy</span></code> treatment centre model</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/health-data-science-OR/natcor-simpy/main?urlpath=lab/tree/content/05_solutions/05_treat_sim.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/health-data-science-OR/natcor-simpy" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/health-data-science-OR/natcor-simpy/issues/new?title=Issue%20on%20page%20%2Fcontent/05_solutions/05_treat_sim.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/05_solutions/05_treat_sim.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>simpy treatment centre model</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-description">1. Problem description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">2. Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-creating-a-default-scenario">3. Example: creating a default scenario</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-creating-an-alternative-scenario">4. Example creating an alternative scenario</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-a-scenario-using-the-wrapper-method">4. Running a scenario using the wrapper method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">5. Exercise</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="simpy-treatment-centre-model">
+<h1><code class="docutils literal notranslate"><span class="pre">simpy</span></code> treatment centre model<a class="headerlink" href="#simpy-treatment-centre-model" title="Permalink to this heading">#</a></h1>
+<p>In this exercise you will learn how to set up and use an existing simulation model.  The modelling framework has been setup with a <code class="docutils literal notranslate"><span class="pre">Scenario</span></code> class for parameterisation and a <code class="docutils literal notranslate"><span class="pre">multiple_replications()</span></code> wrapper function for running the model and returning results.</p>
+<section id="problem-description">
+<h2>1. Problem description<a class="headerlink" href="#problem-description" title="Permalink to this heading">#</a></h2>
+<p>FirstTreatment: A health clinic based in the US. <strong>This example is based on exercise 13 from Nelson (2013) page 170.</strong></p>
+<blockquote>
+<div><p><em>Nelson. B.L. (2013). <a class="reference external" href="https://www.amazon.co.uk/Foundations-Methods-Stochastic-Simulation-International/dp/1461461596/ref=sr_1_1?dchild=1&amp;keywords=foundations+and+methods+of+stochastic+simulation&amp;qid=1617050801&amp;sr=8-1">Foundations and methods of stochastic simulation</a>. Springer.</em></p>
+</div></blockquote>
+<p>Patients arrive to the health clinic between 6am and 12am following a non-stationary poisson process. After 12am arriving patients are diverted elsewhere and remaining WIP is completed.  On arrival, all patients quickly sign-in and are <strong>triaged</strong>.</p>
+<p>The health clinic expects two types of patient arrivals:</p>
+<p><strong>Trauma arrivals:</strong></p>
+<ul class="simple">
+<li><p>patients with severe illness and trauma that must first be stabilised in a <strong>trauma room</strong>.</p></li>
+<li><p>these patients then undergo <strong>treatment</strong> in a cubicle before being discharged.</p></li>
+</ul>
+<p><strong>Non-trauma arrivals</strong></p>
+<ul class="simple">
+<li><p>patients with minor illness and no trauma go through <strong>registration</strong> and <strong>examination</strong> activities</p></li>
+<li><p>a proportion of non-trauma patients require <strong>treatment</strong> in a cubicle before being discharged.</p></li>
+</ul>
+<blockquote>
+<div><p>In this model treatment of trauma and non-trauma patients is modelled separately.</p>
+</div></blockquote>
+<p><img alt="image" src="../../_images/process_flow_img.jpg" /></p>
+</section>
+<section id="imports">
+<h2>2. Imports<a class="headerlink" href="#imports" title="Permalink to this heading">#</a></h2>
+<p>The model has been setup as a python package and deployed to pypi: <a class="reference external" href="https://pypi.org/project/treat-sim/">https://pypi.org/project/treat-sim/</a>.  It has been pip installed as part of the provided <code class="docutils literal notranslate"><span class="pre">sim</span></code> conda virtual environment.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Scenario</span></code> class and <code class="docutils literal notranslate"><span class="pre">multiple_replications</span></code> functions are contained in the <code class="docutils literal notranslate"><span class="pre">treat_sim.model</span></code> module.</p>
+<blockquote>
+<div><p>An description of all model code is provided in an online Jupyter book: <a class="reference external" href="https://bit.ly/treat_sim">https://bit.ly/treat_sim</a></p>
+</div></blockquote>
+<p>Let’s check the version of treat_sim we have installed</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">treat_sim</span>
+<span class="n">treat_sim</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;1.0.0&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">treat_sim.model</span> <span class="kn">import</span> <span class="n">Scenario</span><span class="p">,</span> <span class="n">multiple_replications</span>
+
+<span class="c1"># we will also import pandas</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-creating-a-default-scenario">
+<h2>3. Example: creating a default scenario<a class="headerlink" href="#example-creating-a-default-scenario" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">default_scenario</span> <span class="o">=</span> <span class="n">Scenario</span><span class="p">()</span>
+
+<span class="c1"># let&#39;s have a look at some of the default parameters</span>
+<span class="n">default_scenario</span><span class="o">.</span><span class="n">n_triage</span>
+<span class="n">default_scenario</span><span class="o">.</span><span class="n">n_exam</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-creating-an-alternative-scenario">
+<h2>4. Example creating an alternative scenario<a class="headerlink" href="#example-creating-an-alternative-scenario" title="Permalink to this heading">#</a></h2>
+<p>There are many variables available to update in this model.  Some examples are:</p>
+<ul class="simple">
+<li><p>n_triage = number of triage bays</p></li>
+<li><p>n_exam = number of examination rooms</p></li>
+<li><p>n_cubicles_1 = number of non trauma treatment rooms</p></li>
+<li><p>exam_mean = mean duration of an examination</p></li>
+</ul>
+<blockquote>
+<div><p>From version 1.0.0 of <code class="docutils literal notranslate"><span class="pre">treat_sim</span></code>  these are updated via the constructor as follows:</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># by default there is 1 triage room</span>
+<span class="c1"># set parameters through the consutuctor methods as follows</span>
+<span class="n">extra_triage</span> <span class="o">=</span> <span class="n">Scenario</span><span class="p">(</span><span class="n">n_triage</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">extra_triage</span><span class="o">.</span><span class="n">n_triage</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="running-a-scenario-using-the-wrapper-method">
+<h2>4. Running a scenario using the wrapper method<a class="headerlink" href="#running-a-scenario-using-the-wrapper-method" title="Permalink to this heading">#</a></h2>
+<p>by default the replications function runs the model 5 times.  You can alter this using the <code class="docutils literal notranslate"><span class="pre">n_reps</span></code> parameter</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">multiple_replications</span><span class="p">(</span><span class="n">default_scenario</span><span class="p">,</span> <span class="n">n_reps</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The variable <code class="docutils literal notranslate"><span class="pre">results</span></code> is a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> containing key performance indicators (columns) and replications (rows)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>00_arrivals</th>
+      <th>01a_triage_wait</th>
+      <th>01b_triage_util</th>
+      <th>02a_registration_wait</th>
+      <th>02b_registration_util</th>
+      <th>03a_examination_wait</th>
+      <th>03b_examination_util</th>
+      <th>04a_treatment_wait(non_trauma)</th>
+      <th>04b_treatment_util(non_trauma)</th>
+      <th>05_total_time(non-trauma)</th>
+      <th>06a_trauma_wait</th>
+      <th>06b_trauma_util</th>
+      <th>07a_treatment_wait(trauma)</th>
+      <th>07b_treatment_util(trauma)</th>
+      <th>08_total_time(trauma)</th>
+      <th>09_throughput</th>
+    </tr>
+    <tr>
+      <th>rep</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>218.0</td>
+      <td>28.009290</td>
+      <td>0.542454</td>
+      <td>128.490438</td>
+      <td>0.854615</td>
+      <td>28.478642</td>
+      <td>0.847430</td>
+      <td>145.414321</td>
+      <td>0.853189</td>
+      <td>247.872229</td>
+      <td>8.595360</td>
+      <td>0.368908</td>
+      <td>214.198331</td>
+      <td>0.976808</td>
+      <td>399.200311</td>
+      <td>154.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>188.0</td>
+      <td>3.240469</td>
+      <td>0.475390</td>
+      <td>63.307540</td>
+      <td>0.749027</td>
+      <td>16.328179</td>
+      <td>0.795921</td>
+      <td>134.202786</td>
+      <td>0.846795</td>
+      <td>178.799154</td>
+      <td>65.146932</td>
+      <td>0.838521</td>
+      <td>231.603567</td>
+      <td>0.778634</td>
+      <td>392.064964</td>
+      <td>139.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>233.0</td>
+      <td>13.040936</td>
+      <td>0.528681</td>
+      <td>149.636381</td>
+      <td>0.839994</td>
+      <td>18.400280</td>
+      <td>0.847310</td>
+      <td>169.503295</td>
+      <td>0.827088</td>
+      <td>260.804457</td>
+      <td>78.130137</td>
+      <td>0.816547</td>
+      <td>251.835736</td>
+      <td>1.188287</td>
+      <td>369.276920</td>
+      <td>157.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>236.0</td>
+      <td>29.246780</td>
+      <td>0.623225</td>
+      <td>91.137899</td>
+      <td>0.876762</td>
+      <td>35.424440</td>
+      <td>0.881140</td>
+      <td>125.016255</td>
+      <td>0.858299</td>
+      <td>206.945928</td>
+      <td>225.471749</td>
+      <td>0.876984</td>
+      <td>95.601572</td>
+      <td>1.193115</td>
+      <td>385.752794</td>
+      <td>159.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>246.0</td>
+      <td>65.407658</td>
+      <td>0.647235</td>
+      <td>130.091608</td>
+      <td>0.827194</td>
+      <td>36.254401</td>
+      <td>0.824874</td>
+      <td>150.890149</td>
+      <td>0.840913</td>
+      <td>288.796547</td>
+      <td>168.014088</td>
+      <td>0.979189</td>
+      <td>13.244608</td>
+      <td>0.650671</td>
+      <td>339.817753</td>
+      <td>148.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>215.0</td>
+      <td>67.536960</td>
+      <td>0.617639</td>
+      <td>87.101852</td>
+      <td>0.807856</td>
+      <td>24.149025</td>
+      <td>0.810646</td>
+      <td>95.628440</td>
+      <td>0.841574</td>
+      <td>226.294148</td>
+      <td>82.263601</td>
+      <td>0.842665</td>
+      <td>207.090105</td>
+      <td>0.771464</td>
+      <td>418.710896</td>
+      <td>151.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>199.0</td>
+      <td>16.388866</td>
+      <td>0.479730</td>
+      <td>90.818931</td>
+      <td>0.764699</td>
+      <td>30.028974</td>
+      <td>0.812242</td>
+      <td>119.295530</td>
+      <td>0.785988</td>
+      <td>211.711285</td>
+      <td>70.318603</td>
+      <td>0.810452</td>
+      <td>295.851506</td>
+      <td>0.880920</td>
+      <td>462.818608</td>
+      <td>149.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>240.0</td>
+      <td>36.702969</td>
+      <td>0.676470</td>
+      <td>126.444397</td>
+      <td>0.860978</td>
+      <td>31.189935</td>
+      <td>0.866354</td>
+      <td>169.368888</td>
+      <td>0.858340</td>
+      <td>268.655456</td>
+      <td>152.750616</td>
+      <td>0.801632</td>
+      <td>171.917036</td>
+      <td>0.602400</td>
+      <td>433.502223</td>
+      <td>154.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>238.0</td>
+      <td>38.201228</td>
+      <td>0.595762</td>
+      <td>96.503846</td>
+      <td>0.878944</td>
+      <td>29.642379</td>
+      <td>0.887559</td>
+      <td>169.737929</td>
+      <td>0.898665</td>
+      <td>247.619831</td>
+      <td>68.075461</td>
+      <td>0.698513</td>
+      <td>307.067085</td>
+      <td>0.952312</td>
+      <td>477.145587</td>
+      <td>145.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>226.0</td>
+      <td>54.951247</td>
+      <td>0.652863</td>
+      <td>106.388692</td>
+      <td>0.845639</td>
+      <td>25.374935</td>
+      <td>0.846628</td>
+      <td>136.911866</td>
+      <td>0.900255</td>
+      <td>264.451897</td>
+      <td>85.030588</td>
+      <td>0.834798</td>
+      <td>210.969768</td>
+      <td>0.797586</td>
+      <td>503.115035</td>
+      <td>159.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>we can summarise results using the dataframe’s <code class="docutils literal notranslate"><span class="pre">describe()</span></code> method.  The results are transposed to improve readability.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>00_arrivals</th>
+      <td>10.0</td>
+      <td>223.900000</td>
+      <td>18.864723</td>
+      <td>188.000000</td>
+      <td>215.750000</td>
+      <td>229.500000</td>
+      <td>237.500000</td>
+      <td>246.000000</td>
+    </tr>
+    <tr>
+      <th>01a_triage_wait</th>
+      <td>10.0</td>
+      <td>35.272640</td>
+      <td>21.891014</td>
+      <td>3.240469</td>
+      <td>19.293972</td>
+      <td>32.974874</td>
+      <td>50.763742</td>
+      <td>67.536960</td>
+    </tr>
+    <tr>
+      <th>01b_triage_util</th>
+      <td>10.0</td>
+      <td>0.583945</td>
+      <td>0.072690</td>
+      <td>0.475390</td>
+      <td>0.532124</td>
+      <td>0.606701</td>
+      <td>0.641233</td>
+      <td>0.676470</td>
+    </tr>
+    <tr>
+      <th>02a_registration_wait</th>
+      <td>10.0</td>
+      <td>106.992158</td>
+      <td>26.076703</td>
+      <td>63.307540</td>
+      <td>90.898673</td>
+      <td>101.446269</td>
+      <td>127.978928</td>
+      <td>149.636381</td>
+    </tr>
+    <tr>
+      <th>02b_registration_util</th>
+      <td>10.0</td>
+      <td>0.830571</td>
+      <td>0.044482</td>
+      <td>0.749027</td>
+      <td>0.812690</td>
+      <td>0.842816</td>
+      <td>0.859387</td>
+      <td>0.878944</td>
+    </tr>
+    <tr>
+      <th>03a_examination_wait</th>
+      <td>10.0</td>
+      <td>27.527119</td>
+      <td>6.568842</td>
+      <td>16.328179</td>
+      <td>24.455503</td>
+      <td>29.060511</td>
+      <td>30.899695</td>
+      <td>36.254401</td>
+    </tr>
+    <tr>
+      <th>03b_examination_util</th>
+      <td>10.0</td>
+      <td>0.842010</td>
+      <td>0.030849</td>
+      <td>0.795921</td>
+      <td>0.815400</td>
+      <td>0.846969</td>
+      <td>0.861623</td>
+      <td>0.887559</td>
+    </tr>
+    <tr>
+      <th>04a_treatment_wait(non_trauma)</th>
+      <td>10.0</td>
+      <td>141.596946</td>
+      <td>24.505998</td>
+      <td>95.628440</td>
+      <td>127.312888</td>
+      <td>141.163093</td>
+      <td>164.749203</td>
+      <td>169.737929</td>
+    </tr>
+    <tr>
+      <th>04b_treatment_util(non_trauma)</th>
+      <td>10.0</td>
+      <td>0.851111</td>
+      <td>0.033026</td>
+      <td>0.785988</td>
+      <td>0.841078</td>
+      <td>0.849992</td>
+      <td>0.858330</td>
+      <td>0.900255</td>
+    </tr>
+    <tr>
+      <th>05_total_time(non-trauma)</th>
+      <td>10.0</td>
+      <td>240.195093</td>
+      <td>33.630061</td>
+      <td>178.799154</td>
+      <td>215.357001</td>
+      <td>247.746030</td>
+      <td>263.540037</td>
+      <td>288.796547</td>
+    </tr>
+    <tr>
+      <th>06a_trauma_wait</th>
+      <td>10.0</td>
+      <td>100.379713</td>
+      <td>62.925813</td>
+      <td>8.595360</td>
+      <td>68.636246</td>
+      <td>80.196869</td>
+      <td>135.820609</td>
+      <td>225.471749</td>
+    </tr>
+    <tr>
+      <th>06b_trauma_util</th>
+      <td>10.0</td>
+      <td>0.786821</td>
+      <td>0.162391</td>
+      <td>0.368908</td>
+      <td>0.803837</td>
+      <td>0.825673</td>
+      <td>0.841629</td>
+      <td>0.979189</td>
+    </tr>
+    <tr>
+      <th>07a_treatment_wait(trauma)</th>
+      <td>10.0</td>
+      <td>199.937931</td>
+      <td>88.990650</td>
+      <td>13.244608</td>
+      <td>180.710303</td>
+      <td>212.584049</td>
+      <td>246.777694</td>
+      <td>307.067085</td>
+    </tr>
+    <tr>
+      <th>07b_treatment_util(trauma)</th>
+      <td>10.0</td>
+      <td>0.879220</td>
+      <td>0.201709</td>
+      <td>0.602400</td>
+      <td>0.773256</td>
+      <td>0.839253</td>
+      <td>0.970684</td>
+      <td>1.193115</td>
+    </tr>
+    <tr>
+      <th>08_total_time(trauma)</th>
+      <td>10.0</td>
+      <td>418.140509</td>
+      <td>51.147329</td>
+      <td>339.817753</td>
+      <td>387.330837</td>
+      <td>408.955603</td>
+      <td>455.489512</td>
+      <td>503.115035</td>
+    </tr>
+    <tr>
+      <th>09_throughput</th>
+      <td>10.0</td>
+      <td>151.500000</td>
+      <td>6.433420</td>
+      <td>139.000000</td>
+      <td>148.250000</td>
+      <td>152.500000</td>
+      <td>156.250000</td>
+      <td>159.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="exercise">
+<h2>5. Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h2>
+<p>Try running the following scenarios</p>
+<ul class="simple">
+<li><p>extra triage capacity - increase triage bays to 2</p></li>
+<li><p>extra examination capacity = increase examination rooms to 2</p></li>
+<li><p>swap over 1 exam room for extra triage bay</p></li>
+</ul>
+<p><strong>Extra challenge</strong>:</p>
+<ul class="simple">
+<li><p>Create a function called <code class="docutils literal notranslate"><span class="pre">get_scenarios()</span></code> that creates all of the function in one go and returns them to the calling code.  Can you then loop through the scenarios and execute them in one after another?</p></li>
+<li><p>One option is to setup the function so that it creates a python dictionary that has the name of the scenario as a key and the <code class="docutils literal notranslate"><span class="pre">Scenario</span></code> object as a value.</p></li>
+<li><p>Can you combine the results into a single table?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># example answer that includes extra challenges.</span>
+
+<span class="k">def</span> <span class="nf">get_scenarios</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Creates a dictionary object containing</span>
+<span class="sd">    objects of type `Scenario` to run.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    --------</span>
+<span class="sd">    dict</span>
+<span class="sd">        Contains the scenarios for the model</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">scenarios</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">scenarios</span><span class="p">[</span><span class="s1">&#39;base&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Scenario</span><span class="p">()</span>
+    
+    <span class="c1"># extra triage capacity</span>
+    <span class="n">scenarios</span><span class="p">[</span><span class="s1">&#39;triage+1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Scenario</span><span class="p">(</span><span class="n">scenarios</span><span class="p">[</span><span class="s1">&#39;base&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">n_triage</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        
+    <span class="c1"># extra examination capacity</span>
+    <span class="n">scenarios</span><span class="p">[</span><span class="s1">&#39;exam+1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Scenario</span><span class="p">(</span><span class="n">scenarios</span><span class="p">[</span><span class="s1">&#39;base&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">n_exam</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        
+    <span class="c1"># swap over 1 exam room for extra triage cubicle</span>
+    <span class="n">scenarios</span><span class="p">[</span><span class="s1">&#39;swap_exam_triage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Scenario</span><span class="p">(</span><span class="n">scenarios</span><span class="p">[</span><span class="s1">&#39;base&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">n_triage</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span>
+                                             <span class="n">scenarios</span><span class="p">[</span><span class="s1">&#39;base&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">n_exam</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">scenarios</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run_scenario_analysis</span><span class="p">(</span><span class="n">scenarios</span><span class="p">,</span> <span class="n">n_reps</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Run each of the scenarios for a specified results</span>
+<span class="sd">    collection period and replications.</span>
+<span class="sd">    </span>
+<span class="sd">    Params:</span>
+<span class="sd">    ------</span>
+<span class="sd">    scenarios: dict</span>
+<span class="sd">        dictionary of Scenario objects</span>
+<span class="sd">        </span>
+<span class="sd">    n_rep: int</span>
+<span class="sd">        Number of replications</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Scenario Analysis&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;No. Scenario: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">scenarios</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Replications: </span><span class="si">{</span><span class="n">n_reps</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="n">scenario_results</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">sc_name</span><span class="p">,</span> <span class="n">scenario</span> <span class="ow">in</span> <span class="n">scenarios</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Running </span><span class="si">{</span><span class="n">sc_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; =&gt; &#39;</span><span class="p">)</span>
+        <span class="n">replications</span> <span class="o">=</span> <span class="n">multiple_replications</span><span class="p">(</span><span class="n">scenario</span><span class="p">,</span> <span class="n">n_reps</span><span class="o">=</span><span class="n">n_reps</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;done.</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        
+        <span class="c1">#save the results</span>
+        <span class="n">scenario_results</span><span class="p">[</span><span class="n">sc_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">replications</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Scenario analysis complete.&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">scenario_results</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scenario_summary_frame</span><span class="p">(</span><span class="n">scenario_results</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Mean results for each performance measure by scenario</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    ----------</span>
+<span class="sd">    scenario_results: dict</span>
+<span class="sd">        dictionary of replications.  </span>
+<span class="sd">        Key identifies the performance measure</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.DataFrame</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">summary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">sc_name</span><span class="p">,</span> <span class="n">replications</span> <span class="ow">in</span> <span class="n">scenario_results</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">summary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">summary</span><span class="p">,</span> <span class="n">replications</span><span class="o">.</span><span class="n">mean</span><span class="p">()],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">columns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sc_name</span><span class="p">)</span>
+
+    <span class="n">summary</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">columns</span>
+    <span class="k">return</span> <span class="n">summary</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># run the analysis!</span>
+
+<span class="n">scenario_results</span> <span class="o">=</span> <span class="n">run_scenario_analysis</span><span class="p">(</span><span class="n">get_scenarios</span><span class="p">(),</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">scenario_summary_frame</span><span class="p">(</span><span class="n">scenario_results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Scenario Analysis
+No. Scenario: 4
+Replications: 10
+Running base =&gt; done.
+
+Running triage+1 =&gt; done.
+
+Running exam+1 =&gt; done.
+
+Running swap_exam_triage =&gt; done.
+
+Scenario analysis complete.
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>base</th>
+      <th>triage+1</th>
+      <th>exam+1</th>
+      <th>swap_exam_triage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>00_arrivals</th>
+      <td>223.900000</td>
+      <td>223.900000</td>
+      <td>223.900000</td>
+      <td>223.900000</td>
+    </tr>
+    <tr>
+      <th>01a_triage_wait</th>
+      <td>35.272640</td>
+      <td>35.272640</td>
+      <td>35.272640</td>
+      <td>1.591082</td>
+    </tr>
+    <tr>
+      <th>01b_triage_util</th>
+      <td>0.583945</td>
+      <td>0.583945</td>
+      <td>0.583945</td>
+      <td>0.291972</td>
+    </tr>
+    <tr>
+      <th>02a_registration_wait</th>
+      <td>106.992158</td>
+      <td>106.992158</td>
+      <td>106.992158</td>
+      <td>136.547677</td>
+    </tr>
+    <tr>
+      <th>02b_registration_util</th>
+      <td>0.830571</td>
+      <td>0.830571</td>
+      <td>0.830571</td>
+      <td>0.837294</td>
+    </tr>
+    <tr>
+      <th>03a_examination_wait</th>
+      <td>27.527119</td>
+      <td>27.527119</td>
+      <td>27.527119</td>
+      <td>28.238646</td>
+    </tr>
+    <tr>
+      <th>03b_examination_util</th>
+      <td>0.842010</td>
+      <td>0.842010</td>
+      <td>0.842010</td>
+      <td>0.844921</td>
+    </tr>
+    <tr>
+      <th>04a_treatment_wait(non_trauma)</th>
+      <td>141.596946</td>
+      <td>141.596946</td>
+      <td>141.596946</td>
+      <td>145.386882</td>
+    </tr>
+    <tr>
+      <th>04b_treatment_util(non_trauma)</th>
+      <td>0.851111</td>
+      <td>0.851111</td>
+      <td>0.851111</td>
+      <td>0.852151</td>
+    </tr>
+    <tr>
+      <th>05_total_time(non-trauma)</th>
+      <td>240.195093</td>
+      <td>240.195093</td>
+      <td>240.195093</td>
+      <td>237.010351</td>
+    </tr>
+    <tr>
+      <th>06a_trauma_wait</th>
+      <td>100.379713</td>
+      <td>100.379713</td>
+      <td>100.379713</td>
+      <td>123.372108</td>
+    </tr>
+    <tr>
+      <th>06b_trauma_util</th>
+      <td>0.786821</td>
+      <td>0.786821</td>
+      <td>0.786821</td>
+      <td>0.786666</td>
+    </tr>
+    <tr>
+      <th>07a_treatment_wait(trauma)</th>
+      <td>199.937931</td>
+      <td>199.937931</td>
+      <td>199.937931</td>
+      <td>233.482451</td>
+    </tr>
+    <tr>
+      <th>07b_treatment_util(trauma)</th>
+      <td>0.879220</td>
+      <td>0.879220</td>
+      <td>0.879220</td>
+      <td>0.899172</td>
+    </tr>
+    <tr>
+      <th>08_total_time(trauma)</th>
+      <td>418.140509</td>
+      <td>418.140509</td>
+      <td>418.140509</td>
+      <td>430.158680</td>
+    </tr>
+    <tr>
+      <th>09_throughput</th>
+      <td>151.500000</td>
+      <td>151.500000</td>
+      <td>151.500000</td>
+      <td>151.400000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "health-data-science-OR/natcor-simpy",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/05_solutions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="04_callback.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Adding a patient callback from a nurse</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-description">1. Problem description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">2. Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-creating-a-default-scenario">3. Example: creating a default scenario</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-creating-an-alternative-scenario">4. Example creating an alternative scenario</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-a-scenario-using-the-wrapper-method">4. Running a scenario using the wrapper method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">5. Exercise</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Thomas Monks
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
