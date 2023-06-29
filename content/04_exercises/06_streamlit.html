@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>What is streamlit? &#8212; Simulation in python</title>
+    <title>Treatment sim streamlit app &#8212; Simulation in python</title>
   
   
   
@@ -61,11 +61,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/03_streamlit/01_intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/04_exercises/06_streamlit';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Main concepts" href="02_design.html" />
-    <link rel="prev" title="Multiple replications" href="../02_simpy/06_replications.html" />
+    <link rel="next" title="Random sampling" href="../05_solutions/01_sampling.html" />
+    <link rel="prev" title="simpy treatment centre model" href="05_treat_sim.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -165,25 +165,25 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../02_simpy/06_replications.html">Multiple replications</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">streamlit</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">What is streamlit?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_design.html">Main concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_experiment.html">The <code class="docutils literal notranslate"><span class="pre">Experiment</span></code> class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_wrapper.html">Wrapper functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_module.html">Python module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_basic_app.html">A first web app</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_interactive.html">An interactive app</a></li>
-<li class="toctree-l1"><a class="reference internal" href="08_sidebar.html">Tidying up controls</a></li>
-<li class="toctree-l1"><a class="reference internal" href="09_adding_text.html">Background text</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/01_intro.html">What is streamlit?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/02_design.html">Main concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/03_experiment.html">The <code class="docutils literal notranslate"><span class="pre">Experiment</span></code> class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/04_wrapper.html">Wrapper functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/05_module.html">Python module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/06_basic_app.html">A first web app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/07_interactive.html">An interactive app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/08_sidebar.html">Tidying up controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/09_adding_text.html">Background text</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../04_exercises/01_sampling.html">Random sampling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../04_exercises/02_generator.html">Generator exercise</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../04_exercises/03_basic_results.html">Results collection exercise</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../04_exercises/04_callback.html">Adding a patient callback from a nurse</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../04_exercises/05_treat_sim.html"><code class="docutils literal notranslate"><span class="pre">simpy</span></code> treatment centre model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../04_exercises/06_streamlit.html">Treatment sim <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> app</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_sampling.html">Random sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_generator.html">Generator exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_basic_results.html">Results collection exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_callback.html">Adding a patient callback from a nurse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_treat_sim.html"><code class="docutils literal notranslate"><span class="pre">simpy</span></code> treatment centre model</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Treatment sim <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> app</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
@@ -241,6 +241,55 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/health-data-science-OR/natcor-simpy/main?urlpath=lab/tree/content/04_exercises/06_streamlit.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -266,7 +315,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/health-data-science-OR/natcor-simpy/issues/new?title=Issue%20on%20page%20%2Fcontent/03_streamlit/01_intro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/health-data-science-OR/natcor-simpy/issues/new?title=Issue%20on%20page%20%2Fcontent/04_exercises/06_streamlit.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -296,7 +345,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/content/03_streamlit/01_intro.md" target="_blank"
+      <li><a href="../../_sources/content/04_exercises/06_streamlit.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -306,7 +355,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -378,7 +427,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>What is streamlit?</h1>
+    <h1>Treatment sim streamlit app</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -388,9 +437,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-streamlit-with-foss-simulation">Why use streamlit with FOSS simulation?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-process-to-build-a-front-end">The process to build a front-end</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Treatment sim <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> app</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-treat-sim-script">Basic <code class="docutils literal notranslate"><span class="pre">treat_sim</span></code> script</a></li>
 </ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise 4:</a></li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -401,25 +459,123 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="what-is-streamlit">
-<h1>What is streamlit?<a class="headerlink" href="#what-is-streamlit" title="Permalink to this heading">#</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">streamlit</span></code> is software package to build web applications in python.  It has been designed to be extremely simple to code.  A typical streamlit application is a short python script.</p>
-<p>The web apps that you build with <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> can be interactive.  Deployment of your models to users could be as simple as a local python script that provides a browser based front-end to your model, hosting the app in streamlit’s free to use community cloud, or as complex as deployment to paid infrastructure such as google cloud.  In this tutorial, we will learn about building simple brower based front-ends to simulation models  that are run on local laptops or desktops.</p>
-<section id="why-use-streamlit-with-foss-simulation">
-<h2>Why use streamlit with FOSS simulation?<a class="headerlink" href="#why-use-streamlit-with-foss-simulation" title="Permalink to this heading">#</a></h2>
-<p>The majority of discrete-event simulation studies are conducted using commercial software.  This software is very powerful and aims to be end-user friendly, but has propriety licenses that restricts sharing and adaptation for research. Free and open source software (FOSS) such as <code class="docutils literal notranslate"><span class="pre">simpy</span></code> is also powerful (and arguably more flexible), but loses a lot of the end-user friendly quality that commercial simulation software has invested in.  Adding an interactive browser based front end such, using <code class="docutils literal notranslate"><span class="pre">streamlit</span></code>, to a <code class="docutils literal notranslate"><span class="pre">simpy</span></code> model offers the best of both worlds.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="treatment-sim-streamlit-app">
+<h1>Treatment sim <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> app<a class="headerlink" href="#treatment-sim-streamlit-app" title="Permalink to this heading">#</a></h1>
+<p>In this exercise you will incrementally build up a simple <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> app for the <code class="docutils literal notranslate"><span class="pre">treat_sim</span></code> package.  The app will allow a user to set input parameters using sliders, run the simulation model and view a results summary.</p>
+<p>It is recommended that you use basic <code class="docutils literal notranslate"><span class="pre">treat_sim</span></code> script that has already been provided.</p>
+<section id="exercise-1">
+<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h2>
+<p>Create a a basic <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> app with a title and information.</p>
+<ul class="simple">
+<li><p>Create a new file called <code class="docutils literal notranslate"><span class="pre">my_streamlit_app.py</span></code>; copy and paste in the code from <a class="reference external" href="http://main.py">main.py</a></p></li>
+<li><p>Begin to convert this into a streamlit app</p></li>
+<li><p>Import <code class="docutils literal notranslate"><span class="pre">streamlit</span></code></p></li>
+<li><p>Add a streamlit title (e.g. “Treatment Simulation model”)</p></li>
+<li><p>Read in and display the markdown text from <code class="docutils literal notranslate"><span class="pre">resources/overview.md</span></code>
+Or create the file yourself.  Use the following text:</p></li>
+</ul>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gs">**A simple simulation model of a urgent care and treatment centre.**</span>
+<span class="k">*</span><span class="w"> </span>Change the model parameters and rerun to see the effect on waiting times and utilisation of rooms.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Use<code class="docutils literal notranslate"><span class="pre">st.spinner</span></code> and <code class="docutils literal notranslate"><span class="pre">st.success</span></code> to provide feedback about the model.</p></li>
+<li><p>Run the app as follows <code class="docutils literal notranslate"><span class="pre">streamlit</span> <span class="pre">run</span> <span class="pre">my_streamlit_app.py</span></code></p></li>
+</ul>
+<section id="basic-treat-sim-script">
+<h3>Basic <code class="docutils literal notranslate"><span class="pre">treat_sim</span></code> script<a class="headerlink" href="#basic-treat-sim-script" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Script to complete a basic run of the model and display a table of</span>
+<span class="sd">results.</span>
+
+<span class="sd">The model is imported from a pypi package &#39;treat_sim&#39;</span>
+
+<span class="sd">Full documentation and source code for `treat_sim` is available as </span>
+<span class="sd">* Jupyter Book: https://tommonks.github.io/treatment-centre-sim/</span>
+<span class="sd">* github: https://github.com/TomMonks/treatment-centre-sim</span>
+
+<span class="sd">A conda environment has been provided locally,but the model can be pip installed</span>
+<span class="sd">`pip install treat_sim==1.0.0`</span>
+
+<span class="sd">This will be adapted into a basic streamlit app</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="kn">from</span> <span class="nn">treat_sim.model</span> <span class="kn">import</span> <span class="n">Scenario</span><span class="p">,</span> <span class="n">multiple_replications</span>
+
+<span class="c1"># set the variables for the run.</span>
+<span class="c1"># these are just a subset of the total available for this example...</span>
+<span class="n">n_triage</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">n_exam</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">n_cubicles_1</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># examination mean</span>
+<span class="n">exam_mean</span> <span class="o">=</span> <span class="mf">16.0</span>
+
+<span class="c1"># runs</span>
+<span class="n">replications</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># Setup scenario using supplied variables</span>
+<span class="n">args</span> <span class="o">=</span> <span class="n">Scenario</span><span class="p">(</span><span class="n">n_triage</span><span class="o">=</span><span class="n">n_triage</span><span class="p">,</span> <span class="n">n_exam</span><span class="o">=</span><span class="n">n_exam</span><span class="p">,</span> <span class="n">n_cubicles_1</span><span class="o">=</span><span class="n">n_cubicles_1</span><span class="p">,</span>
+                <span class="n">exam_mean</span><span class="o">=</span><span class="n">exam_mean</span><span class="p">)</span>
+
+<span class="c1"># run multiple replications of the model.</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">multiple_replications</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">n_reps</span><span class="o">=</span><span class="n">replications</span><span class="p">)</span>
+
+<span class="c1"># print mean results.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>00_arrivals                       223.9
+01a_triage_wait                    35.3
+01b_triage_util                     0.6
+02a_registration_wait             107.0
+02b_registration_util               0.8
+03a_examination_wait               27.5
+03b_examination_util                0.8
+04a_treatment_wait(non_trauma)    141.6
+04b_treatment_util(non_trauma)      0.9
+05_total_time(non-trauma)         240.2
+06a_trauma_wait                   100.4
+06b_trauma_util                     0.8
+07a_treatment_wait(trauma)        199.9
+07b_treatment_util(trauma)          0.9
+08_total_time(trauma)             418.1
+09_throughput                     151.5
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="the-process-to-build-a-front-end">
-<h2>The process to build a front-end<a class="headerlink" href="#the-process-to-build-a-front-end" title="Permalink to this heading">#</a></h2>
-<p>In this tutorial we will follow a prescribed process for creating <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> front ends</p>
-<ol class="arabic simple">
-<li><p>Create and test a simulation model independently from <code class="docutils literal notranslate"><span class="pre">streamlit</span></code></p></li>
-<li><p>Design the simulation model work with an <code class="docutils literal notranslate"><span class="pre">Experiment</span></code> class and wrapper functions for running the model</p></li>
-<li><p>Organise and document the simulation model code within a local python module (or python package)</p></li>
-<li><p>Test all the simulation model can be parameterised and run from a simple python script</p></li>
-<li><p>Enhance the script with a basic streamlit interactive front end.</p></li>
-</ol>
 </section>
+<section id="exercise-2">
+<h2>Exercise 2:<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h2>
+<p>Update parameters and run the simulation model via the app</p>
+<ul class="simple">
+<li><p>Convert the hard coded parameter values into <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> sliders.</p></li>
+<li><p>Set the script up to that <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> runs the simulation only when a <code class="docutils literal notranslate"><span class="pre">Run</span> <span class="pre">Simulation</span></code> button is clicked.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">st.table</span></code> or <code class="docutils literal notranslate"><span class="pre">st.dataframe</span></code> display the results of the simulation model to a user.</p></li>
+</ul>
+</section>
+<section id="exercise-3">
+<h2>Exercise 3:<a class="headerlink" href="#exercise-3" title="Permalink to this heading">#</a></h2>
+<p>Add in a side bar that display the sliders to a user</p>
+<ul class="simple">
+<li><p>Create a side bar section in your app and add in the slider.</p></li>
+<li><p>Run your model and check it still works.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="exercise-4">
+<h1>Exercise 4:<a class="headerlink" href="#exercise-4" title="Permalink to this heading">#</a></h1>
+<p>Research <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> pages</p>
+<ul class="simple">
+<li><p>Read the documentation on streamlit pages.</p></li>
+<li><p>Add in an “about page”.</p></li>
+</ul>
 </section>
 
     <script type="text/x-thebe-config">
@@ -435,7 +591,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./content/03_streamlit"
+            path: "./content/04_exercises"
         },
         predefinedOutput: true
     }
@@ -454,20 +610,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../02_simpy/06_replications.html"
+       href="05_treat_sim.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Multiple replications</p>
+        <p class="prev-next-title"><code class="docutils literal notranslate"><span class="pre">simpy</span></code> treatment centre model</p>
       </div>
     </a>
     <a class="right-next"
-       href="02_design.html"
+       href="../05_solutions/01_sampling.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Main concepts</p>
+        <p class="prev-next-title">Random sampling</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -489,9 +645,18 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-streamlit-with-foss-simulation">Why use streamlit with FOSS simulation?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-process-to-build-a-front-end">The process to build a front-end</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Treatment sim <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> app</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-treat-sim-script">Basic <code class="docutils literal notranslate"><span class="pre">treat_sim</span></code> script</a></li>
 </ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise 4:</a></li>
+</ul>
+
   </nav></div>
 
 </div></div>
