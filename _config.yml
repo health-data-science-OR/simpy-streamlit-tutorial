@@ -11,7 +11,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 only_build_toc_files: true
 
 execute:
-  execute_notebooks: off #cache output from .ipynb files for faster build
+  execute_notebooks: auto #cache output from .ipynb files for faster build
   timeout: -1 #no time restriction on notebook execution
   
 repository:
@@ -27,6 +27,12 @@ launch_buttons:
   binderhub_url: "https://mybinder.org"
   notebook_interface: "jupyterlab"
   thebe: true
+
+# to enable plotly visualisations
+sphinx:
+  config:
+    html_js_files:
+    - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
   
 # citations
 # In _config.yml
