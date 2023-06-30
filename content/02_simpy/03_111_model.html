@@ -156,7 +156,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../01_setup/install.html">Install python and an IDE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01_setup/reading.html">Recommended Reading</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulation</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulation with simpy</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01_sampling.html">Random variables and simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_basic_simpy.html">A first look at simpy</a></li>
@@ -165,7 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="05_experiments.html">Experiments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="06_replications.html">Multiple replications</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">streamlit</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">streamlit sim apps</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../03_streamlit/01_intro.html">What is streamlit?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03_streamlit/02_design.html">Main concepts</a></li>
@@ -177,6 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../03_streamlit/08_sidebar.html">Tidying up controls</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03_streamlit/09_adding_text.html">Background text</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03_streamlit/10_adding_plots.html">Adding plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/11_filter_results.html">Filtering results</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
 <ul class="nav bd-sidenav">
@@ -187,6 +188,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../04_exercises/05_treat_sim.html"><code class="docutils literal notranslate"><span class="pre">simpy</span></code> treatment centre model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04_exercises/06_streamlit.html">Treatment sim <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> app</a></li>
 
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/07_plotting.html">Adding a plot</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
 <ul class="nav bd-sidenav">
@@ -196,6 +199,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../05_solutions/04_callback.html">Adding a patient callback from a nurse</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../05_solutions/05_treat_sim.html"><code class="docutils literal notranslate"><span class="pre">simpy</span></code> treatment centre model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../05_solutions/06_streamlit.html">Treatment sim <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_solutions/07_plotting.html">Adding a plot</a></li>
 
 </ul>
 
@@ -609,514 +613,526 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>call arrives at: 0.217
-operator answered call 1 at 0.217
-call arrives at: 0.233
-operator answered call 2 at 0.233
-call arrives at: 0.413
-operator answered call 3 at 0.413
-call arrives at: 0.506
-operator answered call 4 at 0.506
-call arrives at: 0.787
-operator answered call 5 at 0.787
-call arrives at: 1.649
-operator answered call 6 at 1.649
-call arrives at: 2.361
-operator answered call 7 at 2.361
-call arrives at: 2.724
-operator answered call 8 at 2.724
-call arrives at: 2.757
-operator answered call 9 at 2.757
-call arrives at: 3.898
-operator answered call 10 at 3.898
-call arrives at: 5.068
-operator answered call 11 at 5.068
-call arrives at: 5.723
-operator answered call 12 at 5.723
-call arrives at: 5.924
-operator answered call 13 at 5.924
-call arrives at: 6.660
-call 2 ended 6.689; waiting time was 0.000
-operator answered call 14 at 6.689
-call 4 ended 6.882; waiting time was 0.000
-call 3 ended 6.932; waiting time was 0.000
-call arrives at: 6.973
-operator answered call 15 at 6.973
-call arrives at: 6.981
-operator answered call 16 at 6.981
-call arrives at: 7.897
-call 1 ended 8.418; waiting time was 0.000
-operator answered call 17 at 8.418
-call arrives at: 8.418
-call 7 ended 8.486; waiting time was 0.000
-operator answered call 18 at 8.486
-call arrives at: 8.519
-call 5 ended 8.592; waiting time was 0.000
-operator answered call 19 at 8.592
-call arrives at: 8.703
-call 9 ended 9.111; waiting time was 0.000
-operator answered call 20 at 9.111
-call 6 ended 9.165; waiting time was 0.000
-call 10 ended 10.103; waiting time was 0.000
-call arrives at: 10.371
-operator answered call 21 at 10.371
-call arrives at: 10.602
-operator answered call 22 at 10.602
-call 8 ended 11.955; waiting time was 0.000
-call arrives at: 12.626
-operator answered call 23 at 12.626
-call 13 ended 12.782; waiting time was 0.000
-call arrives at: 12.918
-operator answered call 24 at 12.918
-call arrives at: 13.161
-call 14 ended 13.499; waiting time was 0.029
-operator answered call 25 at 13.499
-call 12 ended 13.568; waiting time was 0.000
-call 16 ended 13.600; waiting time was 0.000
-call arrives at: 13.806
-operator answered call 26 at 13.806
-call 11 ended 13.918; waiting time was 0.000
-call 15 ended 14.509; waiting time was 0.000
-call arrives at: 14.596
-operator answered call 27 at 14.596
-call arrives at: 14.684
-operator answered call 28 at 14.684
-call arrives at: 14.872
-operator answered call 29 at 14.872
-call arrives at: 15.657
-call 19 ended 15.704; waiting time was 0.074
-operator answered call 30 at 15.704
-call 18 ended 15.945; waiting time was 0.068
-call arrives at: 16.507
-operator answered call 31 at 16.507
-call arrives at: 16.800
-call 20 ended 16.944; waiting time was 0.408
-operator answered call 32 at 16.944
-call 17 ended 17.394; waiting time was 0.520
-call arrives at: 17.434
-operator answered call 33 at 17.434
-call arrives at: 17.451
-call arrives at: 17.992
-call arrives at: 18.584
-call 24 ended 19.115; waiting time was 0.000
-operator answered call 34 at 19.115
-call 21 ended 19.202; waiting time was 0.000
-operator answered call 35 at 19.202
-call 22 ended 19.492; waiting time was 0.000
-operator answered call 36 at 19.492
-call arrives at: 19.685
-call arrives at: 19.698
-call 25 ended 19.809; waiting time was 0.338
-operator answered call 37 at 19.809
-call 26 ended 20.613; waiting time was 0.000
-operator answered call 38 at 20.613
-call 23 ended 20.839; waiting time was 0.000
-call arrives at: 21.739
-operator answered call 39 at 21.739
-call 27 ended 21.905; waiting time was 0.000
-call arrives at: 21.975
-operator answered call 40 at 21.975
-call 28 ended 22.561; waiting time was 0.000
-call 30 ended 22.770; waiting time was 0.046
-call 32 ended 22.918; waiting time was 0.144
-call arrives at: 23.316
-operator answered call 41 at 23.316
-call 31 ended 23.327; waiting time was 0.000
-call arrives at: 23.344
-operator answered call 42 at 23.344
-call arrives at: 23.405
-operator answered call 43 at 23.405
-call 29 ended 23.579; waiting time was 0.000
-call arrives at: 24.959
-operator answered call 44 at 24.959
-call 34 ended 25.161; waiting time was 1.664
-call arrives at: 25.496
-operator answered call 45 at 25.496
-call arrives at: 25.553
-operator answered call 46 at 25.553
-call arrives at: 25.727
-call arrives at: 25.733
-call 33 ended 25.928; waiting time was 0.000
-operator answered call 47 at 25.928
-call 36 ended 26.040; waiting time was 0.908
-operator answered call 48 at 26.040
-call arrives at: 26.084
-call 38 ended 26.277; waiting time was 0.916
-operator answered call 49 at 26.277
-call arrives at: 26.435
-call 35 ended 26.552; waiting time was 1.210
-operator answered call 50 at 26.552
-call arrives at: 26.568
-call arrives at: 26.599
-call 37 ended 26.797; waiting time was 0.124
-operator answered call 51 at 26.797
-call arrives at: 27.018
-call arrives at: 27.667
-call arrives at: 28.064
-call 39 ended 28.101; waiting time was 0.000
-operator answered call 52 at 28.101
-call arrives at: 29.543
-call arrives at: 29.857
-call 43 ended 30.269; waiting time was 0.000
-operator answered call 53 at 30.269
-call 40 ended 30.461; waiting time was 0.000
-operator answered call 54 at 30.461
-call arrives at: 30.879
-call arrives at: 31.081
-call arrives at: 31.394
-call arrives at: 31.439
-call 44 ended 31.619; waiting time was 0.000
-operator answered call 55 at 31.619
-call 49 ended 31.628; waiting time was 0.193
-operator answered call 56 at 31.628
-call arrives at: 31.764
-call arrives at: 31.828
-call arrives at: 32.241
-call 42 ended 32.520; waiting time was 0.000
-operator answered call 57 at 32.520
-call arrives at: 32.565
-call 48 ended 32.632; waiting time was 0.307
-operator answered call 58 at 32.632
-call 41 ended 32.948; waiting time was 0.000
-operator answered call 59 at 32.948
-call 47 ended 33.259; waiting time was 0.202
-operator answered call 60 at 33.259
-call arrives at: 33.263
-call arrives at: 33.381
-call arrives at: 33.455
-call 46 ended 33.469; waiting time was 0.000
-operator answered call 61 at 33.469
-call arrives at: 33.500
-call 51 ended 33.657; waiting time was 0.229
-operator answered call 62 at 33.657
-call 52 ended 34.184; waiting time was 1.502
-operator answered call 63 at 34.184
-call arrives at: 34.647
-call 50 ended 34.692; waiting time was 0.117
-operator answered call 64 at 34.692
-call 45 ended 34.920; waiting time was 0.000
-operator answered call 65 at 34.920
-call arrives at: 36.162
-call 53 ended 36.235; waiting time was 3.251
-operator answered call 66 at 36.235
-call arrives at: 37.080
-call arrives at: 37.976
-call 56 ended 38.149; waiting time was 2.086
-operator answered call 67 at 38.149
-call 58 ended 38.434; waiting time was 1.752
-operator answered call 68 at 38.434
-call arrives at: 38.611
-call 54 ended 39.024; waiting time was 2.794
-operator answered call 69 at 39.024
-call 62 ended 39.399; waiting time was 1.893
-operator answered call 70 at 39.399
-call 57 ended 39.401; waiting time was 2.663
-operator answered call 71 at 39.401
-call 55 ended 39.473; waiting time was 3.555
-operator answered call 72 at 39.473
-call arrives at: 39.596
-call 61 ended 39.852; waiting time was 2.031
-operator answered call 73 at 39.852
-call arrives at: 39.990
-call 59 ended 40.256; waiting time was 1.866
-operator answered call 74 at 40.256
-call 63 ended 40.801; waiting time was 2.357
-operator answered call 75 at 40.801
-call 60 ended 41.157; waiting time was 1.865
-operator answered call 76 at 41.157
-call 65 ended 41.581; waiting time was 2.356
-call 64 ended 41.652; waiting time was 2.451
-call arrives at: 42.164
-operator answered call 77 at 42.164
-call arrives at: 42.733
-operator answered call 78 at 42.733
-call arrives at: 42.820
-call arrives at: 42.970
-call 66 ended 43.733; waiting time was 2.972
-operator answered call 79 at 43.733
-call arrives at: 45.368
-call arrives at: 45.543
-call 74 ended 46.036; waiting time was 1.645
-operator answered call 80 at 46.036
-call 68 ended 46.040; waiting time was 4.979
-operator answered call 81 at 46.040
-call 71 ended 46.046; waiting time was 3.238
-operator answered call 82 at 46.046
-call 69 ended 46.461; waiting time was 5.524
-call 72 ended 46.664; waiting time was 2.393
-call 67 ended 47.286; waiting time was 4.768
-call 73 ended 47.644; waiting time was 1.876
-call 70 ended 48.004; waiting time was 4.752
-call 75 ended 48.233; waiting time was 1.205
-call 76 ended 48.545; waiting time was 1.168
-call arrives at: 49.462
-operator answered call 83 at 49.462
-call 78 ended 49.682; waiting time was 0.000
-call 77 ended 50.259; waiting time was 0.000
-call arrives at: 50.361
-operator answered call 84 at 50.361
-call 79 ended 50.916; waiting time was 0.913
-call arrives at: 51.591
-operator answered call 85 at 51.591
-call arrives at: 52.042
-operator answered call 86 at 52.042
-call arrives at: 52.326
-operator answered call 87 at 52.326
-call arrives at: 52.426
-operator answered call 88 at 52.426
-call arrives at: 52.484
-operator answered call 89 at 52.484
-call arrives at: 52.732
-operator answered call 90 at 52.732
-call arrives at: 52.804
-operator answered call 91 at 52.804
-call 81 ended 53.621; waiting time was 0.672
-call arrives at: 53.866
-operator answered call 92 at 53.866
-call 80 ended 54.103; waiting time was 3.067
-call arrives at: 54.266
-operator answered call 93 at 54.266
-call 82 ended 54.678; waiting time was 0.503
-call 83 ended 55.226; waiting time was 0.000
-call arrives at: 55.319
-operator answered call 94 at 55.319
-call arrives at: 55.428
-operator answered call 95 at 55.428
-call arrives at: 56.624
-operator answered call 96 at 56.624
-call 84 ended 57.621; waiting time was 0.000
-call arrives at: 58.264
-operator answered call 97 at 58.264
-call arrives at: 58.478
-call arrives at: 58.524
-call arrives at: 58.897
-call arrives at: 59.814
-call 92 ended 59.819; waiting time was 0.000
-operator answered call 98 at 59.819
-call 85 ended 59.904; waiting time was 0.000
-operator answered call 99 at 59.904
-call arrives at: 59.922
-call arrives at: 59.931
-call 86 ended 60.028; waiting time was 0.000
-operator answered call 100 at 60.028
-call arrives at: 60.138
-call 87 ended 60.667; waiting time was 0.000
-operator answered call 101 at 60.667
-call 91 ended 60.739; waiting time was 0.000
-operator answered call 102 at 60.739
-call 89 ended 60.925; waiting time was 0.000
-operator answered call 103 at 60.925
-call arrives at: 61.153
-call 90 ended 61.371; waiting time was 0.000
-operator answered call 104 at 61.371
-call 95 ended 61.452; waiting time was 0.000
-operator answered call 105 at 61.452
-call 93 ended 61.679; waiting time was 0.000
-call 88 ended 61.914; waiting time was 0.000
-call arrives at: 62.124
-operator answered call 106 at 62.124
-call 94 ended 62.315; waiting time was 0.000
-call 96 ended 62.326; waiting time was 0.000
-call arrives at: 64.339
-operator answered call 107 at 64.339
-call arrives at: 64.717
-operator answered call 108 at 64.717
-call arrives at: 64.756
-operator answered call 109 at 64.756
-call 97 ended 64.925; waiting time was 0.000
-call 100 ended 65.428; waiting time was 1.131
-call arrives at: 65.431
-operator answered call 110 at 65.431
-call arrives at: 66.258
-operator answered call 111 at 66.258
-call 103 ended 66.432; waiting time was 0.993
-call 98 ended 66.743; waiting time was 1.342
-call arrives at: 67.486
-operator answered call 112 at 67.486
-call arrives at: 67.606
-operator answered call 113 at 67.606
-call arrives at: 67.951
-call 101 ended 68.228; waiting time was 0.853
-operator answered call 114 at 68.228
-call arrives at: 68.407
-call arrives at: 68.558
-call arrives at: 68.807
-call 99 ended 68.853; waiting time was 1.380
-operator answered call 115 at 68.853
-call arrives at: 68.899
-call 105 ended 68.938; waiting time was 0.299
-operator answered call 116 at 68.938
-call 102 ended 68.946; waiting time was 0.817
-operator answered call 117 at 68.946
-call arrives at: 69.228
-call arrives at: 69.786
-call 104 ended 69.987; waiting time was 1.233
-operator answered call 118 at 69.987
-call 106 ended 70.031; waiting time was 0.000
-operator answered call 119 at 70.031
-call arrives at: 71.655
-call arrives at: 71.941
-call 107 ended 71.948; waiting time was 0.000
-operator answered call 120 at 71.948
-call arrives at: 72.234
-call arrives at: 72.601
-call 111 ended 72.698; waiting time was 0.000
-operator answered call 121 at 72.698
-call arrives at: 72.828
-call 110 ended 73.225; waiting time was 0.000
-operator answered call 122 at 73.225
-call 108 ended 73.470; waiting time was 0.000
-operator answered call 123 at 73.470
-call 109 ended 73.489; waiting time was 0.000
-operator answered call 124 at 73.489
-call arrives at: 73.557
-call arrives at: 73.581
-call arrives at: 73.960
-call 113 ended 74.071; waiting time was 0.000
-operator answered call 125 at 74.071
-call 112 ended 74.675; waiting time was 0.000
-operator answered call 126 at 74.675
-call 114 ended 74.860; waiting time was 0.277
-operator answered call 127 at 74.860
-call arrives at: 75.100
-call arrives at: 75.377
-call 116 ended 75.474; waiting time was 0.380
-operator answered call 128 at 75.474
-call arrives at: 75.635
-call arrives at: 75.734
-call 117 ended 76.454; waiting time was 0.139
-operator answered call 129 at 76.454
-call arrives at: 76.632
-call arrives at: 76.644
-call 119 ended 76.761; waiting time was 0.803
-operator answered call 130 at 76.761
-call arrives at: 77.110
-call arrives at: 77.269
-call 115 ended 77.403; waiting time was 0.446
-operator answered call 131 at 77.403
-call arrives at: 78.237
-call 118 ended 78.959; waiting time was 1.088
-operator answered call 132 at 78.959
-call 124 ended 79.095; waiting time was 0.888
-operator answered call 133 at 79.095
-call 120 ended 79.631; waiting time was 2.162
-operator answered call 134 at 79.631
-call 123 ended 79.961; waiting time was 1.236
-operator answered call 135 at 79.961
-call 122 ended 80.434; waiting time was 1.284
-operator answered call 136 at 80.434
-call arrives at: 80.536
-call arrives at: 80.838
-call 127 ended 80.986; waiting time was 1.279
-operator answered call 137 at 80.986
-call 121 ended 81.688; waiting time was 1.044
-operator answered call 138 at 81.688
-call arrives at: 81.811
-call 126 ended 81.935; waiting time was 1.119
-operator answered call 139 at 81.935
-call arrives at: 82.060
-call arrives at: 82.247
-call arrives at: 82.438
-call arrives at: 82.714
-call 125 ended 83.125; waiting time was 1.243
-operator answered call 140 at 83.125
-call 130 ended 83.179; waiting time was 1.383
-operator answered call 141 at 83.179
-call arrives at: 83.243
-call 131 ended 83.335; waiting time was 1.768
-operator answered call 142 at 83.335
-call arrives at: 83.355
-call 128 ended 83.851; waiting time was 1.514
-operator answered call 143 at 83.851
-call arrives at: 83.888
-call arrives at: 84.040
-call 129 ended 84.205; waiting time was 1.354
-operator answered call 144 at 84.205
-call arrives at: 85.091
-call arrives at: 85.102
-call 133 ended 86.184; waiting time was 2.463
-operator answered call 145 at 86.184
-call 134 ended 86.212; waiting time was 2.987
-operator answered call 146 at 86.212
-call arrives at: 86.462
-call 132 ended 86.639; waiting time was 3.225
-operator answered call 147 at 86.639
-call 135 ended 86.980; waiting time was 2.852
-operator answered call 148 at 86.980
-call 137 ended 88.037; waiting time was 2.749
-operator answered call 149 at 88.037
-call arrives at: 88.164
-call arrives at: 88.624
-call arrives at: 88.646
-call 138 ended 88.740; waiting time was 1.152
-operator answered call 150 at 88.740
-call arrives at: 88.985
-call 139 ended 89.070; waiting time was 1.097
-operator answered call 151 at 89.070
-call arrives at: 89.508
-call 136 ended 89.956; waiting time was 3.165
-operator answered call 152 at 89.956
-call 142 ended 90.019; waiting time was 1.088
-operator answered call 153 at 90.019
-call arrives at: 90.289
-call 140 ended 90.299; waiting time was 1.313
-operator answered call 154 at 90.299
-call 143 ended 90.442; waiting time was 1.413
-operator answered call 155 at 90.442
-call 141 ended 90.471; waiting time was 1.119
-operator answered call 156 at 90.471
-call arrives at: 91.132
-call arrives at: 91.569
-call arrives at: 91.613
-call 144 ended 92.187; waiting time was 1.491
-operator answered call 157 at 92.187
-call arrives at: 92.495
-call arrives at: 92.498
-call arrives at: 93.122
-call 145 ended 93.617; waiting time was 2.941
-operator answered call 158 at 93.617
-call arrives at: 93.636
-call 147 ended 93.649; waiting time was 2.751
-operator answered call 159 at 93.649
-call 148 ended 94.013; waiting time was 2.940
-operator answered call 160 at 94.013
-call arrives at: 94.137
-call 146 ended 94.682; waiting time was 2.856
-operator answered call 161 at 94.682
-call arrives at: 95.036
-call arrives at: 95.296
-call arrives at: 95.417
-call 151 ended 95.620; waiting time was 2.608
-operator answered call 162 at 95.620
-call 152 ended 95.631; waiting time was 1.792
-operator answered call 163 at 95.631
-call 150 ended 95.877; waiting time was 3.638
-operator answered call 164 at 95.877
-call arrives at: 96.989
-call arrives at: 96.991
-call arrives at: 97.050
-call 156 ended 97.189; waiting time was 0.963
-operator answered call 165 at 97.189
-call 154 ended 97.272; waiting time was 1.653
-operator answered call 166 at 97.272
-call 149 ended 97.301; waiting time was 2.946
-operator answered call 167 at 97.301
-call 155 ended 97.744; waiting time was 1.457
-operator answered call 168 at 97.744
-call arrives at: 97.775
-call arrives at: 97.995
-call arrives at: 98.323
-call 153 ended 98.354; waiting time was 1.395
-operator answered call 169 at 98.354
-call arrives at: 98.778
-call arrives at: 99.601
-call 158 ended 99.724; waiting time was 2.485
-operator answered call 170 at 99.724
-call arrives at: 99.757
-call 157 ended 99.771; waiting time was 1.898
-operator answered call 171 at 99.771
-call arrives at: 99.833
-call arrives at: 99.956
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>call arrives at: 0.121
+operator answered call 1 at 0.121
+call arrives at: 0.335
+operator answered call 2 at 0.335
+call arrives at: 0.341
+operator answered call 3 at 0.341
+call arrives at: 1.247
+operator answered call 4 at 1.247
+call arrives at: 1.259
+operator answered call 5 at 1.259
+call arrives at: 1.374
+operator answered call 6 at 1.374
+call arrives at: 3.610
+operator answered call 7 at 3.610
+call arrives at: 3.735
+operator answered call 8 at 3.735
+call arrives at: 4.013
+operator answered call 9 at 4.013
+call arrives at: 4.176
+operator answered call 10 at 4.176
+call arrives at: 4.218
+operator answered call 11 at 4.218
+call arrives at: 4.433
+operator answered call 12 at 4.433
+call arrives at: 4.847
+operator answered call 13 at 4.847
+call arrives at: 5.236
+call arrives at: 5.868
+call arrives at: 5.889
+call arrives at: 6.415
+call 6 ended 6.608; waiting time was 0.000
+operator answered call 14 at 6.608
+call 4 ended 6.660; waiting time was 0.000
+operator answered call 15 at 6.660
+call 3 ended 7.146; waiting time was 0.000
+operator answered call 16 at 7.146
+call arrives at: 7.321
+call arrives at: 7.772
+call arrives at: 8.000
+call arrives at: 8.121
+call arrives at: 8.660
+call 1 ended 8.811; waiting time was 0.000
+operator answered call 17 at 8.811
+call 2 ended 9.017; waiting time was 0.000
+operator answered call 18 at 9.017
+call arrives at: 9.201
+call arrives at: 9.947
+call arrives at: 10.180
+call 5 ended 10.262; waiting time was 0.000
+operator answered call 19 at 10.262
+call arrives at: 10.544
+call 13 ended 10.694; waiting time was 0.000
+operator answered call 20 at 10.694
+call 11 ended 11.276; waiting time was 0.000
+operator answered call 21 at 11.276
+call 10 ended 11.512; waiting time was 0.000
+operator answered call 22 at 11.512
+call 12 ended 11.606; waiting time was 0.000
+operator answered call 23 at 11.606
+call 7 ended 11.881; waiting time was 0.000
+operator answered call 24 at 11.881
+call arrives at: 11.886
+call arrives at: 12.045
+call 8 ended 12.216; waiting time was 0.000
+operator answered call 25 at 12.216
+call arrives at: 12.652
+call arrives at: 12.685
+call arrives at: 12.910
+call 9 ended 13.324; waiting time was 0.000
+operator answered call 26 at 13.324
+call arrives at: 13.455
+call 14 ended 13.819; waiting time was 1.372
+operator answered call 27 at 13.819
+call 15 ended 14.179; waiting time was 0.792
+operator answered call 28 at 14.179
+call 16 ended 14.191; waiting time was 1.257
+operator answered call 29 at 14.191
+call arrives at: 14.385
+call arrives at: 14.718
+call arrives at: 15.445
+call 18 ended 15.618; waiting time was 1.696
+operator answered call 30 at 15.618
+call arrives at: 15.660
+call arrives at: 16.268
+call arrives at: 16.953
+call 20 ended 17.058; waiting time was 2.694
+operator answered call 31 at 17.058
+call 17 ended 17.301; waiting time was 2.395
+operator answered call 32 at 17.301
+call arrives at: 17.308
+call arrives at: 17.316
+call 21 ended 17.969; waiting time was 3.155
+operator answered call 33 at 17.969
+call 25 ended 18.179; waiting time was 2.035
+operator answered call 34 at 18.179
+call 22 ended 18.297; waiting time was 2.852
+operator answered call 35 at 18.297
+call 23 ended 18.526; waiting time was 2.405
+operator answered call 36 at 18.526
+call 24 ended 18.651; waiting time was 1.935
+operator answered call 37 at 18.651
+call 19 ended 18.781; waiting time was 2.490
+operator answered call 38 at 18.781
+call arrives at: 18.968
+call arrives at: 19.487
+call 26 ended 20.956; waiting time was 2.780
+operator answered call 39 at 20.956
+call arrives at: 21.152
+call 28 ended 21.382; waiting time was 2.134
+operator answered call 40 at 21.382
+call arrives at: 21.856
+call 27 ended 22.364; waiting time was 1.933
+operator answered call 41 at 22.364
+call arrives at: 22.429
+call arrives at: 22.525
+call 31 ended 22.889; waiting time was 4.148
+operator answered call 42 at 22.889
+call 29 ended 23.227; waiting time was 1.540
+operator answered call 43 at 23.227
+call 30 ended 23.320; waiting time was 2.933
+operator answered call 44 at 23.320
+call arrives at: 23.880
+call 33 ended 24.069; waiting time was 3.584
+operator answered call 45 at 24.069
+call arrives at: 24.273
+call 34 ended 24.380; waiting time was 3.461
+operator answered call 46 at 24.380
+call 32 ended 24.543; waiting time was 3.846
+operator answered call 47 at 24.543
+call arrives at: 24.889
+call arrives at: 24.964
+call arrives at: 25.163
+call arrives at: 25.474
+call 37 ended 25.905; waiting time was 2.382
+operator answered call 48 at 25.905
+call 35 ended 26.479; waiting time was 2.851
+operator answered call 49 at 26.479
+call 38 ended 26.482; waiting time was 1.828
+operator answered call 50 at 26.482
+call 36 ended 26.632; waiting time was 2.865
+operator answered call 51 at 26.632
+call arrives at: 26.744
+call 39 ended 26.933; waiting time was 3.648
+operator answered call 52 at 26.933
+call arrives at: 27.064
+call arrives at: 27.272
+call arrives at: 27.413
+call arrives at: 27.696
+call 43 ended 28.462; waiting time was 2.074
+operator answered call 53 at 28.462
+call arrives at: 29.045
+call 41 ended 29.503; waiting time was 3.396
+operator answered call 54 at 29.503
+call arrives at: 29.936
+call 40 ended 30.116; waiting time was 4.065
+operator answered call 55 at 30.116
+call arrives at: 30.221
+call 47 ended 30.234; waiting time was 0.663
+operator answered call 56 at 30.234
+call 46 ended 30.370; waiting time was 1.855
+operator answered call 57 at 30.370
+call arrives at: 30.590
+call 45 ended 30.828; waiting time was 1.641
+operator answered call 58 at 30.828
+call 44 ended 30.985; waiting time was 1.465
+operator answered call 59 at 30.985
+call arrives at: 31.773
+call 42 ended 31.932; waiting time was 3.403
+operator answered call 60 at 31.932
+call 51 ended 32.918; waiting time was 1.470
+operator answered call 61 at 32.918
+call 52 ended 32.991; waiting time was 1.459
+operator answered call 62 at 32.991
+call arrives at: 33.067
+call 49 ended 33.115; waiting time was 1.590
+operator answered call 63 at 33.115
+call arrives at: 33.611
+call arrives at: 33.869
+call 48 ended 34.096; waiting time was 1.631
+operator answered call 64 at 34.096
+call arrives at: 34.100
+call 50 ended 34.132; waiting time was 1.518
+operator answered call 65 at 34.132
+call 53 ended 34.709; waiting time was 1.719
+operator answered call 66 at 34.709
+call arrives at: 34.933
+call arrives at: 35.158
+call arrives at: 35.266
+call arrives at: 35.871
+call arrives at: 36.011
+call arrives at: 36.471
+call 58 ended 36.489; waiting time was 1.783
+operator answered call 67 at 36.489
+call 56 ended 37.716; waiting time was 2.821
+operator answered call 68 at 37.716
+call 54 ended 38.223; waiting time was 2.439
+operator answered call 69 at 38.223
+call 57 ended 38.246; waiting time was 2.674
+operator answered call 70 at 38.246
+call arrives at: 38.276
+call 55 ended 38.292; waiting time was 2.844
+operator answered call 71 at 38.292
+call arrives at: 38.560
+call arrives at: 39.065
+call 60 ended 39.139; waiting time was 1.711
+operator answered call 72 at 39.139
+call 59 ended 39.217; waiting time was 1.050
+operator answered call 73 at 39.217
+call arrives at: 39.714
+call 63 ended 39.750; waiting time was 0.048
+operator answered call 74 at 39.750
+call arrives at: 39.986
+call 61 ended 40.526; waiting time was 2.328
+operator answered call 75 at 40.526
+call arrives at: 40.551
+call 65 ended 40.884; waiting time was 0.263
+operator answered call 76 at 40.884
+call 62 ended 41.065; waiting time was 1.218
+operator answered call 77 at 41.065
+call arrives at: 41.414
+call arrives at: 43.087
+call 66 ended 43.435; waiting time was 0.609
+operator answered call 78 at 43.435
+call 64 ended 43.656; waiting time was 0.485
+operator answered call 79 at 43.656
+call arrives at: 44.205
+call 67 ended 44.596; waiting time was 1.556
+operator answered call 80 at 44.596
+call 70 ended 44.646; waiting time was 2.375
+operator answered call 81 at 44.646
+call 72 ended 44.705; waiting time was 2.669
+call 68 ended 45.277; waiting time was 2.557
+call arrives at: 45.391
+operator answered call 82 at 45.391
+call 71 ended 45.749; waiting time was 2.281
+call arrives at: 46.787
+operator answered call 83 at 46.787
+call arrives at: 46.937
+operator answered call 84 at 46.937
+call 73 ended 47.023; waiting time was 0.941
+call 69 ended 47.681; waiting time was 2.957
+call 76 ended 47.706; waiting time was 1.169
+call 74 ended 47.770; waiting time was 1.191
+call arrives at: 47.843
+operator answered call 85 at 47.843
+call arrives at: 48.307
+operator answered call 86 at 48.307
+call arrives at: 48.519
+operator answered call 87 at 48.519
+call arrives at: 48.964
+operator answered call 88 at 48.964
+call 77 ended 49.787; waiting time was 1.079
+call 75 ended 49.811; waiting time was 1.461
+call arrives at: 49.971
+operator answered call 89 at 49.971
+call 78 ended 50.078; waiting time was 2.884
+call 79 ended 50.391; waiting time was 2.242
+call arrives at: 51.279
+operator answered call 90 at 51.279
+call 80 ended 51.310; waiting time was 1.509
+call arrives at: 51.383
+operator answered call 91 at 51.383
+call 81 ended 52.205; waiting time was 0.441
+call arrives at: 52.315
+operator answered call 92 at 52.315
+call arrives at: 52.653
+operator answered call 93 at 52.653
+call 84 ended 53.742; waiting time was 0.000
+call 82 ended 54.075; waiting time was 0.000
+call 83 ended 54.470; waiting time was 0.000
+call arrives at: 54.533
+operator answered call 94 at 54.533
+call 87 ended 54.582; waiting time was 0.000
+call 89 ended 55.013; waiting time was 0.000
+call 85 ended 55.065; waiting time was 0.000
+call arrives at: 55.133
+operator answered call 95 at 55.133
+call 88 ended 55.232; waiting time was 0.000
+call arrives at: 55.498
+operator answered call 96 at 55.498
+call arrives at: 55.519
+operator answered call 97 at 55.519
+call arrives at: 55.533
+operator answered call 98 at 55.533
+call arrives at: 55.729
+operator answered call 99 at 55.729
+call arrives at: 55.797
+operator answered call 100 at 55.797
+call 86 ended 56.088; waiting time was 0.000
+call arrives at: 56.105
+operator answered call 101 at 56.105
+call arrives at: 56.826
+operator answered call 102 at 56.826
+call arrives at: 57.113
+call arrives at: 57.812
+call 90 ended 58.163; waiting time was 0.000
+operator answered call 103 at 58.163
+call 91 ended 58.342; waiting time was 0.000
+operator answered call 104 at 58.342
+call arrives at: 58.854
+call arrives at: 59.135
+call arrives at: 59.366
+call arrives at: 59.575
+call 93 ended 59.874; waiting time was 0.000
+operator answered call 105 at 59.874
+call 95 ended 60.745; waiting time was 0.000
+operator answered call 106 at 60.745
+call 96 ended 61.076; waiting time was 0.000
+operator answered call 107 at 61.076
+call arrives at: 61.178
+call 92 ended 61.206; waiting time was 0.000
+operator answered call 108 at 61.206
+call 94 ended 61.904; waiting time was 0.000
+operator answered call 109 at 61.904
+call arrives at: 62.053
+call 98 ended 62.085; waiting time was 0.000
+operator answered call 110 at 62.085
+call 99 ended 62.117; waiting time was 0.000
+call arrives at: 62.965
+operator answered call 111 at 62.965
+call 102 ended 63.106; waiting time was 0.000
+call 101 ended 63.279; waiting time was 0.000
+call arrives at: 63.785
+operator answered call 112 at 63.785
+call arrives at: 63.878
+operator answered call 113 at 63.878
+call 100 ended 63.969; waiting time was 0.000
+call arrives at: 64.368
+operator answered call 114 at 64.368
+call 97 ended 64.792; waiting time was 0.000
+call arrives at: 64.875
+operator answered call 115 at 64.875
+call arrives at: 64.940
+call arrives at: 64.976
+call arrives at: 65.056
+call arrives at: 65.226
+call arrives at: 65.346
+call 105 ended 65.494; waiting time was 1.020
+operator answered call 116 at 65.494
+call 103 ended 66.130; waiting time was 1.049
+operator answered call 117 at 66.130
+call 104 ended 66.262; waiting time was 0.529
+operator answered call 118 at 66.262
+call arrives at: 67.214
+call 107 ended 67.852; waiting time was 1.710
+operator answered call 119 at 67.852
+call 110 ended 67.995; waiting time was 0.032
+operator answered call 120 at 67.995
+call arrives at: 68.073
+call arrives at: 68.869
+call 109 ended 68.887; waiting time was 0.726
+operator answered call 121 at 68.887
+call 106 ended 69.172; waiting time was 1.610
+operator answered call 122 at 69.172
+call 108 ended 69.367; waiting time was 1.631
+operator answered call 123 at 69.367
+call arrives at: 69.494
+call arrives at: 69.706
+call 112 ended 70.450; waiting time was 0.000
+operator answered call 124 at 70.450
+call arrives at: 70.550
+call arrives at: 70.655
+call arrives at: 70.658
+call arrives at: 71.064
+call 115 ended 71.321; waiting time was 0.000
+operator answered call 125 at 71.321
+call 111 ended 71.735; waiting time was 0.000
+operator answered call 126 at 71.735
+call 113 ended 71.753; waiting time was 0.000
+operator answered call 127 at 71.753
+call 114 ended 71.786; waiting time was 0.000
+operator answered call 128 at 71.786
+call arrives at: 71.829
+call 118 ended 72.394; waiting time was 1.206
+operator answered call 129 at 72.394
+call 116 ended 73.209; waiting time was 0.554
+operator answered call 130 at 73.209
+call 117 ended 73.754; waiting time was 1.154
+call arrives at: 74.312
+operator answered call 131 at 74.312
+call arrives at: 74.337
+call arrives at: 74.923
+call 123 ended 75.455; waiting time was 0.498
+operator answered call 132 at 75.455
+call arrives at: 75.542
+call arrives at: 75.651
+call arrives at: 75.722
+call arrives at: 76.270
+call 120 ended 76.628; waiting time was 2.649
+operator answered call 133 at 76.628
+call 119 ended 76.668; waiting time was 2.626
+operator answered call 134 at 76.668
+call arrives at: 76.780
+call arrives at: 77.243
+call 124 ended 77.456; waiting time was 0.955
+operator answered call 135 at 77.456
+call arrives at: 77.459
+call 121 ended 77.981; waiting time was 1.673
+operator answered call 136 at 77.981
+call arrives at: 78.228
+call 122 ended 78.321; waiting time was 1.099
+operator answered call 137 at 78.321
+call 128 ended 78.431; waiting time was 1.128
+operator answered call 138 at 78.431
+call arrives at: 78.999
+call arrives at: 79.021
+call 125 ended 79.036; waiting time was 1.615
+operator answered call 139 at 79.036
+call arrives at: 79.098
+call arrives at: 79.329
+call arrives at: 79.410
+call 126 ended 79.681; waiting time was 1.185
+operator answered call 140 at 79.681
+call 127 ended 79.881; waiting time was 1.097
+operator answered call 141 at 79.881
+call arrives at: 79.999
+call 129 ended 80.489; waiting time was 1.331
+operator answered call 142 at 80.489
+call 130 ended 80.652; waiting time was 1.380
+operator answered call 143 at 80.652
+call 132 ended 81.058; waiting time was 1.118
+operator answered call 144 at 81.058
+call 131 ended 81.197; waiting time was 0.000
+operator answered call 145 at 81.197
+call arrives at: 81.761
+call arrives at: 82.452
+call arrives at: 83.097
+call 133 ended 83.203; waiting time was 1.705
+operator answered call 146 at 83.203
+call arrives at: 83.551
+call arrives at: 84.074
+call 136 ended 84.089; waiting time was 2.259
+operator answered call 147 at 84.089
+call 134 ended 84.667; waiting time was 1.126
+operator answered call 148 at 84.667
+call 137 ended 84.858; waiting time was 2.051
+operator answered call 149 at 84.858
+call arrives at: 84.957
+call 141 ended 85.483; waiting time was 1.652
+operator answered call 150 at 85.483
+call 135 ended 85.729; waiting time was 1.806
+operator answered call 151 at 85.729
+call 139 ended 86.054; waiting time was 1.794
+operator answered call 152 at 86.054
+call arrives at: 86.128
+call arrives at: 86.297
+call 140 ended 86.401; waiting time was 2.221
+operator answered call 153 at 86.401
+call arrives at: 87.243
+call 138 ended 87.417; waiting time was 1.650
+operator answered call 154 at 87.417
+call arrives at: 87.517
+call arrives at: 87.595
+call arrives at: 87.649
+call 144 ended 88.067; waiting time was 1.960
+operator answered call 155 at 88.067
+call arrives at: 88.445
+call arrives at: 88.693
+call 142 ended 88.694; waiting time was 1.490
+operator answered call 156 at 88.694
+call 146 ended 88.883; waiting time was 3.794
+operator answered call 157 at 88.883
+call 143 ended 89.774; waiting time was 1.631
+operator answered call 158 at 89.774
+call arrives at: 89.874
+call arrives at: 89.875
+call arrives at: 90.606
+call 145 ended 90.618; waiting time was 1.868
+operator answered call 159 at 90.618
+call arrives at: 90.892
+call arrives at: 91.078
+call 147 ended 91.589; waiting time was 4.090
+operator answered call 160 at 91.589
+call 150 ended 92.211; waiting time was 2.386
+operator answered call 161 at 92.211
+call 152 ended 92.247; waiting time was 1.980
+operator answered call 162 at 92.247
+call 151 ended 92.360; waiting time was 2.179
+operator answered call 163 at 92.360
+call arrives at: 92.390
+call arrives at: 92.624
+call 148 ended 92.757; waiting time was 2.906
+operator answered call 164 at 92.757
+call 149 ended 93.020; waiting time was 2.406
+operator answered call 165 at 93.020
+call arrives at: 93.301
+call arrives at: 93.735
+call arrives at: 93.891
+call 157 ended 94.125; waiting time was 1.366
+operator answered call 166 at 94.125
+call 153 ended 94.511; waiting time was 1.444
+operator answered call 167 at 94.511
+call arrives at: 94.617
+call 154 ended 94.911; waiting time was 1.290
+operator answered call 168 at 94.911
+call arrives at: 95.632
+call arrives at: 95.865
+call arrives at: 95.922
+call 156 ended 95.933; waiting time was 1.451
+operator answered call 169 at 95.933
+call arrives at: 96.703
+call arrives at: 96.749
+call arrives at: 96.794
+call arrives at: 96.823
+call 158 ended 97.232; waiting time was 2.179
+operator answered call 170 at 97.232
+call 155 ended 97.338; waiting time was 1.771
+operator answered call 171 at 97.338
+call 159 ended 97.891; waiting time was 2.969
+operator answered call 172 at 97.891
+call arrives at: 98.178
+call arrives at: 98.325
+call 161 ended 98.534; waiting time was 3.518
+operator answered call 173 at 98.534
+call 162 ended 99.467; waiting time was 2.373
+operator answered call 174 at 99.467
+call 160 ended 99.596; waiting time was 3.144
+operator answered call 175 at 99.596
+call arrives at: 99.680
+call arrives at: 99.716
 end of run. simulation clock time = 100
 </pre></div>
 </div>

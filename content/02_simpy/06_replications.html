@@ -156,7 +156,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../01_setup/install.html">Install python and an IDE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01_setup/reading.html">Recommended Reading</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulation</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulation with simpy</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01_sampling.html">Random variables and simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_basic_simpy.html">A first look at simpy</a></li>
@@ -165,7 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="05_experiments.html">Experiments</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Multiple replications</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">streamlit</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">streamlit sim apps</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../03_streamlit/01_intro.html">What is streamlit?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03_streamlit/02_design.html">Main concepts</a></li>
@@ -177,6 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../03_streamlit/08_sidebar.html">Tidying up controls</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03_streamlit/09_adding_text.html">Background text</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03_streamlit/10_adding_plots.html">Adding plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/11_filter_results.html">Filtering results</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
 <ul class="nav bd-sidenav">
@@ -187,6 +188,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../04_exercises/05_treat_sim.html"><code class="docutils literal notranslate"><span class="pre">simpy</span></code> treatment centre model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04_exercises/06_streamlit.html">Treatment sim <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> app</a></li>
 
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/07_plotting.html">Adding a plot</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
 <ul class="nav bd-sidenav">
@@ -196,6 +199,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../05_solutions/04_callback.html">Adding a patient callback from a nurse</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../05_solutions/05_treat_sim.html"><code class="docutils literal notranslate"><span class="pre">simpy</span></code> treatment centre model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../05_solutions/06_streamlit.html">Treatment sim <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_solutions/07_plotting.html">Adding a plot</a></li>
 
 </ul>
 
@@ -892,28 +896,28 @@ Experiment complete
   <tbody>
     <tr>
       <th>1</th>
-      <td>1.937898</td>
-      <td>90.921113</td>
+      <td>2.979998</td>
+      <td>90.053097</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1.717886</td>
-      <td>92.386422</td>
+      <td>3.523632</td>
+      <td>95.835682</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2.791597</td>
-      <td>93.320660</td>
+      <td>1.867915</td>
+      <td>93.476026</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2.757744</td>
-      <td>92.121769</td>
+      <td>3.699152</td>
+      <td>93.307319</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>2.041078</td>
-      <td>93.331669</td>
+      <td>2.969207</td>
+      <td>91.917169</td>
     </tr>
   </tbody>
 </table>
@@ -956,38 +960,38 @@ Experiment complete
     </tr>
     <tr>
       <th>mean</th>
-      <td>2.249241</td>
-      <td>92.416327</td>
+      <td>3.007981</td>
+      <td>92.917859</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>0.493794</td>
-      <td>0.997371</td>
+      <td>0.715131</td>
+      <td>2.132203</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>1.717886</td>
-      <td>90.921113</td>
+      <td>1.867915</td>
+      <td>90.053097</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>1.937898</td>
-      <td>92.121769</td>
+      <td>2.969207</td>
+      <td>91.917169</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>2.041078</td>
-      <td>92.386422</td>
+      <td>2.979998</td>
+      <td>93.307319</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>2.757744</td>
-      <td>93.320660</td>
+      <td>3.523632</td>
+      <td>93.476026</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>2.791597</td>
-      <td>93.331669</td>
+      <td>3.699152</td>
+      <td>95.835682</td>
     </tr>
   </tbody>
 </table>

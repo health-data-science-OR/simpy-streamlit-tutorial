@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Generator exercise &#8212; Simulation in python</title>
+    <title>Adding a plot &#8212; Simulation in python</title>
   
   
   
@@ -62,11 +62,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/04_exercises/02_generator';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/04_exercises/07_plotting';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Results collection exercise" href="03_basic_results.html" />
-    <link rel="prev" title="Random sampling" href="01_sampling.html" />
+    <link rel="next" title="Random sampling" href="../05_solutions/01_sampling.html" />
+    <link rel="prev" title="Treatment sim streamlit app" href="06_streamlit.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -182,13 +182,13 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01_sampling.html">Random sampling</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Generator exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_generator.html">Generator exercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_basic_results.html">Results collection exercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_callback.html">Adding a patient callback from a nurse</a></li>
 <li class="toctree-l1"><a class="reference internal" href="05_treat_sim.html"><code class="docutils literal notranslate"><span class="pre">simpy</span></code> treatment centre model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="06_streamlit.html">Treatment sim <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> app</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="07_plotting.html">Adding a plot</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Adding a plot</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
@@ -255,7 +255,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/health-data-science-OR/natcor-simpy/main?urlpath=lab/tree/content/04_exercises/02_generator.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/health-data-science-OR/natcor-simpy/main?urlpath=lab/tree/content/04_exercises/07_plotting.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -321,7 +321,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/health-data-science-OR/natcor-simpy/issues/new?title=Issue%20on%20page%20%2Fcontent/04_exercises/02_generator.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/health-data-science-OR/natcor-simpy/issues/new?title=Issue%20on%20page%20%2Fcontent/04_exercises/07_plotting.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -351,7 +351,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/content/04_exercises/02_generator.ipynb" target="_blank"
+      <li><a href="../../_sources/content/04_exercises/07_plotting.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -433,7 +433,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Generator exercise</h1>
+    <h1>Adding a plot</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -443,12 +443,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-code">Example code</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-modelling-a-poisson-arrival-process-for-prescriptions">Exercise: modelling a poisson arrival process for prescriptions</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Adding a plot</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3:</a></li>
 </ul>
 </li>
 </ul>
+
             </nav>
         </div>
     </div>
@@ -459,96 +462,175 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="generator-exercise">
-<h1>Generator exercise<a class="headerlink" href="#generator-exercise" title="Permalink to this heading">#</a></h1>
-<p>To see the solutions please see the <a class="reference internal" href="../05_solutions/02_generator.html"><span class="doc std std-doc">generator exercise solutions notebook</span></a></p>
-<section id="imports">
-<h2>Imports<a class="headerlink" href="#imports" title="Permalink to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="adding-a-plot">
+<h1>Adding a plot<a class="headerlink" href="#adding-a-plot" title="Permalink to this heading">#</a></h1>
+<p>In this exercise we will again return to the treatment centre model.  We will enhance the app by adding in a simple plot.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="imports">
+<h1>Imports<a class="headerlink" href="#imports" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">simpy</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+
+<span class="kn">from</span> <span class="nn">treat_sim.model</span> <span class="kn">import</span> <span class="n">Scenario</span><span class="p">,</span> <span class="n">multiple_replications</span>
 </pre></div>
 </div>
 </div>
+</div>
+<section id="exercise-1">
+<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h2>
+<p>Create a new python file called <code class="docutils literal notranslate"><span class="pre">app_with_plot.py</span></code> and copy as paste in the code from <code class="docutils literal notranslate"><span class="pre">app_with_sidebar.py</span></code> shown below</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Script to complete a basic run of the model and display a table of</span>
+<span class="sd">results in a streamlit app.</span>
+
+<span class="sd">The model is imported from a pypi package &#39;treat_sim&#39;</span>
+
+<span class="sd">Full documentation and source code for `treat_sim` is available as </span>
+<span class="sd">* Jupyter Book: https://tommonks.github.io/treatment-centre-sim/</span>
+<span class="sd">* github: https://github.com/TomMonks/treatment-centre-sim</span>
+
+<span class="sd">A conda environment has been provided locally,but the model can be pip installed</span>
+<span class="sd">`pip install treat_sim==1.0.0`</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="kn">from</span> <span class="nn">treat_sim.model</span> <span class="kn">import</span> <span class="n">Scenario</span><span class="p">,</span> <span class="n">multiple_replications</span>
+<span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
+
+<span class="n">INTRO_FILE</span> <span class="o">=</span> <span class="s1">&#39;resources/overview.md&#39;</span>
+
+<span class="k">def</span> <span class="nf">read_file_contents</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;&#39;</span>
+<span class="sd">    Read the contents of a file.</span>
+
+<span class="sd">    Params:</span>
+<span class="sd">    ------</span>
+<span class="sd">    file_name: str</span>
+<span class="sd">        Path to file.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c1"># give the page a title</span>
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Treatment Centre Simulation Model&#39;</span><span class="p">)</span>
+
+<span class="c1"># show the introductory markdown</span>
+<span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="n">read_file_contents</span><span class="p">(</span><span class="n">INTRO_FILE</span><span class="p">))</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1"># MODIFICATION: create a sidebar for sliders</span>
+<span class="k">with</span> <span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="p">:</span>
+    <span class="n">n_triage</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s1">&#39;Triage bays&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">n_exam</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s1">&#39;Exam rooms&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">n_cubicles_1</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s1">&#39;Non-Trauma Treatment cubicles&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> 
+                             <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Set the number of non trauma pathway &#39;</span>
+                             <span class="o">+</span> <span class="s1">&#39;treatment cubicles&#39;</span><span class="p">)</span>
+
+    <span class="c1"># examination mean</span>
+    <span class="n">exam_mean</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s1">&#39;Mean examination time&#39;</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">45.0</span><span class="p">,</span> 
+                           <span class="mf">16.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="c1"># runs</span>
+    <span class="n">replications</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s1">&#39;No. replications&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="c1">################################################################################</span>
+
+<span class="c1"># Setup scenario using supplied variables</span>
+<span class="n">args</span> <span class="o">=</span> <span class="n">Scenario</span><span class="p">(</span><span class="n">n_triage</span><span class="o">=</span><span class="n">n_triage</span><span class="p">,</span> <span class="n">n_exam</span><span class="o">=</span><span class="n">n_exam</span><span class="p">,</span> <span class="n">n_cubicles_1</span><span class="o">=</span><span class="n">n_cubicles_1</span><span class="p">,</span>
+                <span class="n">exam_mean</span><span class="o">=</span><span class="n">exam_mean</span><span class="p">)</span>
+
+<span class="c1"># Only execute model if a streamlit button is pressed.</span>
+<span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s1">&#39;Simulate treatment centre&#39;</span><span class="p">):</span>
+
+    <span class="c1"># in this example run a single replication of the model.</span>
+    <span class="k">with</span> <span class="n">st</span><span class="o">.</span><span class="n">spinner</span><span class="p">(</span><span class="s1">&#39;Simulating the treatment centre...&#39;</span><span class="p">):</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">multiple_replications</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">n_reps</span><span class="o">=</span><span class="n">replications</span><span class="p">)</span>
+
+    <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="s1">&#39;Done!&#39;</span><span class="p">)</span>
+
+    <span class="c1"># display results using st.table (or st.dataframe)</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
+</pre></div>
 </div>
 </section>
-<section id="example-code">
-<h2>Example code<a class="headerlink" href="#example-code" title="Permalink to this heading">#</a></h2>
-<p>The code below is taken from the simple pharmacy example.  In this code arrivals occur with an IAT of exactly 5 minutes.</p>
+<section id="exercise-2">
+<h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h2>
+<p>The code below creates a<code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> called <code class="docutils literal notranslate"><span class="pre">results</span></code> in the same format as code in the <code class="docutils literal notranslate"><span class="pre">app_with_plot.py</span></code>.</p>
+<p>Each row in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is a replication and each column is a performance measure.  You can quickly run the code and view the format.</p>
+<p><strong>Task:</strong></p>
+<ul class="simple">
+<li><p>Create a function called <code class="docutils literal notranslate"><span class="pre">create_hist()</span></code>. The function should accept <code class="docutils literal notranslate"><span class="pre">results</span></code> and create a histogram of the results of a performance measure of your choice.  For example, <code class="docutils literal notranslate"><span class="pre">03a_examination_wait</span></code>.</p></li>
+<li><p>The function should return a <code class="docutils literal notranslate"><span class="pre">plotly</span></code> figure object to the calling code. It is recommended you use the <code class="docutils literal notranslate"><span class="pre">fig</span></code> naming convention.</p></li>
+<li><p>Include a violin plot above the histogram using plotly express.</p></li>
+</ul>
+<p><strong>Hints</strong>:</p>
+<ul class="simple">
+<li><p>It is recommended that you complete this exercise in the Jupyter notebook before modifying <code class="docutils literal notranslate"><span class="pre">app_with_plot.py</span></code></p></li>
+<li><p>At the top of this notebook we have imported <code class="docutils literal notranslate"><span class="pre">plotly.express</span></code></p></li>
+<li><p>To have a useful histogram you may want to run more than 10 replications. e.g. 50 to 100.</p></li>
+<li><p>Jupyter notebooks will render the histogram with calling <code class="docutils literal notranslate"><span class="pre">fig.show()</span></code>, just leave the last line of code in a cell as <code class="docutils literal notranslate"><span class="pre">fig</span></code>.  In a python module you will need to call <code class="docutils literal notranslate"><span class="pre">fig.show()</span></code></p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">prescription_arrival_generator</span><span class="p">(</span><span class="n">env</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Prescriptions arrive with a fixed duration of</span>
-<span class="sd">    5 minutes.</span>
-
-<span class="sd">    Parameters:</span>
-<span class="sd">    ------</span>
-<span class="sd">    env: simpy.Environment</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    
-    <span class="c1"># don&#39;t worry about the infinite while loop, simpy will</span>
-    <span class="c1"># exit at the correct time.</span>
-    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        
-        <span class="c1"># sample an inter-arrival time.</span>
-        <span class="n">inter_arrival_time</span> <span class="o">=</span> <span class="mf">5.0</span>
-        
-        <span class="c1"># we use the yield keyword instead of return</span>
-        <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">inter_arrival_time</span><span class="p">)</span>
-        
-        <span class="c1"># print out the time of the arrival</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Prescription arrives at: </span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># model parameters</span>
-<span class="n">RUN_LENGTH</span> <span class="o">=</span> <span class="mi">25</span>
-
-<span class="c1"># create the simpy environment object</span>
-<span class="n">env</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Environment</span><span class="p">()</span>
-
-<span class="c1"># tell simpy that the `prescription_arrival_generator` is a process</span>
-<span class="n">env</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">prescription_arrival_generator</span><span class="p">(</span><span class="n">env</span><span class="p">))</span>
-
-<span class="c1"># run the simulation model</span>
-<span class="n">env</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">until</span><span class="o">=</span><span class="n">RUN_LENGTH</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;end of run. simulation clock time = </span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">default_scenario</span> <span class="o">=</span> <span class="n">Scenario</span><span class="p">()</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">multiple_replications</span><span class="p">(</span><span class="n">default_scenario</span><span class="p">,</span> <span class="n">n_reps</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prescription arrives at: 5.0
-Prescription arrives at: 10.0
-Prescription arrives at: 15.0
-Prescription arrives at: 20.0
-end of run. simulation clock time = 25
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Int64Index: 50 entries, 1 to 50
+Data columns (total 16 columns):
+ #   Column                          Non-Null Count  Dtype  
+---  ------                          --------------  -----  
+ 0   00_arrivals                     50 non-null     float64
+ 1   01a_triage_wait                 50 non-null     float64
+ 2   01b_triage_util                 50 non-null     float64
+ 3   02a_registration_wait           50 non-null     float64
+ 4   02b_registration_util           50 non-null     float64
+ 5   03a_examination_wait            50 non-null     float64
+ 6   03b_examination_util            50 non-null     float64
+ 7   04a_treatment_wait(non_trauma)  50 non-null     float64
+ 8   04b_treatment_util(non_trauma)  50 non-null     float64
+ 9   05_total_time(non-trauma)       50 non-null     float64
+ 10  06a_trauma_wait                 50 non-null     float64
+ 11  06b_trauma_util                 50 non-null     float64
+ 12  07a_treatment_wait(trauma)      50 non-null     float64
+ 13  07b_treatment_util(trauma)      50 non-null     float64
+ 14  08_total_time(trauma)           50 non-null     float64
+ 15  09_throughput                   50 non-null     float64
+dtypes: float64(16)
+memory usage: 6.6 KB
 </pre></div>
 </div>
 </div>
 </div>
-<section id="exercise-modelling-a-poisson-arrival-process-for-prescriptions">
-<h3>Exercise: modelling a poisson arrival process for prescriptions<a class="headerlink" href="#exercise-modelling-a-poisson-arrival-process-for-prescriptions" title="Permalink to this heading">#</a></h3>
-<p><strong>Task:</strong></p>
-<ul class="simple">
-<li><p>Update <code class="docutils literal notranslate"><span class="pre">prescription_arrival_generator()</span></code> so that inter-arrival times follow an exponential distribution with a mean of 5.0 minutes between arrivals.</p></li>
-<li><p>Use a run length of 25 minutes.</p></li>
-</ul>
-<blockquote>
-<div><p><strong>Bonus</strong>: try this initially <strong>without</strong> setting a random seed.  Then update the method choosing an approach to control random sampling.</p>
-</div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here ...</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
+<section id="exercise-3">
+<h2>Exercise 3:<a class="headerlink" href="#exercise-3" title="Permalink to this heading">#</a></h2>
+<p>Modify <code class="docutils literal notranslate"><span class="pre">app_with_plot.py</span></code> to use <code class="docutils literal notranslate"><span class="pre">create_hist()</span></code> and display histogram of your chosen KPI to a user.</p>
+<p><strong>Hints:</strong></p>
+<ul class="simple">
+<li><p>Don’t forget to import <code class="docutils literal notranslate"><span class="pre">plotly.express</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here ...</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -584,20 +666,20 @@ end of run. simulation clock time = 25
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="01_sampling.html"
+       href="06_streamlit.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Random sampling</p>
+        <p class="prev-next-title">Treatment sim <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> app</p>
       </div>
     </a>
     <a class="right-next"
-       href="03_basic_results.html"
+       href="../05_solutions/01_sampling.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Results collection exercise</p>
+        <p class="prev-next-title">Random sampling</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -619,12 +701,15 @@ end of run. simulation clock time = 25
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-code">Example code</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-modelling-a-poisson-arrival-process-for-prescriptions">Exercise: modelling a poisson arrival process for prescriptions</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Adding a plot</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3:</a></li>
 </ul>
 </li>
 </ul>
+
   </nav></div>
 
 </div></div>

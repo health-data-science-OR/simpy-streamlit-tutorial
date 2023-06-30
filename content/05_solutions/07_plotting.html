@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Adding plots &#8212; Simulation in python</title>
+    <title>Adding a plot &#8212; Simulation in python</title>
   
   
   
@@ -62,11 +62,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/03_streamlit/10_adding_plots';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/05_solutions/07_plotting';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Filtering results" href="11_filter_results.html" />
-    <link rel="prev" title="Background text" href="09_adding_text.html" />
+    <link rel="prev" title="Treatment sim streamlit app" href="06_streamlit.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -166,18 +165,18 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../02_simpy/06_replications.html">Multiple replications</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">streamlit sim apps</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01_intro.html">What is streamlit?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_design.html">Main concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_experiment.html">The <code class="docutils literal notranslate"><span class="pre">Experiment</span></code> class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_wrapper.html">Wrapper functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_module.html">Python module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_basic_app.html">A first web app</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_interactive.html">An interactive app</a></li>
-<li class="toctree-l1"><a class="reference internal" href="08_sidebar.html">Tidying up controls</a></li>
-<li class="toctree-l1"><a class="reference internal" href="09_adding_text.html">Background text</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Adding plots</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_filter_results.html">Filtering results</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/01_intro.html">What is streamlit?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/02_design.html">Main concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/03_experiment.html">The <code class="docutils literal notranslate"><span class="pre">Experiment</span></code> class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/04_wrapper.html">Wrapper functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/05_module.html">Python module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/06_basic_app.html">A first web app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/07_interactive.html">An interactive app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/08_sidebar.html">Tidying up controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/09_adding_text.html">Background text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/10_adding_plots.html">Adding plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/11_filter_results.html">Filtering results</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
 <ul class="nav bd-sidenav">
@@ -192,14 +191,14 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../05_solutions/01_sampling.html">Random sampling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../05_solutions/02_generator.html">Generator exercise</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../05_solutions/03_basic_results.html">Results collection exercise</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../05_solutions/04_callback.html">Adding a patient callback from a nurse</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../05_solutions/05_treat_sim.html"><code class="docutils literal notranslate"><span class="pre">simpy</span></code> treatment centre model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../05_solutions/06_streamlit.html">Treatment sim <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> app</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../05_solutions/07_plotting.html">Adding a plot</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_sampling.html">Random sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_generator.html">Generator exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_basic_results.html">Results collection exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_callback.html">Adding a patient callback from a nurse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_treat_sim.html"><code class="docutils literal notranslate"><span class="pre">simpy</span></code> treatment centre model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_streamlit.html">Treatment sim <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> app</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Adding a plot</a></li>
 
 </ul>
 
@@ -255,7 +254,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/health-data-science-OR/natcor-simpy/main?urlpath=lab/tree/content/03_streamlit/10_adding_plots.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/health-data-science-OR/natcor-simpy/main?urlpath=lab/tree/content/05_solutions/07_plotting.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -321,7 +320,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/health-data-science-OR/natcor-simpy/issues/new?title=Issue%20on%20page%20%2Fcontent/03_streamlit/10_adding_plots.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/health-data-science-OR/natcor-simpy/issues/new?title=Issue%20on%20page%20%2Fcontent/05_solutions/07_plotting.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -351,7 +350,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/content/03_streamlit/10_adding_plots.ipynb" target="_blank"
+      <li><a href="../../_sources/content/05_solutions/07_plotting.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -433,7 +432,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Adding plots</h1>
+    <h1>Adding a plot</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -443,14 +442,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">1. Imports</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-for-creating-the-plotly-histogram">2. Code for creating the <code class="docutils literal notranslate"><span class="pre">plotly</span></code> histogram</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-replications">2.1 Get the replications</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-of-mean-waiting-time">2.2. Histogram of mean waiting time</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Adding a plot</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-chart-to-the-web-app">3. Adding a chart to the web app</a></li>
 </ul>
+
             </nav>
         </div>
     </div>
@@ -461,77 +461,196 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="adding-plots">
-<h1>Adding plots<a class="headerlink" href="#adding-plots" title="Permalink to this heading">#</a></h1>
-<p>It is also possible to display <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> and <code class="docutils literal notranslate"><span class="pre">plotly</span></code> figures and plots in <code class="docutils literal notranslate"><span class="pre">streamlit</span></code>. Here we will explore displaying a histogram of replications for a chosen performance
-measure.</p>
-<p>We will use <code class="docutils literal notranslate"><span class="pre">plotly</span></code> to create the chart.</p>
-<p>We will also introduce a more advanced layout to our web app by introducing columns to the results page.</p>
-<section id="imports">
-<h2>1. Imports<a class="headerlink" href="#imports" title="Permalink to this heading">#</a></h2>
-<p>We use <code class="docutils literal notranslate"><span class="pre">plotly.express</span></code> simplify the creation of our charts.  This provides a high level wrapper around <code class="docutils literal notranslate"><span class="pre">plotly</span></code></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="adding-a-plot">
+<h1>Adding a plot<a class="headerlink" href="#adding-a-plot" title="Permalink to this heading">#</a></h1>
+<p>In this exercise we will again return to the treatment centre model.  We will enhance the app by adding in a simple plot.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="imports">
+<h1>Imports<a class="headerlink" href="#imports" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+
+<span class="kn">from</span> <span class="nn">treat_sim.model</span> <span class="kn">import</span> <span class="n">Scenario</span><span class="p">,</span> <span class="n">multiple_replications</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">model</span> <span class="kn">import</span> <span class="n">Experiment</span><span class="p">,</span> <span class="n">multiple_replications</span>
+<section id="exercise-1">
+<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h2>
+<p>Create a new python file called <code class="docutils literal notranslate"><span class="pre">app_with_plot.py</span></code> and copy as paste in the code from <code class="docutils literal notranslate"><span class="pre">app_with_sidebar.py</span></code> shown below</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Script to complete a basic run of the model and display a table of</span>
+<span class="sd">results in a streamlit app.</span>
+
+<span class="sd">The model is imported from a pypi package &#39;treat_sim&#39;</span>
+
+<span class="sd">Full documentation and source code for `treat_sim` is available as </span>
+<span class="sd">* Jupyter Book: https://tommonks.github.io/treatment-centre-sim/</span>
+<span class="sd">* github: https://github.com/TomMonks/treatment-centre-sim</span>
+
+<span class="sd">A conda environment has been provided locally,but the model can be pip installed</span>
+<span class="sd">`pip install treat_sim==1.0.0`</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="kn">from</span> <span class="nn">treat_sim.model</span> <span class="kn">import</span> <span class="n">Scenario</span><span class="p">,</span> <span class="n">multiple_replications</span>
+<span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
+
+<span class="n">INTRO_FILE</span> <span class="o">=</span> <span class="s1">&#39;resources/overview.md&#39;</span>
+
+<span class="k">def</span> <span class="nf">read_file_contents</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;&#39;</span>
+<span class="sd">    Read the contents of a file.</span>
+
+<span class="sd">    Params:</span>
+<span class="sd">    ------</span>
+<span class="sd">    file_name: str</span>
+<span class="sd">        Path to file.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c1"># give the page a title</span>
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Treatment Centre Simulation Model&#39;</span><span class="p">)</span>
+
+<span class="c1"># show the introductory markdown</span>
+<span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="n">read_file_contents</span><span class="p">(</span><span class="n">INTRO_FILE</span><span class="p">))</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1"># MODIFICATION: create a sidebar for sliders</span>
+<span class="k">with</span> <span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="p">:</span>
+    <span class="n">n_triage</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s1">&#39;Triage bays&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">n_exam</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s1">&#39;Exam rooms&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">n_cubicles_1</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s1">&#39;Non-Trauma Treatment cubicles&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> 
+                             <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Set the number of non trauma pathway &#39;</span>
+                             <span class="o">+</span> <span class="s1">&#39;treatment cubicles&#39;</span><span class="p">)</span>
+
+    <span class="c1"># examination mean</span>
+    <span class="n">exam_mean</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s1">&#39;Mean examination time&#39;</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">45.0</span><span class="p">,</span> 
+                           <span class="mf">16.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="c1"># runs</span>
+    <span class="n">replications</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s1">&#39;No. replications&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="c1">################################################################################</span>
+
+<span class="c1"># Setup scenario using supplied variables</span>
+<span class="n">args</span> <span class="o">=</span> <span class="n">Scenario</span><span class="p">(</span><span class="n">n_triage</span><span class="o">=</span><span class="n">n_triage</span><span class="p">,</span> <span class="n">n_exam</span><span class="o">=</span><span class="n">n_exam</span><span class="p">,</span> <span class="n">n_cubicles_1</span><span class="o">=</span><span class="n">n_cubicles_1</span><span class="p">,</span>
+                <span class="n">exam_mean</span><span class="o">=</span><span class="n">exam_mean</span><span class="p">)</span>
+
+<span class="c1"># Only execute model if a streamlit button is pressed.</span>
+<span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s1">&#39;Simulate treatment centre&#39;</span><span class="p">):</span>
+
+    <span class="c1"># in this example run a single replication of the model.</span>
+    <span class="k">with</span> <span class="n">st</span><span class="o">.</span><span class="n">spinner</span><span class="p">(</span><span class="s1">&#39;Simulating the treatment centre...&#39;</span><span class="p">):</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">multiple_replications</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">n_reps</span><span class="o">=</span><span class="n">replications</span><span class="p">)</span>
+
+    <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="s1">&#39;Done!&#39;</span><span class="p">)</span>
+
+    <span class="c1"># display results using st.table (or st.dataframe)</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
 </pre></div>
-</div>
-</div>
 </div>
 </section>
-<section id="code-for-creating-the-plotly-histogram">
-<h2>2. Code for creating the <code class="docutils literal notranslate"><span class="pre">plotly</span></code> histogram<a class="headerlink" href="#code-for-creating-the-plotly-histogram" title="Permalink to this heading">#</a></h2>
-<p>We will run 100 replications of the simulation model and then display the results in a histogram.</p>
-<p>We can use the <code class="docutils literal notranslate"><span class="pre">px.histogram</span></code> method to quickly produce a histogram.</p>
-<section id="get-the-replications">
-<h3>2.1 Get the replications<a class="headerlink" href="#get-the-replications" title="Permalink to this heading">#</a></h3>
+<section id="exercise-2">
+<h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h2>
+<p>The code below creates a<code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> called <code class="docutils literal notranslate"><span class="pre">results</span></code> in the same format as code in the <code class="docutils literal notranslate"><span class="pre">app_with_plot.py</span></code>.</p>
+<p>Each row in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is a replication and each column is a performance measure.  You can quickly run the code and view the format.</p>
+<p><strong>Task:</strong></p>
+<ul class="simple">
+<li><p>Create a function called <code class="docutils literal notranslate"><span class="pre">create_hist()</span></code>. The function should accept <code class="docutils literal notranslate"><span class="pre">results</span></code> and create a histogram of the results of a performance measure of your choice.  For example, <code class="docutils literal notranslate"><span class="pre">03a_examination_wait</span></code>.</p></li>
+<li><p>The function should return a <code class="docutils literal notranslate"><span class="pre">plotly</span></code> figure object to the calling code. It is recommended you use the <code class="docutils literal notranslate"><span class="pre">fig</span></code> naming convention.</p></li>
+<li><p>Include a violin plot above the histogram using plotly express.</p></li>
+</ul>
+<p><strong>Hints</strong>:</p>
+<ul class="simple">
+<li><p>It is recommended that you complete this exercise in the Jupyter notebook before modifying <code class="docutils literal notranslate"><span class="pre">app_with_plot.py</span></code></p></li>
+<li><p>At the top of this notebook we have imported <code class="docutils literal notranslate"><span class="pre">plotly.express</span></code></p></li>
+<li><p>To have a useful histogram you may want to run more than 10 replications. e.g. 50 to 100.</p></li>
+<li><p>Jupyter notebooks will render the histogram with calling <code class="docutils literal notranslate"><span class="pre">fig.show()</span></code>, just leave the last line of code in a cell as <code class="docutils literal notranslate"><span class="pre">fig</span></code>.  In a python module you will need to call <code class="docutils literal notranslate"><span class="pre">fig.show()</span></code></p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">default_experiment</span> <span class="o">=</span> <span class="n">Experiment</span><span class="p">()</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">multiple_replications</span><span class="p">(</span><span class="n">default_experiment</span><span class="p">,</span> <span class="n">n_reps</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">default_scenario</span> <span class="o">=</span> <span class="n">Scenario</span><span class="p">()</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">multiple_replications</span><span class="p">(</span><span class="n">default_scenario</span><span class="p">,</span> <span class="n">n_reps</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">results</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-Int64Index: 100 entries, 1 to 100
-Data columns (total 4 columns):
- #   Column                      Non-Null Count  Dtype  
----  ------                      --------------  -----  
- 0   01_mean_waiting_time        100 non-null    float64
- 1   02_operator_util            100 non-null    float64
- 2   03_mean_nurse_waiting_time  100 non-null    float64
- 3   04_nurse_util               100 non-null    float64
-dtypes: float64(4)
-memory usage: 3.9 KB
+Int64Index: 50 entries, 1 to 50
+Data columns (total 16 columns):
+ #   Column                          Non-Null Count  Dtype  
+---  ------                          --------------  -----  
+ 0   00_arrivals                     50 non-null     float64
+ 1   01a_triage_wait                 50 non-null     float64
+ 2   01b_triage_util                 50 non-null     float64
+ 3   02a_registration_wait           50 non-null     float64
+ 4   02b_registration_util           50 non-null     float64
+ 5   03a_examination_wait            50 non-null     float64
+ 6   03b_examination_util            50 non-null     float64
+ 7   04a_treatment_wait(non_trauma)  50 non-null     float64
+ 8   04b_treatment_util(non_trauma)  50 non-null     float64
+ 9   05_total_time(non-trauma)       50 non-null     float64
+ 10  06a_trauma_wait                 50 non-null     float64
+ 11  06b_trauma_util                 50 non-null     float64
+ 12  07a_treatment_wait(trauma)      50 non-null     float64
+ 13  07b_treatment_util(trauma)      50 non-null     float64
+ 14  08_total_time(trauma)           50 non-null     float64
+ 15  09_throughput                   50 non-null     float64
+dtypes: float64(16)
+memory usage: 6.6 KB
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="histogram-of-mean-waiting-time">
-<h3>2.2. Histogram of mean waiting time<a class="headerlink" href="#histogram-of-mean-waiting-time" title="Permalink to this heading">#</a></h3>
-<p>In addition to the box plot we will also add a boxplot to see the median and the lower and upper quartiles of the distribution.</p>
-<blockquote>
-<div><p>As an alternative you could try <code class="docutils literal notranslate"><span class="pre">marginal='violin'</span></code> or <code class="docutils literal notranslate"><span class="pre">marginal='rug'</span></code></p>
-</div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;01_mean_waiting_time&#39;</span><span class="p">],</span> 
-                   <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span><span class="s1">&#39;Mean waiting time for operator&#39;</span><span class="p">},</span> 
-                   <span class="n">marginal</span><span class="o">=</span><span class="s2">&quot;box&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_hist</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">value_label</span><span class="p">,</span> <span class="n">marginal</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Create and return a plotly express histogram of</span>
+<span class="sd">    the results column</span>
+<span class="sd">    </span>
+<span class="sd">    Params:</span>
+<span class="sd">    -------</span>
+<span class="sd">    results: pd.DataFrame</span>
+<span class="sd">        Rows = replications, columns = KPIs</span>
+<span class="sd">        </span>
+<span class="sd">    column: str</span>
+<span class="sd">        Name of column in results to use</span>
+<span class="sd">        </span>
+<span class="sd">    value_label: str</span>
+<span class="sd">        X-axis label</span>
+<span class="sd">        </span>
+<span class="sd">    marginal: str, optional (default=&#39;box&#39;)</span>
+<span class="sd">        An additional plot to render above the histogram</span>
+<span class="sd">        options to try: box, violin, rug</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    ------</span>
+<span class="sd">    plotly.figure</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span><span class="n">value_label</span><span class="p">},</span>
+                       <span class="n">marginal</span><span class="o">=</span><span class="n">marginal</span><span class="p">)</span>
+    <span class="c1"># hide legend</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">layout_showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">create_hist</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">&#39;03a_examination_wait&#39;</span><span class="p">,</span> 
+                  <span class="n">value_label</span><span class="o">=</span><span class="s1">&#39;Mean examination waiting time&#39;</span><span class="p">,</span>
+                  <span class="n">marginal</span><span class="o">=</span><span class="s1">&#39;violin&#39;</span><span class="p">)</span>
 
-<span class="c1"># hide legend</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">layout_showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">fig</span>
 </pre></div>
 </div>
@@ -557,9 +676,227 @@ memory usage: 3.9 KB
         });
         }
         </script>
-        </div><div class="output text_html"><div>                            <div id="5fc857d5-fa3e-4b2d-b8a3-4c707193d04b" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("5fc857d5-fa3e-4b2d-b8a3-4c707193d04b")) {                    Plotly.newPlot(                        "5fc857d5-fa3e-4b2d-b8a3-4c707193d04b",                        [{"alignmentgroup":"True","bingroup":"x","hovertemplate":"variable=01_mean_waiting_time\u003cbr\u003eMean waiting time for operator=%{x}\u003cbr\u003ecount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"01_mean_waiting_time","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"01_mean_waiting_time","offsetgroup":"01_mean_waiting_time","orientation":"v","showlegend":true,"x":[4.594771877644203,2.728334938937269,3.4643080413328082,3.4756245947968845,1.3088249845420796,4.292294649184406,2.973520502425917,2.3022226242746826,3.144931843591173,1.5923729516746743,2.762292095124271,2.8603513067524475,3.3725910971648956,4.483353428445595,2.946613811834044,5.137297974913891,2.7279980421773358,2.115605333907077,2.411941348629282,6.058599720421738,2.816141471454225,3.1639152545199636,2.1518272767776745,11.13329222112186,1.6110799575592267,2.1889515434056697,4.323927517832326,3.5122231799830756,3.376334102902929,0.8898037473625526,3.294916390061701,1.8554053966257147,2.3993055149354534,3.215414199180854,4.036075394105655,1.6504954922643944,4.326744110701966,1.6489452581537507,4.942807200635092,3.28356351799234,2.396709599321397,3.005735537385515,4.420190887253376,5.389385666567618,7.232053071257755,1.1682449862472468,2.3768219809555755,2.5225030901520182,10.039509278650312,2.325847110219586,3.8439324455630275,5.4823983833344325,2.689265920363003,2.4233307970962477,2.5591490930184277,6.061420119853956,2.442384370138688,3.6803033944480306,1.6118063927085522,2.8874013216724865,3.4965504335858215,1.6663736047527042,2.333840620636958,2.2578603089767486,2.3619520280413524,8.875680997020943,2.124411148886827,4.091807213170326,6.232729099635121,3.845681363224978,2.6191658922170467,4.5007321031662375,1.4055859410914668,4.455077184127064,5.114843021428649,3.6573774693525793,5.3422998951779155,2.9541691611894794,5.580237260312701,7.7590634889866,9.177040056317841,2.934184503880663,8.909273316059322,4.320491032748017,2.0889669209979296,1.991231555225357,1.9331343784314607,3.296063111887286,1.7511957515593366,3.168539129928581,2.300300173006735,3.979944841085966,3.1902456210548684,2.9103964343561355,4.070272114894912,1.90385693160592,3.5515675724399154,9.35530194919937,3.1514645686936347,1.8614741666034906],"xaxis":"x","yaxis":"y","type":"histogram"},{"alignmentgroup":"True","hovertemplate":"variable=01_mean_waiting_time\u003cbr\u003eMean waiting time for operator=%{x}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"01_mean_waiting_time","marker":{"color":"#636efa"},"name":"01_mean_waiting_time","notched":true,"offsetgroup":"01_mean_waiting_time","showlegend":false,"x":[4.594771877644203,2.728334938937269,3.4643080413328082,3.4756245947968845,1.3088249845420796,4.292294649184406,2.973520502425917,2.3022226242746826,3.144931843591173,1.5923729516746743,2.762292095124271,2.8603513067524475,3.3725910971648956,4.483353428445595,2.946613811834044,5.137297974913891,2.7279980421773358,2.115605333907077,2.411941348629282,6.058599720421738,2.816141471454225,3.1639152545199636,2.1518272767776745,11.13329222112186,1.6110799575592267,2.1889515434056697,4.323927517832326,3.5122231799830756,3.376334102902929,0.8898037473625526,3.294916390061701,1.8554053966257147,2.3993055149354534,3.215414199180854,4.036075394105655,1.6504954922643944,4.326744110701966,1.6489452581537507,4.942807200635092,3.28356351799234,2.396709599321397,3.005735537385515,4.420190887253376,5.389385666567618,7.232053071257755,1.1682449862472468,2.3768219809555755,2.5225030901520182,10.039509278650312,2.325847110219586,3.8439324455630275,5.4823983833344325,2.689265920363003,2.4233307970962477,2.5591490930184277,6.061420119853956,2.442384370138688,3.6803033944480306,1.6118063927085522,2.8874013216724865,3.4965504335858215,1.6663736047527042,2.333840620636958,2.2578603089767486,2.3619520280413524,8.875680997020943,2.124411148886827,4.091807213170326,6.232729099635121,3.845681363224978,2.6191658922170467,4.5007321031662375,1.4055859410914668,4.455077184127064,5.114843021428649,3.6573774693525793,5.3422998951779155,2.9541691611894794,5.580237260312701,7.7590634889866,9.177040056317841,2.934184503880663,8.909273316059322,4.320491032748017,2.0889669209979296,1.991231555225357,1.9331343784314607,3.296063111887286,1.7511957515593366,3.168539129928581,2.300300173006735,3.979944841085966,3.1902456210548684,2.9103964343561355,4.070272114894912,1.90385693160592,3.5515675724399154,9.35530194919937,3.1514645686936347,1.8614741666034906],"xaxis":"x2","yaxis":"y2","type":"box"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Mean waiting time for operator"}},"yaxis":{"anchor":"x","domain":[0.0,0.7326],"title":{"text":"count"}},"xaxis2":{"anchor":"y2","domain":[0.0,1.0],"matches":"x","showticklabels":false,"showgrid":true},"yaxis2":{"anchor":"x2","domain":[0.7426,1.0],"matches":"y2","showticklabels":false,"showline":false,"ticks":"","showgrid":false},"legend":{"title":{"text":"variable"},"tracegroupgap":0},"margin":{"t":60},"barmode":"relative","showlegend":false},                        {"responsive": true}                    ).then(function(){
+        </div><div class="output text_html"><div>                            <div id="e8e1dfdc-6f8a-4eaf-980a-ea81b12a15a5" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("e8e1dfdc-6f8a-4eaf-980a-ea81b12a15a5")) {                    Plotly.newPlot(                        "e8e1dfdc-6f8a-4eaf-980a-ea81b12a15a5",                        [{"alignmentgroup":"True","bingroup":"x","hovertemplate":"variable=03a_examination_wait\u003cbr\u003eMean examination waiting time=%{x}\u003cbr\u003ecount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"03a_examination_wait","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"03a_examination_wait","offsetgroup":"03a_examination_wait","orientation":"v","showlegend":true,"x":[28.478641578907936,16.32817873295442,18.4002798601575,35.42443957630112,36.254401156933156,24.14902522437214,30.028974329227594,31.18993493878721,29.642379438205783,25.3749350496724,24.239778912922088,18.428593671181368,10.840605252887434,23.389521903532646,28.614144501815414,14.039685806609363,36.356651545463194,15.988430673512921,26.0583737132257,19.534332408838537,22.740256965679833,10.60834882292233,41.696347226648555,29.159237140200922,20.46435727979445,18.119543366597576,33.3096451998393,25.877961014687568,26.63279241881874,8.183236285507599,32.80604915248188,42.58007952414658,13.4637023707959,35.72191233217777,22.96061614184804,17.523346347457895,33.23465076644108,21.97820281228799,16.824212653168594,34.96015080569626,28.637486658455785,24.202508114597652,27.73581114474837,23.943267943566504,22.314717591552256,23.692053561649228,24.496422557304143,23.658986318162416,30.642092597277475,8.370004739984696],"xaxis":"x","yaxis":"y","type":"histogram"},{"alignmentgroup":"True","hovertemplate":"variable=03a_examination_wait\u003cbr\u003eMean examination waiting time=%{x}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"03a_examination_wait","marker":{"color":"#636efa"},"name":"03a_examination_wait","offsetgroup":"03a_examination_wait","scalegroup":"x","showlegend":false,"x":[28.478641578907936,16.32817873295442,18.4002798601575,35.42443957630112,36.254401156933156,24.14902522437214,30.028974329227594,31.18993493878721,29.642379438205783,25.3749350496724,24.239778912922088,18.428593671181368,10.840605252887434,23.389521903532646,28.614144501815414,14.039685806609363,36.356651545463194,15.988430673512921,26.0583737132257,19.534332408838537,22.740256965679833,10.60834882292233,41.696347226648555,29.159237140200922,20.46435727979445,18.119543366597576,33.3096451998393,25.877961014687568,26.63279241881874,8.183236285507599,32.80604915248188,42.58007952414658,13.4637023707959,35.72191233217777,22.96061614184804,17.523346347457895,33.23465076644108,21.97820281228799,16.824212653168594,34.96015080569626,28.637486658455785,24.202508114597652,27.73581114474837,23.943267943566504,22.314717591552256,23.692053561649228,24.496422557304143,23.658986318162416,30.642092597277475,8.370004739984696],"xaxis":"x2","yaxis":"y2","type":"violin"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Mean examination waiting time"}},"yaxis":{"anchor":"x","domain":[0.0,0.7326],"title":{"text":"count"}},"xaxis2":{"anchor":"y2","domain":[0.0,1.0],"matches":"x","showticklabels":false,"showgrid":true},"yaxis2":{"anchor":"x2","domain":[0.7426,1.0],"matches":"y2","showticklabels":false,"showline":false,"ticks":"","showgrid":false},"legend":{"title":{"text":"variable"},"tracegroupgap":0},"margin":{"t":60},"barmode":"relative","showlegend":false},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('5fc857d5-fa3e-4b2d-b8a3-4c707193d04b');
+var gd = document.getElementById('e8e1dfdc-6f8a-4eaf-980a-ea81b12a15a5');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div></div></div>
+</div>
+</section>
+<section id="exercise-3">
+<h2>Exercise 3:<a class="headerlink" href="#exercise-3" title="Permalink to this heading">#</a></h2>
+<p>Modify <code class="docutils literal notranslate"><span class="pre">app_with_plot.py</span></code> to use <code class="docutils literal notranslate"><span class="pre">create_hist()</span></code> and display histogram of your chosen KPI to a user.</p>
+<p><strong>Hints:</strong></p>
+<ul class="simple">
+<li><p>Don’t forget to import <code class="docutils literal notranslate"><span class="pre">plotly.express</span></code></p></li>
+</ul>
+<p>An example solution:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Script to complete a basic run of the model and display a table of</span>
+<span class="sd">results and a plotly histogram in a streamlit app.</span>
+
+<span class="sd">The model is imported from a pypi package &#39;treat_sim&#39;</span>
+
+<span class="sd">Full documentation and source code for `treat_sim` is available as </span>
+<span class="sd">* Jupyter Book: https://tommonks.github.io/treatment-centre-sim/</span>
+<span class="sd">* github: https://github.com/TomMonks/treatment-centre-sim</span>
+
+<span class="sd">A conda environment has been provided locally,but the model can be pip installed</span>
+<span class="sd">`pip install treat_sim==1.0.0`</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">treat_sim.model</span> <span class="kn">import</span> <span class="n">Scenario</span><span class="p">,</span> <span class="n">multiple_replications</span>
+<span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+
+<span class="n">INTRO_FILE</span> <span class="o">=</span> <span class="s1">&#39;resources/overview.md&#39;</span>
+
+<span class="k">def</span> <span class="nf">read_file_contents</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;&#39;</span>
+<span class="sd">    Read the contents of a file.</span>
+
+<span class="sd">    Params:</span>
+<span class="sd">    ------</span>
+<span class="sd">    file_name: str</span>
+<span class="sd">        Path to file.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c1">##################################################################</span>
+<span class="c1"># MODIFICATION: Function to create plotly histogram</span>
+<span class="k">def</span> <span class="nf">create_hist</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">value_label</span><span class="p">,</span> <span class="n">marginal</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Create and return a plotly express histogram of</span>
+<span class="sd">    the results column</span>
+<span class="sd">    </span>
+<span class="sd">    Params:</span>
+<span class="sd">    -------</span>
+<span class="sd">    results: pd.DataFrame</span>
+<span class="sd">        Rows = replications, columns = KPIs</span>
+<span class="sd">        </span>
+<span class="sd">    column: str</span>
+<span class="sd">        Name of column in results to use</span>
+<span class="sd">        </span>
+<span class="sd">    value_label: str</span>
+<span class="sd">        X-axis label</span>
+<span class="sd">        </span>
+<span class="sd">    marginal: str, optional (default=&#39;box&#39;)</span>
+<span class="sd">        An additional plot to render above the histogram</span>
+<span class="sd">        options to try: box, violin, rug</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    ------</span>
+<span class="sd">    plotly.figure</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span><span class="n">value_label</span><span class="p">},</span>
+                       <span class="n">marginal</span><span class="o">=</span><span class="n">marginal</span><span class="p">)</span>
+    <span class="c1"># hide legend</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">layout_showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">fig</span>
+<span class="c1">#####################################################################</span>
+
+<span class="c1"># give the page a title</span>
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Treatment Centre Simulation Model&#39;</span><span class="p">)</span>
+
+<span class="c1"># show the introductory markdown</span>
+<span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="n">read_file_contents</span><span class="p">(</span><span class="n">INTRO_FILE</span><span class="p">))</span>
+
+<span class="c1"># create a sidebar for sliders</span>
+<span class="k">with</span> <span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="p">:</span>
+    <span class="n">n_triage</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s1">&#39;Triage bays&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">n_exam</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s1">&#39;Exam rooms&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">n_cubicles_1</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s1">&#39;Non-Trauma Treatment cubicles&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> 
+                             <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Set the number of non trauma pathway &#39;</span>
+                             <span class="o">+</span> <span class="s1">&#39;treatment cubicles&#39;</span><span class="p">)</span>
+
+    <span class="c1"># examination mean</span>
+    <span class="n">exam_mean</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s1">&#39;Mean examination time&#39;</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">45.0</span><span class="p">,</span> 
+                           <span class="mf">16.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="c1"># runs</span>
+    <span class="n">replications</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s1">&#39;No. replications&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Setup scenario using supplied variables</span>
+<span class="n">args</span> <span class="o">=</span> <span class="n">Scenario</span><span class="p">(</span><span class="n">n_triage</span><span class="o">=</span><span class="n">n_triage</span><span class="p">,</span> <span class="n">n_exam</span><span class="o">=</span><span class="n">n_exam</span><span class="p">,</span> <span class="n">n_cubicles_1</span><span class="o">=</span><span class="n">n_cubicles_1</span><span class="p">,</span>
+                <span class="n">exam_mean</span><span class="o">=</span><span class="n">exam_mean</span><span class="p">)</span>
+
+<span class="c1"># Only execute model if a streamlit button is pressed.</span>
+<span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s1">&#39;Simulate treatment centre&#39;</span><span class="p">):</span>
+
+    <span class="c1"># in this example run a single replication of the model.</span>
+    <span class="k">with</span> <span class="n">st</span><span class="o">.</span><span class="n">spinner</span><span class="p">(</span><span class="s1">&#39;Simulating the treatment centre...&#39;</span><span class="p">):</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">multiple_replications</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">n_reps</span><span class="o">=</span><span class="n">replications</span><span class="p">)</span>
+
+    <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="s1">&#39;Done!&#39;</span><span class="p">)</span>
+
+    <span class="c1"># display results using st.table (or st.dataframe)</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="c1"># ######################################################################</span>
+    <span class="c1"># MODIFICATION: Show results of a KPI as histogram</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">create_hist</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">&#39;03a_examination_wait&#39;</span><span class="p">,</span> 
+                  <span class="n">value_label</span><span class="o">=</span><span class="s1">&#39;Mean examination waiting time&#39;</span><span class="p">,</span>
+                  <span class="n">marginal</span><span class="o">=</span><span class="s1">&#39;violin&#39;</span><span class="p">)</span>
+
+    <span class="n">st</span><span class="o">.</span><span class="n">plotly_chart</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">use_container_width</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1">########################################################################</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+
+<span class="k">def</span> <span class="nf">create_user_controlled_hist</span><span class="p">(</span><span class="n">results</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Create a plotly histogram that includes a drop down list that allows a user</span>
+<span class="sd">    to select which KPI is displayed as a histogram</span>
+<span class="sd">    </span>
+<span class="sd">    Params:</span>
+<span class="sd">    -------</span>
+<span class="sd">    results: pd.Dataframe</span>
+<span class="sd">        rows = replications, cols = KPIs</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    -------</span>
+<span class="sd">    plotly.figure</span>
+<span class="sd">    </span>
+<span class="sd">    Source:</span>
+<span class="sd">    ------</span>
+<span class="sd">    The code in this function was adapted from:</span>
+<span class="sd">    https://stackoverflow.com/questions/59406167/plotly-how-to-filter-a-pandas-dataframe-using-a-dropdown-menu</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="c1"># create a figure</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+
+    <span class="c1"># set up ONE trace</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Histogram</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">results</span><span class="p">[</span><span class="n">results</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]]))</span>
+
+    <span class="n">buttons</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># create list of drop down items - KPIs</span>
+    <span class="c1"># the params in the code would need to vary depending on the type of chart.</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">buttons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;restyle&#39;</span><span class="p">,</span>
+                            <span class="n">label</span><span class="o">=</span><span class="n">col</span><span class="p">,</span>
+                            <span class="n">visible</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                            <span class="n">args</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;x&#39;</span><span class="p">:[</span><span class="n">results</span><span class="p">[</span><span class="n">col</span><span class="p">]],</span>
+                                   <span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="s1">&#39;histogram&#39;</span><span class="p">},</span> <span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+                            <span class="p">)</span>
+                      <span class="p">)</span>
+
+    <span class="c1"># create update menu and parameters</span>
+    <span class="n">updatemenu</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">your_menu</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="n">updatemenu</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">your_menu</span><span class="p">)</span>
+
+    <span class="n">updatemenu</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;buttons&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">buttons</span>
+    <span class="n">updatemenu</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;direction&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;down&#39;</span>
+    <span class="n">updatemenu</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;showactive&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    
+    <span class="c1"># add dropdown menus to the figure</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">updatemenus</span><span class="o">=</span><span class="n">updatemenu</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_user_controlled_hist</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>                            <div id="922d4712-ffcf-4fa6-80e5-f8999c7ae97d" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("922d4712-ffcf-4fa6-80e5-f8999c7ae97d")) {                    Plotly.newPlot(                        "922d4712-ffcf-4fa6-80e5-f8999c7ae97d",                        [{"x":[218.0,188.0,233.0,236.0,246.0,215.0,199.0,240.0,238.0,226.0,222.0,198.0,218.0,269.0,228.0,233.0,204.0,265.0,220.0,219.0,234.0,241.0,212.0,227.0,234.0,221.0,245.0,245.0,239.0,233.0,231.0,236.0,227.0,218.0,220.0,245.0,230.0,217.0,213.0,215.0,226.0,246.0,231.0,227.0,216.0,245.0,234.0,218.0,247.0,204.0],"type":"histogram"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"showlegend":false,"updatemenus":[{"buttons":[{"args":[{"x":[[218.0,188.0,233.0,236.0,246.0,215.0,199.0,240.0,238.0,226.0,222.0,198.0,218.0,269.0,228.0,233.0,204.0,265.0,220.0,219.0,234.0,241.0,212.0,227.0,234.0,221.0,245.0,245.0,239.0,233.0,231.0,236.0,227.0,218.0,220.0,245.0,230.0,217.0,213.0,215.0,226.0,246.0,231.0,227.0,216.0,245.0,234.0,218.0,247.0,204.0]],"type":"histogram"},[0]],"label":"00_arrivals","method":"restyle","visible":true},{"args":[{"x":[[28.009290251709622,3.2404688558263497,13.04093564181642,29.246779979511263,65.40765798973386,67.5369600063828,16.38886568488679,36.70296864737044,38.20122762084785,54.95124723394664,17.76296471235844,13.030781617526763,14.650765978357333,99.83487368355877,35.09273817409444,43.33013178549788,30.0772100065147,58.92914412265742,15.273224091337058,17.59595362998475,19.048056089154557,31.24706993911779,15.900437248706547,23.793707549375583,37.169221658428796,30.54450875572224,41.9281491330179,47.10811391806582,9.024444937296863,64.80855451894936,57.00838314325546,51.431544919229026,35.248451764868136,22.22697291481614,58.80918331378785,41.02172845285099,15.57773180162366,15.258467083186865,23.136705110019275,30.034351792085236,75.21953760308695,26.427320651628623,41.88598302773019,25.834618205937502,31.508813523634824,34.018059683193115,33.7023317192258,8.852041373274428,69.83005402501828,15.376247610617407]],"type":"histogram"},[0]],"label":"01a_triage_wait","method":"restyle","visible":true},{"args":[{"x":[[0.5424540292425365,0.4753896108037521,0.5286808547151916,0.623225124987184,0.6472350623257924,0.6176388915316763,0.4797300675268191,0.676469567587376,0.5957621751008386,0.6528631578652224,0.5767070894556675,0.4742231229197,0.5810093537696704,0.7153590895298174,0.5578851377371967,0.6702141832425564,0.515984666002451,0.6962693360436643,0.5067824831373194,0.5754316891078147,0.6038869922237535,0.6000746523613589,0.5535018112126199,0.6206457753223281,0.6254121350583745,0.6088663003044283,0.6771036565648304,0.6431243624741918,0.5351795740446583,0.6528548114683499,0.6324249940620288,0.6386350569838176,0.6625378452510043,0.5234574773350178,0.6864094895274838,0.6988652739281886,0.6144102556870891,0.5500751044143645,0.5872981379343366,0.5382797486118492,0.6674362192231659,0.6233508306624631,0.6036470501928444,0.5987895689204676,0.5259358572807831,0.662071311443487,0.5934401809057512,0.5115922799568605,0.6914599765793982,0.5597162287390287]],"type":"histogram"},[0]],"label":"01b_triage_util","method":"restyle","visible":true},{"args":[{"x":[[128.49043831937075,63.307539921779274,149.63638124164612,91.13789889477214,130.09160791167537,87.10185216929746,90.81893097020887,126.44439669409351,96.50384596275453,106.38869228437892,83.03152146665563,89.23385514943065,97.57471419060138,117.58444257478047,125.930440276934,113.75794023045624,109.21503201178983,106.67137905095606,133.09170953639452,142.00166012114227,125.57996449635635,137.64333131373846,101.55796836190594,92.5196295061599,109.78852445666756,95.41192725086964,80.92080502314346,125.68986492137881,145.11594243548376,73.86132870736174,111.46300747301223,99.48762335785528,80.36056433632511,104.09280639732837,62.94506825629304,115.53764936685874,94.87411652565389,102.04826699322228,115.73385797172186,117.30431311987938,38.30615839424007,123.11988652476917,103.03952623422722,104.5775555054229,109.67639002034547,118.59147114453852,96.31940935666351,122.71604422196064,73.2519126938196,113.93838960195103]],"type":"histogram"},[0]],"label":"02a_registration_wait","method":"restyle","visible":true},{"args":[{"x":[[0.8546150354036918,0.7490266037760624,0.8399942490103287,0.8767621146532469,0.8271937174407211,0.8078559529383859,0.7646986145596589,0.8609780373041704,0.8789444549475702,0.8456387317175411,0.8389657803762329,0.7433263005275003,0.8436928679236785,0.8498490354355531,0.8496047820335013,0.8794482893552632,0.77812653460562,0.8838944673548188,0.8320993346360189,0.8432957392249009,0.8915963876672466,0.8720035330045883,0.8108753442988622,0.8660698050978846,0.878089309480741,0.8101037765957988,0.8273819807472593,0.8362226679717973,0.8829411524790178,0.8354688718605647,0.8134413836747042,0.8549998020137467,0.8649677028830074,0.820839416675865,0.85360853698459,0.8521703871913806,0.8862548280358371,0.8443547324429763,0.8274204754061045,0.8059251579980915,0.8434527071086537,0.862636524239661,0.8705516060000421,0.8352231715894651,0.8347418273306678,0.8630581774344683,0.8903739191088835,0.8588204325190589,0.8548504051508687,0.8750027157142506]],"type":"histogram"},[0]],"label":"02b_registration_util","method":"restyle","visible":true},{"args":[{"x":[[28.478641578907936,16.32817873295442,18.4002798601575,35.42443957630112,36.254401156933156,24.14902522437214,30.028974329227594,31.18993493878721,29.642379438205783,25.3749350496724,24.239778912922088,18.428593671181368,10.840605252887434,23.389521903532646,28.614144501815414,14.039685806609363,36.356651545463194,15.988430673512921,26.0583737132257,19.534332408838537,22.740256965679833,10.60834882292233,41.696347226648555,29.159237140200922,20.46435727979445,18.119543366597576,33.3096451998393,25.877961014687568,26.63279241881874,8.183236285507599,32.80604915248188,42.58007952414658,13.4637023707959,35.72191233217777,22.96061614184804,17.523346347457895,33.23465076644108,21.97820281228799,16.824212653168594,34.96015080569626,28.637486658455785,24.202508114597652,27.73581114474837,23.943267943566504,22.314717591552256,23.692053561649228,24.496422557304143,23.658986318162416,30.642092597277475,8.370004739984696]],"type":"histogram"},[0]],"label":"03a_examination_wait","method":"restyle","visible":true},{"args":[{"x":[[0.8474299014515363,0.7959205242743274,0.847310252738908,0.8811397931490925,0.8248740539062672,0.8106464290805696,0.8122418206850751,0.866353626136432,0.8875588334569334,0.8466283166639144,0.8695943182565228,0.7913011067991713,0.8676739855933459,0.8579036100236218,0.8334410944029501,0.8710137866553499,0.7921556343801585,0.8883142946600185,0.840573832238992,0.8330163313609643,0.8765689387868385,0.8647175889429748,0.8563486048987452,0.8810220030628924,0.8757098412781988,0.8461324753234198,0.8371332086214429,0.8496493285842763,0.8837141502500167,0.8484657325431528,0.8180071771100575,0.8534708559826897,0.851025873984417,0.8247667011208527,0.8751403651391457,0.8553581223275087,0.8841131360863382,0.8670521350305821,0.8146222345706379,0.8136897153994705,0.868401407500181,0.8708065413085849,0.8726892441501188,0.84915558638189,0.8405325227324416,0.8650628253980673,0.8899635232958838,0.8551252933846896,0.8583845834349931,0.8684520854040928]],"type":"histogram"},[0]],"label":"03b_examination_util","method":"restyle","visible":true},{"args":[{"x":[[145.4143206009249,134.20278558257493,169.50329543554002,125.01625497279007,150.89014876334397,95.62843976206952,119.29553016984771,169.36888777733526,169.73792871121893,136.91186599510002,135.49981686490383,137.8244282671792,122.19242483331564,164.85071685109324,75.65928109438585,125.1739423523739,94.7152638543205,149.12276829277775,155.84773479980848,120.16884527898559,129.2334632527805,76.37773406955344,127.49134806562321,128.26983534431525,142.61355999590927,110.95598432337847,107.60072027443175,100.27744006675563,145.73243372068382,147.3348982538873,159.74570683902638,176.08302975101904,134.4621393966806,119.9433160912374,133.36995428710873,105.73406777522622,140.44153870825343,128.0621160665735,121.55541076525108,109.43207799312705,127.57884349589274,99.96084810331797,158.28111309262923,133.93151139787398,162.2207562337045,173.83321406799433,118.74731380711259,107.12246884644118,105.93722384361737,158.44179278455627]],"type":"histogram"},[0]],"label":"04a_treatment_wait(non_trauma)","method":"restyle","visible":true},{"args":[{"x":[[0.8531886062547525,0.8467953723607982,0.8270875419145723,0.8582991651467851,0.8409133026294883,0.8415739704268722,0.785988370876383,0.8583404449582905,0.8986651721576497,0.9002548490402674,0.9441827629542578,0.8132220841566272,0.9022656204894897,0.8429377333308177,0.8426559063042834,0.9041306491586939,0.8527235575037331,0.9003888784446481,0.8498185275223645,0.8584941679696741,0.9032769922189233,0.9096355595471245,0.8872630013386081,0.8563124306706866,0.8999755013452682,0.8893204941548175,0.8394362632460352,0.8538132696017491,0.8932704895733866,0.9055740799844904,0.8598875189171494,0.8491063499363798,0.8896291569078429,0.8327897345320752,0.9163517810770223,0.9118275976098101,0.8625563863013,0.8849801176973945,0.8379222411733019,0.8048099922623326,0.872986617116827,0.8843212261727531,0.8988964777505203,0.8643012089186395,0.8372372549649846,0.8850435112572804,0.8854922312492046,0.8445548889722878,0.8349592477012286,0.8762707218665424]],"type":"histogram"},[0]],"label":"04b_treatment_util(non_trauma)","method":"restyle","visible":true},{"args":[{"x":[[247.87222932785437,178.79915439172024,260.8044565328279,206.94592849176973,288.79654710004377,226.29414844813323,211.7112849286587,268.6554563697397,247.61983114427113,264.4518968859313,209.53287041414902,204.42343586120714,199.14338498323087,299.0878625446939,228.4052091962118,237.7556814828793,231.3416894003008,242.4703821249159,244.86707545433748,230.76245943565507,228.30077729247404,210.6894429254903,221.210607340494,203.0008866902121,235.07852102153973,214.35720177616716,205.1002286753736,236.94841360138892,249.967392984458,234.71432397859405,267.91901343725806,274.52586011185144,196.76422256463806,221.0496509098951,222.36131899416122,218.95747265279454,214.9866778375176,221.57098275102152,217.4794401900761,229.539783016938,215.16092196996638,213.49377774386278,244.92753601319575,218.3578966659069,245.14112316034831,249.38813991062273,218.98825949867327,210.46083139111474,222.2173209726099,229.11929243129197]],"type":"histogram"},[0]],"label":"05_total_time(non-trauma)","method":"restyle","visible":true},{"args":[{"x":[[8.595360378113972,65.14693182041792,78.13013664136726,225.47174857825996,168.0140881750961,82.26360069917874,70.31860306070948,152.75061552078472,68.07546090892616,85.03058775525912,318.0852702423178,162.70180308015685,228.9670200617644,181.277094060207,117.6346660243509,75.16311679186862,68.52653117723546,307.63845159591796,234.97741364884553,26.182505576065136,148.77064725025807,94.98464580422913,79.15764593254012,128.5861318160581,157.6135236690961,168.8357059592276,158.6862880574682,101.5907252618523,235.08774438666592,101.68935330348341,54.35738709537698,120.59404953572879,136.51743847894454,18.76590590151762,209.30127402395476,228.22747110279815,82.5647563087555,186.04160254543444,94.98419518925334,135.93493343190087,263.86686818806436,185.26401401082475,156.03611647427257,131.70119256571672,144.29248912741386,124.11188180828451,189.40199511662445,76.08371274567692,142.82508225667846,7.43387956787987]],"type":"histogram"},[0]],"label":"06a_trauma_wait","method":"restyle","visible":true},{"args":[{"x":[[0.3689084098169131,0.8385211298286587,0.8165474524553085,0.8769835607623823,0.9791894750184259,0.842665106626021,0.8104524362239633,0.8016316613183545,0.698513175864303,0.8347983520494153,0.9846895594679249,0.9145613120644648,0.9723330108239759,0.8889723309954537,0.911023608014534,0.6542844081128576,0.6884758893707797,0.9304917898988366,0.8939425310256488,0.6506406237003599,1.0888944509449199,0.7823475952606737,0.7748269538308755,0.7845725065005356,1.008627351827479,0.9555330982304985,0.7625684963869068,0.8036973466855654,0.8639684106026562,0.8030093114573083,0.8432461436585671,0.8055571906770876,0.8067655938661622,0.6613284953424797,0.853760213006032,0.9286562551589054,0.6010630423684848,0.9680917156523322,0.8810109511509367,0.8279872415345157,0.8161386573940613,0.796050898362081,0.91833929173007,0.7499270666700999,0.5909892595994171,0.8360395837958442,0.854950551398654,0.7094780650103856,0.9197036741575964,0.3785888593376346]],"type":"histogram"},[0]],"label":"06b_trauma_util","method":"restyle","visible":true},{"args":[{"x":[[214.19833101596814,231.60356711375206,251.83573595001653,95.6015718025087,13.244607729829678,207.09010476395096,295.8515058412709,171.91703567557408,307.06708513048056,210.96976751233703,40.721750060210034,181.23297356345418,156.37493028487214,43.66341972500509,185.95805261949837,179.4018553800449,24.09869998544496,132.95933013569294,74.25991061952821,89.17108161223626,221.62624802738407,157.47886101300486,91.67827828088382,231.43949758351832,205.79757658451385,239.46608728700485,293.4507327897041,224.95962978372455,175.4064740142796,127.65167069329125,192.27482227917565,350.7656288899605,180.29315213396248,305.28653083295336,75.18083165615906,457.0555560337692,230.4750215637829,243.61433585946253,111.16208600434659,199.7556384755709,40.69205760742792,117.54470274266835,115.17395947284983,103.94102840931278,81.89096862761822,138.41840772894614,57.394295943953104,293.51636869179293,151.38737282213742,243.0348452664608]],"type":"histogram"},[0]],"label":"07a_treatment_wait(trauma)","method":"restyle","visible":true},{"args":[{"x":[[0.9768079843773353,0.7786342239235766,1.1882873254015112,1.1931150965191253,0.6506710462046249,0.7714635550722093,0.8809200215904515,0.6024000979932126,0.9523116224094899,0.7975863716353848,0.6300584638371377,0.8519408236116093,0.9559375057284005,0.7194342552875143,0.8983906645888987,0.8977055426202326,0.9041469141050584,0.779611874797994,0.7525979289759444,0.7681502083134008,1.0559069177613438,0.749666405486823,0.6513110298048613,0.8664633905540992,0.8825779963422339,0.8905804304759004,1.0577029527779302,0.8600515785002031,1.3554356983157703,1.0896086329310335,0.7632435107156134,0.9283522558267191,0.8727031077352372,0.8862626642792875,0.7984984028198785,0.8590901380479558,0.8672580586565389,0.866064604370277,0.8031353028600008,0.6187849163331421,0.6185754033744028,0.7937426184116727,0.9046840685092759,0.7460943813651182,0.6095734595250245,0.7562572881058092,0.663157395021793,1.0099538885908246,0.8036488329719528,0.6719364391518832]],"type":"histogram"},[0]],"label":"07b_treatment_util(trauma)","method":"restyle","visible":true},{"args":[{"x":[[399.2003106567676,392.0649643387095,369.2769197903274,385.7527942607722,339.8177530522316,418.7108963411495,462.8186084010069,433.50222273369116,477.14558658522895,503.11503546175567,347.8871168374045,359.0579204818184,432.4142252346956,422.9960741696051,376.2824885566958,380.2567771675144,152.4669818580401,418.6258153568265,384.8098843393096,284.1139535458527,450.492634779077,406.4627653830882,275.81332394183835,388.4127258572193,503.8718106950361,409.39782230059166,454.0788839223841,396.3083889613814,338.9672370626718,356.9694903693746,372.6316604885564,548.3339575348889,369.07677167659824,446.9758673230206,416.50889962656294,695.1650990844265,406.2936645180188,452.1044052911535,339.4119104450414,432.1743662056987,334.2354618435269,356.65336508828284,379.5943869004799,299.39244112695104,369.5929351385708,240.1891679912198,388.2317937658034,543.0790004692468,361.83627584733756,522.1973032743819]],"type":"histogram"},[0]],"label":"08_total_time(trauma)","method":"restyle","visible":true},{"args":[{"x":[[154.0,139.0,157.0,159.0,148.0,151.0,149.0,154.0,145.0,159.0,148.0,144.0,154.0,152.0,172.0,163.0,156.0,166.0,144.0,149.0,169.0,168.0,147.0,156.0,166.0,161.0,152.0,162.0,156.0,151.0,139.0,148.0,149.0,151.0,151.0,153.0,167.0,154.0,149.0,158.0,155.0,162.0,161.0,148.0,148.0,149.0,176.0,165.0,155.0,144.0]],"type":"histogram"},[0]],"label":"09_throughput","method":"restyle","visible":true}],"direction":"down","showactive":true}]},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('922d4712-ffcf-4fa6-80e5-f8999c7ae97d');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -585,123 +922,6 @@ if (outputEl) {{
 </div>
 </section>
 </section>
-<section id="adding-a-chart-to-the-web-app">
-<h2>3. Adding a chart to the web app<a class="headerlink" href="#adding-a-chart-to-the-web-app" title="Permalink to this heading">#</a></h2>
-<p>We will make the following changes to the web app script:</p>
-<ol class="arabic simple">
-<li><p>Add in a function called <code class="docutils literal notranslate"><span class="pre">create_hist</span></code>. This will implement the <code class="docutils literal notranslate"><span class="pre">plotly</span></code> histogram code we included above.</p></li>
-<li><p>Alter the page width using <code class="docutils literal notranslate"><span class="pre">st.set_page_config()</span></code>. We are going to show the table of results and chart side by side so we need a slightly wider page layout</p></li>
-<li><p>Create two columns for the results using <code class="docutils literal notranslate"><span class="pre">st.columns(2)</span></code></p></li>
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">st.plotly_chart</span></code> function to display the histogram</p></li>
-</ol>
-<p>The full script is below.  Copy and paste this into a file called <code class="docutils literal notranslate"><span class="pre">app_with_chart</span></code> and run.  The figure at the end of this page illustrates the result after running the simulation model.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">The code in this streamlit script adds in a basic plotly </span>
-<span class="sd">chart to display a histogram of replications</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
-<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
-<span class="kn">from</span> <span class="nn">model</span> <span class="kn">import</span> <span class="n">Experiment</span><span class="p">,</span> <span class="n">multiple_replications</span>
-
-<span class="n">INTRO_FILE</span> <span class="o">=</span> <span class="s1">&#39;./resources/model_info.md&#39;</span>
-
-<span class="k">def</span> <span class="nf">read_file_contents</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;&#39;</span>
-<span class="sd">    Read the contents of a file.</span>
-
-<span class="sd">    Params:</span>
-<span class="sd">    ------</span>
-<span class="sd">    file_name: str</span>
-<span class="sd">        Path to file.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">    -------</span>
-<span class="sd">    str</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-    
-
-<span class="c1">################################################################################</span>
-<span class="c1"># MODIFICATION: code to create plotly histogram</span>
-<span class="k">def</span> <span class="nf">create_hist</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">value_label</span><span class="p">,</span> <span class="n">marginal</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Create and return a plotly express histogram of</span>
-<span class="sd">    the results column</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span><span class="n">value_label</span><span class="p">},</span>
-                       <span class="n">marginal</span><span class="o">=</span><span class="n">marginal</span><span class="p">)</span>
-    <span class="c1"># hide legend</span>
-    <span class="n">fig</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">layout_showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    
-    <span class="k">return</span> <span class="n">fig</span>
-<span class="c1">################################################################################</span>
-
-
-<span class="c1">################################################################################</span>
-<span class="c1"># MODIFICATION: update to wide page settings to display results side by side</span>
-<span class="n">st</span><span class="o">.</span><span class="n">set_page_config</span><span class="p">(</span>
-     <span class="n">page_title</span><span class="o">=</span><span class="s2">&quot;Urgent Care Sim App&quot;</span><span class="p">,</span>
-     <span class="n">layout</span><span class="o">=</span><span class="s2">&quot;wide&quot;</span><span class="p">,</span>
-     <span class="n">initial_sidebar_state</span><span class="o">=</span><span class="s2">&quot;expanded&quot;</span><span class="p">,</span>
- <span class="p">)</span>
-<span class="c1">################################################################################</span>
-
-<span class="c1"># We add in a title for our web app&#39;s page</span>
-<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Urgent care call centre&quot;</span><span class="p">)</span>
-
-<span class="c1"># show the introductory markdown</span>
-<span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="n">read_file_contents</span><span class="p">(</span><span class="n">INTRO_FILE</span><span class="p">))</span>
-
-<span class="c1"># side bar</span>
-<span class="k">with</span> <span class="n">st</span><span class="o">.</span><span class="n">sidebar</span><span class="p">:</span>
-
-    <span class="c1"># set number of resources</span>
-    <span class="n">n_operators</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s1">&#39;Call operators&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">n_nurses</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s1">&#39;Nurses&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-    <span class="c1"># set chance of nurse</span>
-    <span class="n">chance_callback</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s1">&#39;Chance of nurse callback&#39;</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span>
-                                <span class="n">step</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Set the chance of a call back&#39;</span><span class="p">)</span>
-
-    <span class="c1"># set number of replications</span>
-    <span class="n">n_reps</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">number_input</span><span class="p">(</span><span class="s2">&quot;No. of replications&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1_000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># create experiment</span>
-<span class="n">exp</span> <span class="o">=</span> <span class="n">Experiment</span><span class="p">(</span><span class="n">n_operators</span><span class="o">=</span><span class="n">n_operators</span><span class="p">,</span> <span class="n">n_nurses</span><span class="o">=</span><span class="n">n_nurses</span><span class="p">,</span>
-                 <span class="n">chance_callback</span><span class="o">=</span><span class="n">chance_callback</span><span class="p">)</span>
-
-<span class="c1"># A user must press a streamlit button to run the model</span>
-<span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">&quot;Run simulation&quot;</span><span class="p">):</span>
-
-    <span class="c1">#  add a spinner and then display success box</span>
-    <span class="k">with</span> <span class="n">st</span><span class="o">.</span><span class="n">spinner</span><span class="p">(</span><span class="s1">&#39;Simulating the urgent care system...&#39;</span><span class="p">):</span>
-        <span class="c1"># run multiple replications of experment</span>
-        <span class="n">results</span> <span class="o">=</span> <span class="n">multiple_replications</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="n">n_reps</span><span class="o">=</span><span class="n">n_reps</span><span class="p">)</span><span class="c1">#</span>
-    
-    <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="s1">&#39;Done!&#39;</span><span class="p">)</span>
-
-    <span class="c1">############################################################################</span>
-    <span class="c1"># MODIFICATION: create columns for histogram of the results</span>
-    <span class="n">col1</span><span class="p">,</span> <span class="n">col2</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-    <span class="k">with</span> <span class="n">col1</span><span class="o">.</span><span class="n">expander</span><span class="p">(</span><span class="s1">&#39;Tabular results&#39;</span><span class="p">,</span> <span class="n">expanded</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="c1"># show tabular results</span>
-        <span class="n">st</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
-
-    <span class="k">with</span> <span class="n">col2</span><span class="o">.</span><span class="n">expander</span><span class="p">(</span><span class="s1">&#39;Histogram&#39;</span><span class="p">,</span> <span class="n">expanded</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    
-
-        <span class="n">fig</span> <span class="o">=</span> <span class="n">create_hist</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="s1">&#39;01_mean_waiting_time&#39;</span><span class="p">,</span> 
-                          <span class="s1">&#39;Mean waiting time for operator&#39;</span><span class="p">)</span>
-     
-        <span class="n">st</span><span class="o">.</span><span class="n">plotly_chart</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">use_container_width</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        
-     <span class="c1">###########################################################################</span>
-</pre></div>
-</div>
-<p><img alt="image" src="../../_images/app_with_chart.png" /></p>
-</section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -716,7 +936,7 @@ if (outputEl) {{
         },
         kernelOptions: {
             name: "python3",
-            path: "./content/03_streamlit"
+            path: "./content/05_solutions"
         },
         predefinedOutput: true
     }
@@ -735,22 +955,13 @@ if (outputEl) {{
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="09_adding_text.html"
+       href="06_streamlit.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Background text</p>
+        <p class="prev-next-title">Treatment sim <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> app</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="11_filter_results.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Filtering results</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   
@@ -770,14 +981,15 @@ if (outputEl) {{
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">1. Imports</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-for-creating-the-plotly-histogram">2. Code for creating the <code class="docutils literal notranslate"><span class="pre">plotly</span></code> histogram</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-replications">2.1 Get the replications</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-of-mean-waiting-time">2.2. Histogram of mean waiting time</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Adding a plot</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-chart-to-the-web-app">3. Adding a chart to the web app</a></li>
 </ul>
+
   </nav></div>
 
 </div></div>

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Adding plots &#8212; Simulation in python</title>
+    <title>Filtering results &#8212; Simulation in python</title>
   
   
   
@@ -62,11 +62,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/03_streamlit/10_adding_plots';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/03_streamlit/11_filter_results';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Filtering results" href="11_filter_results.html" />
-    <link rel="prev" title="Background text" href="09_adding_text.html" />
+    <link rel="next" title="Random sampling" href="../04_exercises/01_sampling.html" />
+    <link rel="prev" title="Adding plots" href="10_adding_plots.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -176,8 +176,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="07_interactive.html">An interactive app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="08_sidebar.html">Tidying up controls</a></li>
 <li class="toctree-l1"><a class="reference internal" href="09_adding_text.html">Background text</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Adding plots</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_filter_results.html">Filtering results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_adding_plots.html">Adding plots</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Filtering results</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
 <ul class="nav bd-sidenav">
@@ -255,7 +255,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/health-data-science-OR/natcor-simpy/main?urlpath=lab/tree/content/03_streamlit/10_adding_plots.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/health-data-science-OR/natcor-simpy/main?urlpath=lab/tree/content/03_streamlit/11_filter_results.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -321,7 +321,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/health-data-science-OR/natcor-simpy/issues/new?title=Issue%20on%20page%20%2Fcontent/03_streamlit/10_adding_plots.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/health-data-science-OR/natcor-simpy/issues/new?title=Issue%20on%20page%20%2Fcontent/03_streamlit/11_filter_results.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -351,7 +351,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/content/03_streamlit/10_adding_plots.ipynb" target="_blank"
+      <li><a href="../../_sources/content/03_streamlit/11_filter_results.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -433,7 +433,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Adding plots</h1>
+    <h1>Filtering results</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -444,12 +444,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">1. Imports</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-for-creating-the-plotly-histogram">2. Code for creating the <code class="docutils literal notranslate"><span class="pre">plotly</span></code> histogram</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-replications">2.1 Get the replications</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-of-mean-waiting-time">2.2. Histogram of mean waiting time</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-chart-to-the-web-app">3. Adding a chart to the web app</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotly-code">2. <code class="docutils literal notranslate"><span class="pre">plotly</span></code> code</a></li>
 </ul>
             </nav>
         </div>
@@ -461,78 +456,118 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="adding-plots">
-<h1>Adding plots<a class="headerlink" href="#adding-plots" title="Permalink to this heading">#</a></h1>
-<p>It is also possible to display <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> and <code class="docutils literal notranslate"><span class="pre">plotly</span></code> figures and plots in <code class="docutils literal notranslate"><span class="pre">streamlit</span></code>. Here we will explore displaying a histogram of replications for a chosen performance
-measure.</p>
-<p>We will use <code class="docutils literal notranslate"><span class="pre">plotly</span></code> to create the chart.</p>
-<p>We will also introduce a more advanced layout to our web app by introducing columns to the results page.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="filtering-results">
+<h1>Filtering results<a class="headerlink" href="#filtering-results" title="Permalink to this heading">#</a></h1>
+<p>A simulation model might output a large number of performance measures.  If you wish to have a graphical view of all measures you may find it infeasible to include individual plots. In these circumstances you may want a user to be able to select which measure is displayed on a single plot included in the app.</p>
+<p>There are multiple ways to achieve this aim.  Here we demonstrate using <code class="docutils literal notranslate"><span class="pre">plotly</span></code> itself rather than relying on creating your own logic within the <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> script.</p>
 <section id="imports">
 <h2>1. Imports<a class="headerlink" href="#imports" title="Permalink to this heading">#</a></h2>
-<p>We use <code class="docutils literal notranslate"><span class="pre">plotly.express</span></code> simplify the creation of our charts.  This provides a high level wrapper around <code class="docutils literal notranslate"><span class="pre">plotly</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">model</span> <span class="kn">import</span> <span class="n">Experiment</span><span class="p">,</span> <span class="n">multiple_replications</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+
+<span class="kn">from</span> <span class="nn">model</span> <span class="kn">import</span> <span class="n">Experiment</span><span class="p">,</span> <span class="n">multiple_replications</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="code-for-creating-the-plotly-histogram">
-<h2>2. Code for creating the <code class="docutils literal notranslate"><span class="pre">plotly</span></code> histogram<a class="headerlink" href="#code-for-creating-the-plotly-histogram" title="Permalink to this heading">#</a></h2>
-<p>We will run 100 replications of the simulation model and then display the results in a histogram.</p>
-<p>We can use the <code class="docutils literal notranslate"><span class="pre">px.histogram</span></code> method to quickly produce a histogram.</p>
-<section id="get-the-replications">
-<h3>2.1 Get the replications<a class="headerlink" href="#get-the-replications" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">default_experiment</span> <span class="o">=</span> <span class="n">Experiment</span><span class="p">()</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">multiple_replications</span><span class="p">(</span><span class="n">default_experiment</span><span class="p">,</span> <span class="n">n_reps</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">results</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-Int64Index: 100 entries, 1 to 100
-Data columns (total 4 columns):
- #   Column                      Non-Null Count  Dtype  
----  ------                      --------------  -----  
- 0   01_mean_waiting_time        100 non-null    float64
- 1   02_operator_util            100 non-null    float64
- 2   03_mean_nurse_waiting_time  100 non-null    float64
- 3   04_nurse_util               100 non-null    float64
-dtypes: float64(4)
-memory usage: 3.9 KB
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="histogram-of-mean-waiting-time">
-<h3>2.2. Histogram of mean waiting time<a class="headerlink" href="#histogram-of-mean-waiting-time" title="Permalink to this heading">#</a></h3>
-<p>In addition to the box plot we will also add a boxplot to see the median and the lower and upper quartiles of the distribution.</p>
+<section id="plotly-code">
+<h2>2. <code class="docutils literal notranslate"><span class="pre">plotly</span></code> code<a class="headerlink" href="#plotly-code" title="Permalink to this heading">#</a></h2>
+<p>To achieve our aims we must use <code class="docutils literal notranslate"><span class="pre">plotly.graph_objects</span></code>.  A modified results histogram is implemented below in the function <code class="docutils literal notranslate"><span class="pre">create_user_filtered_hist()</span></code>.</p>
 <blockquote>
-<div><p>As an alternative you could try <code class="docutils literal notranslate"><span class="pre">marginal='violin'</span></code> or <code class="docutils literal notranslate"><span class="pre">marginal='rug'</span></code></p>
+<div><p>Note that the listing is specific for a histogram.  If a different type of plot was needed then the code would need to be modified.</p>
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;01_mean_waiting_time&#39;</span><span class="p">],</span> 
-                   <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span><span class="s1">&#39;Mean waiting time for operator&#39;</span><span class="p">},</span> 
-                   <span class="n">marginal</span><span class="o">=</span><span class="s2">&quot;box&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_user_filtered_hist</span><span class="p">(</span><span class="n">results</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Create a plotly histogram that includes a drop down list that allows a user</span>
+<span class="sd">    to select which KPI is displayed as a histogram</span>
+<span class="sd">    </span>
+<span class="sd">    Params:</span>
+<span class="sd">    -------</span>
+<span class="sd">    results: pd.Dataframe</span>
+<span class="sd">        rows = replications, cols = KPIs</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    -------</span>
+<span class="sd">    plotly.figure</span>
+<span class="sd">    </span>
+<span class="sd">    Sources:</span>
+<span class="sd">    ------</span>
+<span class="sd">    The code in this function was parly adapted from two sources:</span>
+<span class="sd">    1. https://stackoverflow.com/questions/59406167/plotly-how-to-filter-a-pandas-dataframe-using-a-dropdown-menu</span>
+<span class="sd">    </span>
+<span class="sd">    Thanks and credit to `vestland` the author of the reponse.</span>
+<span class="sd">    </span>
+<span class="sd">    2. https://plotly.com/python/dropdowns/</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># create a figure</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
 
-<span class="c1"># hide legend</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">layout_showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">fig</span>
+    <span class="c1"># set up a trace</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Histogram</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">results</span><span class="p">[</span><span class="n">results</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]]))</span>
+
+    <span class="n">buttons</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># create list of drop down items - KPIs</span>
+    <span class="c1"># the params in the code would need to vary depending on the type of chart.</span>
+    <span class="c1"># The histogram will show the first KPI by default</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">buttons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;restyle&#39;</span><span class="p">,</span>
+                            <span class="n">label</span><span class="o">=</span><span class="n">col</span><span class="p">,</span>
+                            <span class="n">visible</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                            <span class="n">args</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;x&#39;</span><span class="p">:[</span><span class="n">results</span><span class="p">[</span><span class="n">col</span><span class="p">]],</span>
+                                   <span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="s1">&#39;histogram&#39;</span><span class="p">},</span> <span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+                            <span class="p">)</span>
+                      <span class="p">)</span>
+
+    <span class="c1"># create update menu and parameters</span>
+    <span class="n">updatemenu</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">your_menu</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="n">updatemenu</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">your_menu</span><span class="p">)</span>
+
+    <span class="n">updatemenu</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;buttons&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">buttons</span>
+    <span class="n">updatemenu</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;direction&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;down&#39;</span>
+    <span class="n">updatemenu</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;showactive&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">updatemenu</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.25</span>
+    <span class="n">updatemenu</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.1</span>
+    <span class="n">updatemenu</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;xanchor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;right&#39;</span>
+    <span class="n">updatemenu</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;yanchor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;bottom&#39;</span>
+    <span class="c1">#updatemenu[0][&#39;pad&#39;] = {&quot;r&quot;: 10, &quot;t&quot;: 10}</span>
+    
+    
+    
+    <span class="c1"># add dropdown menus to the figure</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+                      <span class="n">updatemenus</span><span class="o">=</span><span class="n">updatemenu</span><span class="p">)</span>
+    
+    
+    <span class="c1"># add label for selecting performance measure</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">annotations</span><span class="o">=</span><span class="p">[</span>
+        <span class="nb">dict</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Performance measure&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xref</span><span class="o">=</span><span class="s2">&quot;paper&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> 
+             <span class="n">yref</span><span class="o">=</span><span class="s2">&quot;paper&quot;</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">showarrow</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="p">])</span>
+    <span class="k">return</span> <span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># code to create the histogram</span>
+
+<span class="n">default_exp</span> <span class="o">=</span> <span class="n">Experiment</span><span class="p">()</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">multiple_replications</span><span class="p">(</span><span class="n">default_exp</span><span class="p">,</span> <span class="n">n_reps</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_user_filtered_hist</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -557,9 +592,9 @@ memory usage: 3.9 KB
         });
         }
         </script>
-        </div><div class="output text_html"><div>                            <div id="5fc857d5-fa3e-4b2d-b8a3-4c707193d04b" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("5fc857d5-fa3e-4b2d-b8a3-4c707193d04b")) {                    Plotly.newPlot(                        "5fc857d5-fa3e-4b2d-b8a3-4c707193d04b",                        [{"alignmentgroup":"True","bingroup":"x","hovertemplate":"variable=01_mean_waiting_time\u003cbr\u003eMean waiting time for operator=%{x}\u003cbr\u003ecount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"01_mean_waiting_time","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"01_mean_waiting_time","offsetgroup":"01_mean_waiting_time","orientation":"v","showlegend":true,"x":[4.594771877644203,2.728334938937269,3.4643080413328082,3.4756245947968845,1.3088249845420796,4.292294649184406,2.973520502425917,2.3022226242746826,3.144931843591173,1.5923729516746743,2.762292095124271,2.8603513067524475,3.3725910971648956,4.483353428445595,2.946613811834044,5.137297974913891,2.7279980421773358,2.115605333907077,2.411941348629282,6.058599720421738,2.816141471454225,3.1639152545199636,2.1518272767776745,11.13329222112186,1.6110799575592267,2.1889515434056697,4.323927517832326,3.5122231799830756,3.376334102902929,0.8898037473625526,3.294916390061701,1.8554053966257147,2.3993055149354534,3.215414199180854,4.036075394105655,1.6504954922643944,4.326744110701966,1.6489452581537507,4.942807200635092,3.28356351799234,2.396709599321397,3.005735537385515,4.420190887253376,5.389385666567618,7.232053071257755,1.1682449862472468,2.3768219809555755,2.5225030901520182,10.039509278650312,2.325847110219586,3.8439324455630275,5.4823983833344325,2.689265920363003,2.4233307970962477,2.5591490930184277,6.061420119853956,2.442384370138688,3.6803033944480306,1.6118063927085522,2.8874013216724865,3.4965504335858215,1.6663736047527042,2.333840620636958,2.2578603089767486,2.3619520280413524,8.875680997020943,2.124411148886827,4.091807213170326,6.232729099635121,3.845681363224978,2.6191658922170467,4.5007321031662375,1.4055859410914668,4.455077184127064,5.114843021428649,3.6573774693525793,5.3422998951779155,2.9541691611894794,5.580237260312701,7.7590634889866,9.177040056317841,2.934184503880663,8.909273316059322,4.320491032748017,2.0889669209979296,1.991231555225357,1.9331343784314607,3.296063111887286,1.7511957515593366,3.168539129928581,2.300300173006735,3.979944841085966,3.1902456210548684,2.9103964343561355,4.070272114894912,1.90385693160592,3.5515675724399154,9.35530194919937,3.1514645686936347,1.8614741666034906],"xaxis":"x","yaxis":"y","type":"histogram"},{"alignmentgroup":"True","hovertemplate":"variable=01_mean_waiting_time\u003cbr\u003eMean waiting time for operator=%{x}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"01_mean_waiting_time","marker":{"color":"#636efa"},"name":"01_mean_waiting_time","notched":true,"offsetgroup":"01_mean_waiting_time","showlegend":false,"x":[4.594771877644203,2.728334938937269,3.4643080413328082,3.4756245947968845,1.3088249845420796,4.292294649184406,2.973520502425917,2.3022226242746826,3.144931843591173,1.5923729516746743,2.762292095124271,2.8603513067524475,3.3725910971648956,4.483353428445595,2.946613811834044,5.137297974913891,2.7279980421773358,2.115605333907077,2.411941348629282,6.058599720421738,2.816141471454225,3.1639152545199636,2.1518272767776745,11.13329222112186,1.6110799575592267,2.1889515434056697,4.323927517832326,3.5122231799830756,3.376334102902929,0.8898037473625526,3.294916390061701,1.8554053966257147,2.3993055149354534,3.215414199180854,4.036075394105655,1.6504954922643944,4.326744110701966,1.6489452581537507,4.942807200635092,3.28356351799234,2.396709599321397,3.005735537385515,4.420190887253376,5.389385666567618,7.232053071257755,1.1682449862472468,2.3768219809555755,2.5225030901520182,10.039509278650312,2.325847110219586,3.8439324455630275,5.4823983833344325,2.689265920363003,2.4233307970962477,2.5591490930184277,6.061420119853956,2.442384370138688,3.6803033944480306,1.6118063927085522,2.8874013216724865,3.4965504335858215,1.6663736047527042,2.333840620636958,2.2578603089767486,2.3619520280413524,8.875680997020943,2.124411148886827,4.091807213170326,6.232729099635121,3.845681363224978,2.6191658922170467,4.5007321031662375,1.4055859410914668,4.455077184127064,5.114843021428649,3.6573774693525793,5.3422998951779155,2.9541691611894794,5.580237260312701,7.7590634889866,9.177040056317841,2.934184503880663,8.909273316059322,4.320491032748017,2.0889669209979296,1.991231555225357,1.9331343784314607,3.296063111887286,1.7511957515593366,3.168539129928581,2.300300173006735,3.979944841085966,3.1902456210548684,2.9103964343561355,4.070272114894912,1.90385693160592,3.5515675724399154,9.35530194919937,3.1514645686936347,1.8614741666034906],"xaxis":"x2","yaxis":"y2","type":"box"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Mean waiting time for operator"}},"yaxis":{"anchor":"x","domain":[0.0,0.7326],"title":{"text":"count"}},"xaxis2":{"anchor":"y2","domain":[0.0,1.0],"matches":"x","showticklabels":false,"showgrid":true},"yaxis2":{"anchor":"x2","domain":[0.7426,1.0],"matches":"y2","showticklabels":false,"showline":false,"ticks":"","showgrid":false},"legend":{"title":{"text":"variable"},"tracegroupgap":0},"margin":{"t":60},"barmode":"relative","showlegend":false},                        {"responsive": true}                    ).then(function(){
+        </div><div class="output text_html"><div>                            <div id="75c5d404-3d48-4292-b748-7549e8bfe61b" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("75c5d404-3d48-4292-b748-7549e8bfe61b")) {                    Plotly.newPlot(                        "75c5d404-3d48-4292-b748-7549e8bfe61b",                        [{"x":[4.183890747015377,4.5887403641344,3.34483227027988,4.4456413099058425,3.6944841560708643,2.494995944193346,1.678665565506489,2.530240291050772,1.6803742326614064,1.6909460371701757,2.1644441398239045,2.037148781970865,2.413696082411195,1.5861282102782674,3.997862430682628,1.768396642164418,4.989369942963318,3.1565076033721575,4.372072604524505,1.424395849741503,2.366835691933812,2.4113996929448316,3.1023565441448473,2.1307572004332505,1.123021980991775,2.4546274444033758,2.9071769543349792,7.968911414591265,5.298909662702795,4.348045111839005,2.6686321171614327,2.7157801384561595,3.1551916560768873,2.5109747633157635,4.055424038985279,2.4285594595513826,4.332412611473129,2.23797564116437,2.533087159479178,2.2667222199250543,3.241875285244546,4.915713835184288,1.4114052396239436,1.143284147675259,4.491449203646036,9.260216403864856,4.371431894498289,1.9551880167569284,1.4663976402241712,4.411330604428058,1.872455773437882,1.9635988342284485,9.670795224799722,1.6644038223278868,3.0505146482157275,1.7376911910452315,5.521985078136375,3.915636950009636,4.906812903220204,7.450265341649811,8.773404869648195,1.0510698965943608,4.878990428175883,2.1127756927600907,2.1932499426252647,2.0586576312577587,1.9199888780800913,2.2222759474718465,3.2888142109139213,3.6454242145317353,1.7093387800893072,3.108661524420434,3.1259739908595146,6.843163144937252,1.460448754937984,1.9582772140714786,3.3946714867098353,2.4564266666982544,2.505235671164126,2.639202380188389,2.836293016519293,0.9468432653052427,1.8422829451948817,1.1505952683989682,2.234662150177594,2.8520703822312536,1.9418937049230196,3.4462818667728383,2.2436834136424055,13.640688439541881,1.4481078526137452,1.5746323724485802,3.247292575784127,1.5254627155553087,4.56045682359765,4.479508668927816,2.5439085348069046,5.121312318305825,2.0405592693420336,3.554972145115746],"type":"histogram"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"showlegend":false,"updatemenus":[{"buttons":[{"args":[{"x":[[4.183890747015377,4.5887403641344,3.34483227027988,4.4456413099058425,3.6944841560708643,2.494995944193346,1.678665565506489,2.530240291050772,1.6803742326614064,1.6909460371701757,2.1644441398239045,2.037148781970865,2.413696082411195,1.5861282102782674,3.997862430682628,1.768396642164418,4.989369942963318,3.1565076033721575,4.372072604524505,1.424395849741503,2.366835691933812,2.4113996929448316,3.1023565441448473,2.1307572004332505,1.123021980991775,2.4546274444033758,2.9071769543349792,7.968911414591265,5.298909662702795,4.348045111839005,2.6686321171614327,2.7157801384561595,3.1551916560768873,2.5109747633157635,4.055424038985279,2.4285594595513826,4.332412611473129,2.23797564116437,2.533087159479178,2.2667222199250543,3.241875285244546,4.915713835184288,1.4114052396239436,1.143284147675259,4.491449203646036,9.260216403864856,4.371431894498289,1.9551880167569284,1.4663976402241712,4.411330604428058,1.872455773437882,1.9635988342284485,9.670795224799722,1.6644038223278868,3.0505146482157275,1.7376911910452315,5.521985078136375,3.915636950009636,4.906812903220204,7.450265341649811,8.773404869648195,1.0510698965943608,4.878990428175883,2.1127756927600907,2.1932499426252647,2.0586576312577587,1.9199888780800913,2.2222759474718465,3.2888142109139213,3.6454242145317353,1.7093387800893072,3.108661524420434,3.1259739908595146,6.843163144937252,1.460448754937984,1.9582772140714786,3.3946714867098353,2.4564266666982544,2.505235671164126,2.639202380188389,2.836293016519293,0.9468432653052427,1.8422829451948817,1.1505952683989682,2.234662150177594,2.8520703822312536,1.9418937049230196,3.4462818667728383,2.2436834136424055,13.640688439541881,1.4481078526137452,1.5746323724485802,3.247292575784127,1.5254627155553087,4.56045682359765,4.479508668927816,2.5439085348069046,5.121312318305825,2.0405592693420336,3.554972145115746]],"type":"histogram"},[0]],"label":"01_mean_waiting_time","method":"restyle","visible":true},{"args":[{"x":[[94.06114070933735,94.36528656670569,91.95485657031665,96.86218549080384,92.96594681590301,91.00836548232249,91.28103221742303,92.16149359567922,91.09634331383785,90.95196532120117,92.94663348727694,92.67001684720184,91.31416672347768,92.60391004062586,95.37223064137268,92.02277488997565,96.61202552054571,94.06177534265386,94.2257770630501,89.91004074163335,93.69012977295324,91.8486076471708,94.1260741356259,90.64316210999324,86.8264481588144,92.76658805653042,93.91082459701842,96.88391433772927,95.55585385828508,93.45170987857364,89.64851994174758,95.74398347886486,93.19662314990704,94.52163055492984,92.35867490859474,91.40041936625347,94.84991682454178,91.44434897713109,93.96795790827024,92.24522639501593,87.97414664917011,92.97924597092998,89.60796896734354,86.7444904784829,93.4024849709827,95.39089818763246,93.4439726780278,92.40027872055099,90.18743892669184,95.4128011120609,92.08465300989008,93.28880496160001,95.38245988668653,89.85841203022686,90.7876225025802,86.8859633263932,94.54736682805202,92.96152681375264,95.34947061945019,95.890365798894,97.00116831671309,88.36226255593135,95.5134551512431,92.91321439829838,92.40973549909717,92.43962328587368,91.95551716427556,91.27576250924238,92.02080676046653,90.9088004682217,89.62350467256532,91.86334235769883,93.10273856496399,95.28578448763452,90.44975749755417,91.41331004288216,93.28422430255365,93.32999721760899,92.51539694498199,94.79192795305984,95.77353156682908,89.40080769587526,91.54856055001976,89.45204362907276,90.91913837070376,96.17870041408057,92.35141106280072,93.07858316631655,93.45589507240508,97.24127559397988,91.74809078398802,92.68883058267151,93.5115457950568,88.659251871345,95.83399535305502,96.93334580737199,93.65176232646128,94.4194067680289,89.32914771976554,96.75011368484108]],"type":"histogram"},[0]],"label":"02_operator_util","method":"restyle","visible":true},{"args":[{"x":[[81.20426784587872,57.85683908670237,54.296657685171446,68.0518283723671,42.65493110979107,47.873588090317014,25.13232700359799,67.58327378444032,43.2153489672776,16.78198315914019,44.5762656223639,23.068344990989246,45.27855749916024,57.778888375397614,82.82087690625963,29.975848520453532,85.79354283789291,31.13095815758658,57.14554081304059,26.02293279734036,51.78160632142833,18.612983948447933,60.068384820539734,29.05940589577864,30.792543231229445,26.438026648418855,74.25693967271582,79.94507478370949,52.94122369991125,35.239457372484644,50.1242439462347,69.55265589885076,45.39505219710621,68.19809973300417,78.83517448558399,45.24171376571603,60.504389539215275,36.84044472249294,64.16006195304134,81.0039956584981,35.18614427776291,38.6345926400217,26.315303724646547,15.398169901032878,56.27620852836064,95.95808087092406,38.57056181155318,28.127881607465667,30.8514313310145,77.63933821336089,55.88479080875646,72.47642275328742,78.6618779695187,62.55681224817402,50.96717739321751,44.81084198176494,87.63957040087467,41.079157145725,57.0673222171637,60.59287659375761,68.60066332671764,30.208964004732543,37.82070982214358,75.82078171289142,52.081252796897864,41.69813119626958,52.68453419974993,55.32109609113859,31.146516801129398,41.959070924812075,53.63716705248293,56.756619223696674,45.604299855806694,70.82814873782338,59.76833382568205,13.31099137524655,75.68625334478173,59.33200722222096,52.22508733424185,83.74345356338492,73.53068142874788,26.67601123852856,50.52775475197883,45.08828269382407,42.56124005667676,32.804345237341046,46.47597088955008,50.85657351333519,37.65881242854758,56.517083358761894,20.094435927853468,35.59924641327752,58.81506800577407,15.087442382231906,58.694569861358026,82.48950053918088,46.84151586233948,51.22099020557884,56.89144481327244,80.41922211772905]],"type":"histogram"},[0]],"label":"03_mean_nurse_waiting_time","method":"restyle","visible":true},{"args":[{"x":[[97.31457153033435,96.54081449920994,95.73005761386327,97.19371796702463,96.25663065110477,97.24134841345895,95.67112364722738,97.23437167050754,97.72003841313833,95.313121632632,97.43871065488825,95.45376140250842,97.61919659927352,97.90469735510902,97.40576977398368,97.69748387219055,97.47515794178389,97.58766694149948,97.5867288261487,96.16950810479702,97.22502917178885,96.7815106671225,97.15360868961297,95.50916077576416,97.11959714299437,97.80351133713343,97.565129174865,97.85198599744801,97.82576467119682,95.79120086797599,96.24306926134786,97.52655269858802,97.77628934587757,97.52107232418334,97.71740114745957,96.8129505366746,97.95109971704923,96.72456088071918,96.48454888592111,97.85483224827551,94.79126542429339,97.36486342861329,96.96127513707314,96.09855159082802,95.90889377905721,97.80476401708816,96.69743909964548,96.5061832679137,97.86953089261814,96.50840780719544,98.03266229061013,96.56369757411615,97.54010675353186,97.50126951409173,97.99595746247314,97.20209852209842,97.9903748354126,96.20801833745432,97.69737071188126,96.444789615947,97.87464137110874,96.30274556882436,97.57866723341509,97.60497314786227,97.1345382183965,98.07597430765408,97.17485059028083,97.58315027211758,98.15710196903504,97.29100212163436,97.77755954943365,96.33476297938586,96.7947832488314,95.9848776642333,96.13401635372274,93.90814045339158,97.61082247730384,96.95215469175096,97.95871422358495,97.51318555492105,97.56762495056712,98.26012356765186,96.76052356273136,97.26111008283539,97.4633448713303,97.39560018199676,97.81154426522211,97.27260085356725,97.52034083114364,96.30212412811743,97.33132229130995,97.52550110740766,97.11724253895419,94.64961947991138,97.35129102261475,97.12161633269524,97.17742249435317,97.56879968109764,94.75768581174768,98.20416799581534]],"type":"histogram"},[0]],"label":"04_nurse_util","method":"restyle","visible":true}],"direction":"down","showactive":true,"x":0.25,"xanchor":"right","y":1.1,"yanchor":"bottom"}],"annotations":[{"align":"left","showarrow":false,"text":"Performance measure","x":0,"xref":"paper","y":1.25,"yref":"paper"}]},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('5fc857d5-fa3e-4b2d-b8a3-4c707193d04b');
+var gd = document.getElementById('75c5d404-3d48-4292-b748-7549e8bfe61b');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -583,24 +618,18 @@ if (outputEl) {{
 
                         })                };                });            </script>        </div></div></div>
 </div>
-</section>
-</section>
-<section id="adding-a-chart-to-the-web-app">
-<h2>3. Adding a chart to the web app<a class="headerlink" href="#adding-a-chart-to-the-web-app" title="Permalink to this heading">#</a></h2>
-<p>We will make the following changes to the web app script:</p>
-<ol class="arabic simple">
-<li><p>Add in a function called <code class="docutils literal notranslate"><span class="pre">create_hist</span></code>. This will implement the <code class="docutils literal notranslate"><span class="pre">plotly</span></code> histogram code we included above.</p></li>
-<li><p>Alter the page width using <code class="docutils literal notranslate"><span class="pre">st.set_page_config()</span></code>. We are going to show the table of results and chart side by side so we need a slightly wider page layout</p></li>
-<li><p>Create two columns for the results using <code class="docutils literal notranslate"><span class="pre">st.columns(2)</span></code></p></li>
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">st.plotly_chart</span></code> function to display the histogram</p></li>
-</ol>
-<p>The full script is below.  Copy and paste this into a file called <code class="docutils literal notranslate"><span class="pre">app_with_chart</span></code> and run.  The figure at the end of this page illustrates the result after running the simulation model.</p>
+<p>The listing below is a new module called <code class="docutils literal notranslate"><span class="pre">app_with_filter.py</span></code>. It updates our histogram code to allowing filtering of results.  Underneath is a screenshot of the new web app.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">The code in this streamlit script adds in a basic plotly </span>
-<span class="sd">chart to display a histogram of replications</span>
+<span class="sd">The code in this streamlit script adds in a plotly </span>
+<span class="sd">chart to display a histogram of replications. The results shown in the </span>
+<span class="sd">histogram can be selected by the user.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
-<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+
+<span class="c1">#################################################################################</span>
+<span class="c1"># MODIFICATION: import graph_objects instead of plotly.express</span>
+<span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+<span class="c1">#################################################################################</span>
 <span class="kn">from</span> <span class="nn">model</span> <span class="kn">import</span> <span class="n">Experiment</span><span class="p">,</span> <span class="n">multiple_replications</span>
 
 <span class="n">INTRO_FILE</span> <span class="o">=</span> <span class="s1">&#39;./resources/model_info.md&#39;</span>
@@ -622,30 +651,88 @@ if (outputEl) {{
         <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
     
 
-<span class="c1">################################################################################</span>
-<span class="c1"># MODIFICATION: code to create plotly histogram</span>
-<span class="k">def</span> <span class="nf">create_hist</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">value_label</span><span class="p">,</span> <span class="n">marginal</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">):</span>
+<span class="c1">###################################################################################</span>
+<span class="c1"># MODIFICATION: user filtered chart</span>
+<span class="k">def</span> <span class="nf">create_user_filtered_hist</span><span class="p">(</span><span class="n">results</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Create and return a plotly express histogram of</span>
-<span class="sd">    the results column</span>
+<span class="sd">    Create a plotly histogram that includes a drop down list that allows a user</span>
+<span class="sd">    to select which KPI is displayed as a histogram</span>
+<span class="sd">    </span>
+<span class="sd">    Params:</span>
+<span class="sd">    -------</span>
+<span class="sd">    results: pd.Dataframe</span>
+<span class="sd">        rows = replications, cols = KPIs</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    -------</span>
+<span class="sd">    plotly.figure</span>
+<span class="sd">    </span>
+<span class="sd">    Sources:</span>
+<span class="sd">    ------</span>
+<span class="sd">    The code in this function was parly adapted from two sources:</span>
+<span class="sd">    1. https://stackoverflow.com/questions/59406167/plotly-how-to-filter-a-pandas-dataframe-using-a-dropdown-menu</span>
+<span class="sd">    </span>
+<span class="sd">    Thanks and credit to `vestland` the author of the reponse.</span>
+<span class="sd">    </span>
+<span class="sd">    2. https://plotly.com/python/dropdowns/</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span><span class="n">value_label</span><span class="p">},</span>
-                       <span class="n">marginal</span><span class="o">=</span><span class="n">marginal</span><span class="p">)</span>
-    <span class="c1"># hide legend</span>
-    <span class="n">fig</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">layout_showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="c1"># create a figure</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+
+    <span class="c1"># set up a trace</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Histogram</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">results</span><span class="p">[</span><span class="n">results</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]]))</span>
+
+    <span class="n">buttons</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># create list of drop down items - KPIs</span>
+    <span class="c1"># the params in the code would need to vary depending on the type of chart.</span>
+    <span class="c1"># The histogram will show the first KPI by default</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">buttons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;restyle&#39;</span><span class="p">,</span>
+                            <span class="n">label</span><span class="o">=</span><span class="n">col</span><span class="p">,</span>
+                            <span class="n">visible</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                            <span class="n">args</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;x&#39;</span><span class="p">:[</span><span class="n">results</span><span class="p">[</span><span class="n">col</span><span class="p">]],</span>
+                                   <span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="s1">&#39;histogram&#39;</span><span class="p">},</span> <span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+                            <span class="p">)</span>
+                      <span class="p">)</span>
+
+    <span class="c1"># create update menu and parameters</span>
+    <span class="n">updatemenu</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">your_menu</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="n">updatemenu</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">your_menu</span><span class="p">)</span>
+
+    <span class="n">updatemenu</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;buttons&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">buttons</span>
+    <span class="n">updatemenu</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;direction&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;down&#39;</span>
+    <span class="n">updatemenu</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;showactive&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">updatemenu</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.25</span>
+    <span class="n">updatemenu</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.1</span>
+    <span class="n">updatemenu</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;xanchor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;right&#39;</span>
+    <span class="n">updatemenu</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;yanchor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;bottom&#39;</span>
+    <span class="c1">#updatemenu[0][&#39;pad&#39;] = {&quot;r&quot;: 10, &quot;t&quot;: 10}</span>
     
+    
+    
+    <span class="c1"># add dropdown menus to the figure</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+                      <span class="n">updatemenus</span><span class="o">=</span><span class="n">updatemenu</span><span class="p">)</span>
+    
+    
+    <span class="c1"># add label for selecting performance measure</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">annotations</span><span class="o">=</span><span class="p">[</span>
+        <span class="nb">dict</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Performance measure&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xref</span><span class="o">=</span><span class="s2">&quot;paper&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> 
+             <span class="n">yref</span><span class="o">=</span><span class="s2">&quot;paper&quot;</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">showarrow</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="p">])</span>
     <span class="k">return</span> <span class="n">fig</span>
-<span class="c1">################################################################################</span>
+<span class="c1">##################################################################################</span>
 
 
-<span class="c1">################################################################################</span>
-<span class="c1"># MODIFICATION: update to wide page settings to display results side by side</span>
+<span class="c1">#  update to wide page settings to help display results side by side</span>
 <span class="n">st</span><span class="o">.</span><span class="n">set_page_config</span><span class="p">(</span>
      <span class="n">page_title</span><span class="o">=</span><span class="s2">&quot;Urgent Care Sim App&quot;</span><span class="p">,</span>
      <span class="n">layout</span><span class="o">=</span><span class="s2">&quot;wide&quot;</span><span class="p">,</span>
      <span class="n">initial_sidebar_state</span><span class="o">=</span><span class="s2">&quot;expanded&quot;</span><span class="p">,</span>
  <span class="p">)</span>
-<span class="c1">################################################################################</span>
 
 <span class="c1"># We add in a title for our web app&#39;s page</span>
 <span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Urgent care call centre&quot;</span><span class="p">)</span>
@@ -677,12 +764,10 @@ if (outputEl) {{
     <span class="c1">#  add a spinner and then display success box</span>
     <span class="k">with</span> <span class="n">st</span><span class="o">.</span><span class="n">spinner</span><span class="p">(</span><span class="s1">&#39;Simulating the urgent care system...&#39;</span><span class="p">):</span>
         <span class="c1"># run multiple replications of experment</span>
-        <span class="n">results</span> <span class="o">=</span> <span class="n">multiple_replications</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="n">n_reps</span><span class="o">=</span><span class="n">n_reps</span><span class="p">)</span><span class="c1">#</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">multiple_replications</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="n">n_reps</span><span class="o">=</span><span class="n">n_reps</span><span class="p">)</span>
     
     <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="s1">&#39;Done!&#39;</span><span class="p">)</span>
 
-    <span class="c1">############################################################################</span>
-    <span class="c1"># MODIFICATION: create columns for histogram of the results</span>
     <span class="n">col1</span><span class="p">,</span> <span class="n">col2</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
     <span class="k">with</span> <span class="n">col1</span><span class="o">.</span><span class="n">expander</span><span class="p">(</span><span class="s1">&#39;Tabular results&#39;</span><span class="p">,</span> <span class="n">expanded</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="c1"># show tabular results</span>
@@ -690,16 +775,16 @@ if (outputEl) {{
 
     <span class="k">with</span> <span class="n">col2</span><span class="o">.</span><span class="n">expander</span><span class="p">(</span><span class="s1">&#39;Histogram&#39;</span><span class="p">,</span> <span class="n">expanded</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     
-
-        <span class="n">fig</span> <span class="o">=</span> <span class="n">create_hist</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="s1">&#39;01_mean_waiting_time&#39;</span><span class="p">,</span> 
-                          <span class="s1">&#39;Mean waiting time for operator&#39;</span><span class="p">)</span>
+        <span class="c1"># #########################################################################</span>
+        <span class="c1"># MODIFICATION: call updated plotly function</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">create_user_filtered_hist</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+        <span class="c1">###########################################################################</span>
      
         <span class="n">st</span><span class="o">.</span><span class="n">plotly_chart</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">use_container_width</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        
-     <span class="c1">###########################################################################</span>
+
 </pre></div>
 </div>
-<p><img alt="image" src="../../_images/app_with_chart.png" /></p>
+<p><img alt="image" src="../../_images/app_with_filter.png" /></p>
 </section>
 </section>
 
@@ -735,20 +820,20 @@ if (outputEl) {{
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="09_adding_text.html"
+       href="10_adding_plots.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Background text</p>
+        <p class="prev-next-title">Adding plots</p>
       </div>
     </a>
     <a class="right-next"
-       href="11_filter_results.html"
+       href="../04_exercises/01_sampling.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Filtering results</p>
+        <p class="prev-next-title">Random sampling</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -771,12 +856,7 @@ if (outputEl) {{
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">1. Imports</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-for-creating-the-plotly-histogram">2. Code for creating the <code class="docutils literal notranslate"><span class="pre">plotly</span></code> histogram</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-replications">2.1 Get the replications</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-of-mean-waiting-time">2.2. Histogram of mean waiting time</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-chart-to-the-web-app">3. Adding a chart to the web app</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotly-code">2. <code class="docutils literal notranslate"><span class="pre">plotly</span></code> code</a></li>
 </ul>
   </nav></div>
 
