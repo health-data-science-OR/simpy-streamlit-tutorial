@@ -31,6 +31,25 @@ def create_hist(results, column, value_label, marginal='box'):
     '''
     Create and return a plotly express histogram of
     the results column
+    
+    Params:
+    -------
+    results: pd.DataFrame
+        Rows = replications, columns = KPIs
+        
+    column: str
+        Name of column in results to use
+        
+    value_label: str
+        X-axis label
+        
+    marginal: str, optional (default='box')
+        An additional plot to render above the histogram
+        options to try: box, violin, rug
+    
+    Returns:
+    ------
+    plotly.figure
     '''
     fig = px.histogram(results[column], labels={'value':value_label},
                        marginal=marginal)
