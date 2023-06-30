@@ -528,6 +528,27 @@ Or create the file yourself.  Use the following text:</p></li>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>00_arrivals                       223.9
+01a_triage_wait                    35.3
+01b_triage_util                     0.6
+02a_registration_wait             107.0
+02b_registration_util               0.8
+03a_examination_wait               27.5
+03b_examination_util                0.8
+04a_treatment_wait(non_trauma)    141.6
+04b_treatment_util(non_trauma)      0.9
+05_total_time(non-trauma)         240.2
+06a_trauma_wait                   100.4
+06b_trauma_util                     0.8
+07a_treatment_wait(trauma)        199.9
+07b_treatment_util(trauma)          0.9
+08_total_time(trauma)             418.1
+09_throughput                     151.5
+dtype: float64
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -619,6 +640,15 @@ Or create the file yourself.  Use the following text:</p></li>
 <span class="c1"># MODIFICATION 4: display results using st.table (or st.dataframe)</span>
     <span class="n">st</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 <span class="c1">################################################################################</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-06-30 12:06:35.670 
+  <span class=" -Color -Color-Bold -Color-Bold-Yellow">Warning:</span> to view this Streamlit app on a browser, run it with the following
+  command:
+
+    streamlit run /home/tom/miniconda3/envs/sim/lib/python3.9/site-packages/ipykernel_launcher.py [ARGUMENTS]
 </pre></div>
 </div>
 </div>
