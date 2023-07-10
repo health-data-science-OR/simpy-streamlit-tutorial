@@ -1,0 +1,5 @@
+id,name,n_operators,n_nurses,chance_callback
+0,base,13,9,0.4
+1,operators+1,14,9,0.4
+2,Nurses+1,13,10,0.4
+3,higher_acuity,13,9,0.55
