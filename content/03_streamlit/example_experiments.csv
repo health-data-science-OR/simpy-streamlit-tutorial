@@ -1,0 +1,5 @@
+id,experiment,n_operators,n_nurses,chance_callback
+0,base,13,9,0.4
+1,op+1,14,9,0.4
+2,nurse+1,13,10,0.4
+3,high_acuity,13,9,0.55
