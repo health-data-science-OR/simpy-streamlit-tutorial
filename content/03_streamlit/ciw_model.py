@@ -109,7 +109,7 @@ def get_model(args):
                                                       ciw.dists.NoArrivals()],
                                service_distributions=[args.call_dist,
                                                       args.nurse_dist],
-                               routing=[[0.0, 0.4],
+                               routing=[[0.0, args.chance_callback],
                                         [0.0, 0.0]],
                                number_of_servers=[args.n_operators,
                                                   args.n_nurses])

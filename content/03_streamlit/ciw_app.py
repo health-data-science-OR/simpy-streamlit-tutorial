@@ -1,15 +1,13 @@
 '''
-The code in this streamlit script adds in a plotly 
-chart to display a histogram of replications. The results shown in the 
-histogram can be selected by the user.
+The code in this streamlit script makes use of the
+ciw backend in place of simpy
 '''
 import streamlit as st
-
-#################################################################################
-# MODIFICATION: import graph_objects instead of plotly.express
 import plotly.graph_objects as go
-#################################################################################
+
+# MODIFICATION: import from ciw_model.py ########################################
 from ciw_model import Experiment, multiple_replications
+#################################################################################
 
 INTRO_FILE = './resources/model_info.md'
 
@@ -29,9 +27,6 @@ def read_file_contents(file_name):
     with open(file_name) as f:
         return f.read()
     
-
-###################################################################################
-# MODIFICATION: user filtered chart
 def create_user_filtered_hist(results):
     '''
     Create a plotly histogram that includes a drop down list that allows a user
@@ -103,8 +98,6 @@ def create_user_filtered_hist(results):
              yref="paper", align="left", showarrow=False)
     ])
     return fig
-##################################################################################
-
 
 #  update to wide page settings to help display results side by side
 st.set_page_config(
@@ -153,16 +146,6 @@ if st.button("Run simulation"):
         st.dataframe(results.describe())
 
     with col2.expander('Histogram', expanded=True):
-    
-        # #########################################################################
-        # MODIFICATION: call updated plotly function
-        fig = create_user_filtered_hist(results)
-        ###########################################################################
-     
+        # call updated plotly function
+        fig = create_user_filtered_hist(results)     
         st.plotly_chart(fig, use_container_width=True)
-
-
-    
-    
-    
-
