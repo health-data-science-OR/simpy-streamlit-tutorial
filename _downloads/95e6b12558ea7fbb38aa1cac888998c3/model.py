@@ -476,3 +476,62 @@ def multiple_replications(experiment,
     df_results.index = np.arange(1, len(df_results)+1)
     df_results.index.name = 'rep'
     return df_results
+
+# Support for running batch experiments
+
+def run_all_experiments(experiments, rc_period=RESULTS_COLLECTION_PERIOD,
+                        n_reps=5):
+    '''
+    Run each of the scenarios for a specified results
+    collection period and replications.
+    
+    Params:
+    ------
+    experiments: dict
+        dictionary of Experiment objects
+        
+    rc_period: float
+        model run length
+    
+    '''
+    print('Model experiments:')
+    print(f'No. experiments to execute = {len(experiments)}\n')
+
+    experiment_results = {}
+    for exp_name, experiment in experiments.items():
+        
+        print(f'Running {exp_name}', end=' => ')
+        results = multiple_replications(experiment, rc_period, n_reps)
+        print('done.\n')
+        
+        #save the results
+        experiment_results[exp_name] = results
+    
+    print('All experiments are complete.')
+    
+    # format thje results
+    return experiment_results
+
+def experiment_summary_frame(experiment_results):
+    '''
+    Mean results for each performance measure by experiment
+    
+    Parameters:
+    ----------
+    experiment_results: dict
+        dictionary of replications.  
+        Key identifies the performance measure
+        
+    Returns:
+    -------
+    pd.DataFrame
+    '''
+    columns = []
+    summary = pd.DataFrame()
+    for sc_name, replications in experiment_results.items():
+        summary = pd.concat([summary, replications.mean()], axis=1)
+        columns.append(sc_name)
+
+    summary.columns = columns
+    return summary
+                    
