@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/03_streamlit/12_multiple_experiments';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Random sampling" href="../04_exercises/01_sampling.html" />
+    <link rel="next" title="Replacing simpy with ciw" href="13_ciw_backend.html" />
     <link rel="prev" title="Adding plots" href="10_adding_plots.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -178,6 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="09_adding_text.html">Background text</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10_adding_plots.html">Adding plots</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Loading and running multiple experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_ciw_backend.html">Replacing <code class="docutils literal notranslate"><span class="pre">simpy</span></code> with <code class="docutils literal notranslate"><span class="pre">ciw</span></code></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
 <ul class="nav bd-sidenav">
@@ -807,17 +808,17 @@ All experiments are complete.
   <tbody>
     <tr>
       <th>1</th>
-      <td>3.086493</td>
-      <td>96.124167</td>
-      <td>49.545556</td>
-      <td>98.260245</td>
+      <td>2.524124</td>
+      <td>92.788668</td>
+      <td>37.670615</td>
+      <td>97.746949</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2.200577</td>
-      <td>92.894208</td>
-      <td>50.993519</td>
-      <td>97.362892</td>
+      <td>3.438547</td>
+      <td>93.555439</td>
+      <td>53.425229</td>
+      <td>98.252762</td>
     </tr>
   </tbody>
 </table>
@@ -890,31 +891,31 @@ All experiments are complete.
   <tbody>
     <tr>
       <th>01_mean_waiting_time</th>
-      <td>2.40</td>
-      <td>0.84</td>
-      <td>2.28</td>
-      <td>2.24</td>
+      <td>3.82</td>
+      <td>1.18</td>
+      <td>4.64</td>
+      <td>3.35</td>
     </tr>
     <tr>
       <th>02_operator_util</th>
-      <td>93.86</td>
-      <td>85.19</td>
-      <td>91.72</td>
-      <td>91.64</td>
+      <td>93.55</td>
+      <td>86.17</td>
+      <td>93.68</td>
+      <td>93.25</td>
     </tr>
     <tr>
       <th>03_mean_nurse_waiting_time</th>
-      <td>63.44</td>
-      <td>44.32</td>
-      <td>20.47</td>
-      <td>161.32</td>
+      <td>54.35</td>
+      <td>53.55</td>
+      <td>19.51</td>
+      <td>155.23</td>
     </tr>
     <tr>
       <th>04_nurse_util</th>
-      <td>97.68</td>
-      <td>96.93</td>
-      <td>95.49</td>
-      <td>97.64</td>
+      <td>97.46</td>
+      <td>96.91</td>
+      <td>95.68</td>
+      <td>97.87</td>
     </tr>
   </tbody>
 </table>
@@ -1050,11 +1051,11 @@ All experiments are complete.
       </div>
     </a>
     <a class="right-next"
-       href="../04_exercises/01_sampling.html"
+       href="13_ciw_backend.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Random sampling</p>
+        <p class="prev-next-title">Replacing <code class="docutils literal notranslate"><span class="pre">simpy</span></code> with <code class="docutils literal notranslate"><span class="pre">ciw</span></code></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

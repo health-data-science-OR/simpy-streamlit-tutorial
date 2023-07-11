@@ -178,6 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../03_streamlit/09_adding_text.html">Background text</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03_streamlit/10_adding_plots.html">Adding plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03_streamlit/12_multiple_experiments.html">Loading and running multiple experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/13_ciw_backend.html">Replacing <code class="docutils literal notranslate"><span class="pre">simpy</span></code> with <code class="docutils literal notranslate"><span class="pre">ciw</span></code></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
 <ul class="nav bd-sidenav">
@@ -582,7 +583,7 @@ In general the approach to sampling is:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c1d52f5ded2365747c629a4f04e753213e4fbcc9f3b86f75a45f4aa94fc3d13b.png" src="../../_images/c1d52f5ded2365747c629a4f04e753213e4fbcc9f3b86f75a45f4aa94fc3d13b.png" />
+<img alt="../../_images/b62e928a42b968862f9b3df0724aaee12357a04273eb4040a91cdc1b50baffb9.png" src="../../_images/b62e928a42b968862f9b3df0724aaee12357a04273eb4040a91cdc1b50baffb9.png" />
 </div>
 </div>
 </section>
@@ -600,7 +601,7 @@ In general the approach to sampling is:</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 500x300 with 1 Axes&gt;, &lt;AxesSubplot:xlabel=&#39;x&#39;, ylabel=&#39;p(x)&#39;&gt;)
 </pre></div>
 </div>
-<img alt="../../_images/f653fa809d32056a9fc595c83040aa7ff3cff6fd29f94d0fd0aea916ce89e32a.png" src="../../_images/f653fa809d32056a9fc595c83040aa7ff3cff6fd29f94d0fd0aea916ce89e32a.png" />
+<img alt="../../_images/789eddab912de5ff2c43075b342f377372867137ebee7ea30679e80658b4cd87.png" src="../../_images/789eddab912de5ff2c43075b342f377372867137ebee7ea30679e80658b4cd87.png" />
 </div>
 </div>
 </section>
@@ -619,7 +620,7 @@ In general the approach to sampling is:</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 500x300 with 1 Axes&gt;, &lt;AxesSubplot:xlabel=&#39;x&#39;, ylabel=&#39;p(x)&#39;&gt;)
 </pre></div>
 </div>
-<img alt="../../_images/db4ade6bca45630d339936111a07c2a3e29db32449fbc08f05d49f7006f69f29.png" src="../../_images/db4ade6bca45630d339936111a07c2a3e29db32449fbc08f05d49f7006f69f29.png" />
+<img alt="../../_images/59b93f0fa4c13af1d8041ec70b6f5985ea49318fc8bf6004c926f9f865789ea9.png" src="../../_images/59b93f0fa4c13af1d8041ec70b6f5985ea49318fc8bf6004c926f9f865789ea9.png" />
 </div>
 </div>
 </section>
@@ -636,7 +637,7 @@ In general the approach to sampling is:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>24.92603450527415
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>28.031309768299703
 &lt;class &#39;float&#39;&gt;
 </pre></div>
 </div>
@@ -657,9 +658,9 @@ In general the approach to sampling is:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[17.78717087]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[29.89129255]
 &lt;class &#39;numpy.ndarray&#39;&gt;
-17.787170867273876
+29.891292554889105
 </pre></div>
 </div>
 </div>
@@ -695,7 +696,7 @@ In general the approach to sampling is:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([6.12824118, 2.21723228, 3.76633628, 5.38603513, 0.5954794 ])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.37445622, 2.2862004 , 0.29094579, 4.26194823, 2.9344574 ])
 </pre></div>
 </div>
 </div>

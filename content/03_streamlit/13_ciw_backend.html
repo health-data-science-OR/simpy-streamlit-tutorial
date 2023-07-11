@@ -1,0 +1,816 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Replacing simpy with ciw &#8212; Simulation in python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/03_streamlit/13_ciw_backend';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Random sampling" href="../04_exercises/01_sampling.html" />
+    <link rel="prev" title="Loading and running multiple experiments" href="12_multiple_experiments.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../front_page.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Simulation in python</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../front_page.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_setup/install.html">Install python and an IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_setup/reading.html">Recommended Reading</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulation with simpy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02_simpy/01_sampling.html">Random variables and simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_simpy/02_basic_simpy.html">A first look at simpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_simpy/03_111_model.html">A full model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_simpy/04_basic_results.html">Collecting results from a single run</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_simpy/05_experiments.html">Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_simpy/06_replications.html">Multiple replications</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">streamlit sim apps</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_intro.html">What is streamlit?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_design.html">Main concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_experiment.html">The <code class="docutils literal notranslate"><span class="pre">Experiment</span></code> class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_wrapper.html">Wrapper functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_module.html">Python module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_basic_app.html">A first web app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_interactive.html">An interactive app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_sidebar.html">Tidying up controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_adding_text.html">Background text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_adding_plots.html">Adding plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_multiple_experiments.html">Loading and running multiple experiments</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Replacing <code class="docutils literal notranslate"><span class="pre">simpy</span></code> with <code class="docutils literal notranslate"><span class="pre">ciw</span></code></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/01_sampling.html">Random sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/02_generator.html">Generator exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/03_basic_results.html">Results collection exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/04_callback.html">Adding a patient callback from a nurse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/05_treat_sim.html"><code class="docutils literal notranslate"><span class="pre">simpy</span></code> treatment centre model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/06_streamlit.html">Treatment sim <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> app</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/07_plotting.html">Adding a plot</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05_solutions/01_sampling.html">Random sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_solutions/02_generator.html">Generator exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_solutions/03_basic_results.html">Results collection exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_solutions/04_callback.html">Adding a patient callback from a nurse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_solutions/05_treat_sim.html"><code class="docutils literal notranslate"><span class="pre">simpy</span></code> treatment centre model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_solutions/06_streamlit.html">Treatment sim <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_solutions/07_plotting.html">Adding a plot</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/health-data-science-OR/natcor-simpy/main?urlpath=lab/tree/content/03_streamlit/13_ciw_backend.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/health-data-science-OR/natcor-simpy" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/health-data-science-OR/natcor-simpy/issues/new?title=Issue%20on%20page%20%2Fcontent/03_streamlit/13_ciw_backend.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/03_streamlit/13_ciw_backend.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Replacing simpy with ciw</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#details-on-the-ciw-wrappers">Details on the CiW wrappers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updated-experiment">Updated <code class="docutils literal notranslate"><span class="pre">Experiment</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revised-single-run-function">Revised <code class="docutils literal notranslate"><span class="pre">single_run</span></code> function.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#streamlit-script-implementing-ciw-backend"><code class="docutils literal notranslate"><span class="pre">streamlit</span></code> script implementing <code class="docutils literal notranslate"><span class="pre">ciw</span></code> backend</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="replacing-simpy-with-ciw">
+<h1>Replacing <code class="docutils literal notranslate"><span class="pre">simpy</span></code> with <code class="docutils literal notranslate"><span class="pre">ciw</span></code><a class="headerlink" href="#replacing-simpy-with-ciw" title="Permalink to this heading">#</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">ciw</span></code> is an free and open source software package for discrete-event simulation of queuing networks.  It is a good alternative choice to simpy for the urgent care call centre case study.  More information about <code class="docutils literal notranslate"><span class="pre">ciw</span></code> and how to build queuingf network models can be found here: <a class="reference external" href="https://ciw.readthedocs.io">https://ciw.readthedocs.io</a></p>
+<p>The approach and structure we have followed for organising and managing our simulation model logic means that we can “swap out” the <code class="docutils literal notranslate"><span class="pre">simpy</span></code> model for a <code class="docutils literal notranslate"><span class="pre">ciw</span></code> implementation <strong>without</strong> any change to our <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> script.  In this example, we will store the <code class="docutils literal notranslate"><span class="pre">ciw</span></code> model in its own module called <code class="docutils literal notranslate"><span class="pre">ciw_model.py</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> remains the same apart from our import statement (in practice you could just replace <code class="docutils literal notranslate"><span class="pre">model.py</span></code> altogether).  The <code class="docutils literal notranslate"><span class="pre">ciw</span></code> implementation provides almost identical results to <code class="docutils literal notranslate"><span class="pre">simpy</span></code> (for all practical purposes its it the same.)</p>
+<section id="details-on-the-ciw-wrappers">
+<h2>Details on the CiW wrappers<a class="headerlink" href="#details-on-the-ciw-wrappers" title="Permalink to this heading">#</a></h2>
+<p>We need to import <code class="docutils literal notranslate"><span class="pre">ciw</span></code>, rewrite the <code class="docutils literal notranslate"><span class="pre">Experiment</span></code> class and the <code class="docutils literal notranslate"><span class="pre">single_run</span></code> function.</p>
+<section id="updated-experiment">
+<h3>Updated <code class="docutils literal notranslate"><span class="pre">Experiment</span></code><a class="headerlink" href="#updated-experiment" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">ciw</span></code> ships with its own distribution classes.  Therefore we need to make some minor modifications to <code class="docutils literal notranslate"><span class="pre">Experiment</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">ciw</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Module level variables, constants, and default values</span>
+
+<span class="c1"># default resources</span>
+<span class="n">N_OPERATORS</span> <span class="o">=</span> <span class="mi">13</span>
+
+<span class="c1"># number of nurses available</span>
+<span class="n">N_NURSES</span> <span class="o">=</span> <span class="mi">9</span>
+
+<span class="c1"># default lambda for arrival distribution</span>
+<span class="n">MEAN_IAT</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">/</span> <span class="mf">60.0</span>
+
+<span class="c1">## default service time parameters (triangular)</span>
+<span class="n">CALL_LOW</span> <span class="o">=</span> <span class="mf">5.0</span>
+<span class="n">CALL_MODE</span> <span class="o">=</span> <span class="mf">7.0</span>
+<span class="n">CALL_HIGH</span> <span class="o">=</span> <span class="mf">10.0</span>
+
+<span class="c1"># nurse distribution parameters</span>
+<span class="n">NURSE_CALL_LOW</span> <span class="o">=</span> <span class="mf">10.0</span>
+<span class="n">NURSE_CALL_HIGH</span> <span class="o">=</span> <span class="mf">20.0</span>
+
+<span class="n">CHANCE_CALLBACK</span> <span class="o">=</span> <span class="mf">0.4</span>
+
+<span class="c1"># run variables</span>
+<span class="n">RESULTS_COLLECTION_PERIOD</span> <span class="o">=</span> <span class="mi">1000</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Experiment</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Parameter class for 111 simulation model</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_operators</span><span class="o">=</span><span class="n">N_OPERATORS</span><span class="p">,</span> <span class="n">n_nurses</span><span class="o">=</span><span class="n">N_NURSES</span><span class="p">,</span> 
+                 <span class="n">mean_iat</span><span class="o">=</span><span class="n">MEAN_IAT</span><span class="p">,</span> <span class="n">call_low</span><span class="o">=</span><span class="n">CALL_LOW</span><span class="p">,</span> 
+                 <span class="n">call_mode</span><span class="o">=</span><span class="n">CALL_MODE</span><span class="p">,</span> <span class="n">call_high</span><span class="o">=</span><span class="n">CALL_HIGH</span><span class="p">,</span> 
+                 <span class="n">chance_callback</span><span class="o">=</span><span class="n">CHANCE_CALLBACK</span><span class="p">,</span> 
+                 <span class="n">nurse_call_low</span><span class="o">=</span><span class="n">NURSE_CALL_LOW</span><span class="p">,</span> 
+                 <span class="n">nurse_call_high</span><span class="o">=</span><span class="n">NURSE_CALL_HIGH</span><span class="p">,</span>
+                 <span class="n">random_seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        The init method sets up our defaults. </span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_operators</span> <span class="o">=</span> <span class="n">n_operators</span>
+        
+        <span class="c1"># store the number of nurses in the experiment</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_nurses</span> <span class="o">=</span> <span class="n">n_nurses</span>
+        
+        <span class="c1"># arrival distribution</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arrival_dist</span> <span class="o">=</span> <span class="n">ciw</span><span class="o">.</span><span class="n">dists</span><span class="o">.</span><span class="n">Exponential</span><span class="p">(</span><span class="n">mean_iat</span><span class="p">)</span>
+        
+        <span class="c1"># call duration </span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">call_dist</span> <span class="o">=</span> <span class="n">ciw</span><span class="o">.</span><span class="n">dists</span><span class="o">.</span><span class="n">Triangular</span><span class="p">(</span><span class="n">call_low</span><span class="p">,</span> 
+                                              <span class="n">call_mode</span><span class="p">,</span> <span class="n">call_high</span><span class="p">)</span>
+        
+        <span class="c1"># duration of call with nurse     </span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nurse_dist</span> <span class="o">=</span> <span class="n">ciw</span><span class="o">.</span><span class="n">dists</span><span class="o">.</span><span class="n">Uniform</span><span class="p">(</span><span class="n">nurse_call_low</span><span class="p">,</span> 
+                                            <span class="n">nurse_call_high</span><span class="p">)</span>
+        
+        <span class="c1"># prob of call back</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chance_callback</span> <span class="o">=</span> <span class="n">chance_callback</span>
+                
+        <span class="c1"># initialise results to zero</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init_results_variables</span><span class="p">()</span>
+        
+    <span class="k">def</span> <span class="nf">init_results_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Initialise all of the experiment variables used in results </span>
+<span class="sd">        collection.  This method is called at the start of each run</span>
+<span class="sd">        of the model</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="c1"># variable used to store results of experiment</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;waiting_times&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="c1"># total operator usage time for utilisation calculation.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;total_call_duration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+        
+        <span class="c1"># nurse sub process results collection</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;nurse_waiting_times&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;total_nurse_call_duration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="revised-single-run-function">
+<h3>Revised <code class="docutils literal notranslate"><span class="pre">single_run</span></code> function.<a class="headerlink" href="#revised-single-run-function" title="Permalink to this heading">#</a></h3>
+<p>The single run function has the most difference in the two implementations.  In <code class="docutils literal notranslate"><span class="pre">simpy</span></code> we define process logic using functions (or classes) whereas in <code class="docutils literal notranslate"><span class="pre">ciw</span></code> we define a network model (arrival/service distributions, routing percentages, servers) using the <code class="docutils literal notranslate"><span class="pre">create_network</span></code> function.  In this example we have encapsulated all of the model building logic into <code class="docutils literal notranslate"><span class="pre">get_model</span></code>.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">single_run</span></code> then calls get model and uses the simulation engine of <code class="docutils literal notranslate"><span class="pre">ciw</span></code> to run the network model given a set of inputs and seed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_model</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Build a CiW model using the arguments provided.</span>
+<span class="sd">    </span>
+<span class="sd">    Params:</span>
+<span class="sd">    -----</span>
+<span class="sd">    args: Experiment</span>
+<span class="sd">        container class for Experiment. Contains the model inputs/params</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    --------</span>
+<span class="sd">    ciw.network.Network</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ciw</span><span class="o">.</span><span class="n">create_network</span><span class="p">(</span><span class="n">arrival_distributions</span><span class="o">=</span><span class="p">[</span><span class="n">args</span><span class="o">.</span><span class="n">arrival_dist</span><span class="p">,</span>
+                                                      <span class="n">ciw</span><span class="o">.</span><span class="n">dists</span><span class="o">.</span><span class="n">NoArrivals</span><span class="p">()],</span>
+                               <span class="n">service_distributions</span><span class="o">=</span><span class="p">[</span><span class="n">args</span><span class="o">.</span><span class="n">call_dist</span><span class="p">,</span>
+                                                      <span class="n">args</span><span class="o">.</span><span class="n">nurse_dist</span><span class="p">],</span>
+                               <span class="n">routing</span><span class="o">=</span><span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">chance_callback</span><span class="p">],</span>
+                                        <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]],</span>
+                               <span class="n">number_of_servers</span><span class="o">=</span><span class="p">[</span><span class="n">args</span><span class="o">.</span><span class="n">n_operators</span><span class="p">,</span>
+                                                  <span class="n">args</span><span class="o">.</span><span class="n">n_nurses</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">model</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">single_run</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> 
+               <span class="n">rc_period</span><span class="o">=</span><span class="n">RESULTS_COLLECTION_PERIOD</span><span class="p">,</span> 
+               <span class="n">random_seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Conduct a single run of the simulation model.</span>
+<span class="sd">    </span>
+<span class="sd">    Params:</span>
+<span class="sd">    ------</span>
+<span class="sd">    experiment: Experiment</span>
+<span class="sd">        Parameter container</span>
+<span class="sd">        </span>
+<span class="sd">    random_seed: int</span>
+<span class="sd">        Random seed to control simulation run.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict</span>
+<span class="sd">        Results of single run of the model.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="c1"># results dictionary.  Each KPI is a new entry.</span>
+    <span class="n">run_results</span> <span class="o">=</span> <span class="p">{}</span>
+    
+    <span class="c1"># random seed</span>
+    <span class="n">ciw</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">random_seed</span><span class="p">)</span>
+
+    <span class="c1"># parameterise model</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">get_model</span><span class="p">(</span><span class="n">experiment</span><span class="p">)</span>
+
+    <span class="c1"># simulation engine</span>
+    <span class="n">sim_engine</span> <span class="o">=</span> <span class="n">ciw</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+    
+    <span class="c1"># run the model</span>
+    <span class="n">sim_engine</span><span class="o">.</span><span class="n">simulate_until_max_time</span><span class="p">(</span><span class="n">rc_period</span><span class="p">)</span>
+
+    <span class="c1"># results:    </span>
+    <span class="c1"># get all results from ciw</span>
+    <span class="n">recs</span> <span class="o">=</span> <span class="n">sim_engine</span><span class="o">.</span><span class="n">get_all_records</span><span class="p">()</span>
+    
+    <span class="c1"># operator service times</span>
+    <span class="n">op_servicetimes</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">service_time</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">recs</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">node</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
+    <span class="c1"># nurse service times</span>
+    <span class="n">nurse_servicetimes</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">service_time</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">recs</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">node</span><span class="o">==</span><span class="mi">2</span><span class="p">]</span>
+    
+    <span class="c1"># operator and nurse waiting times</span>
+    <span class="n">op_waits</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">waiting_time</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">recs</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">node</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">nurse_waits</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">waiting_time</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">recs</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">node</span><span class="o">==</span><span class="mi">2</span><span class="p">]</span>
+    
+    <span class="c1"># mean measures</span>
+    <span class="n">run_results</span><span class="p">[</span><span class="s1">&#39;01_mean_waiting_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">op_waits</span><span class="p">)</span>
+        
+    <span class="c1"># end of run results: calculate mean operator utilisation</span>
+    <span class="n">run_results</span><span class="p">[</span><span class="s1">&#39;02_operator_util&#39;</span><span class="p">]</span> <span class="o">=</span> \
+        <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">op_servicetimes</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">rc_period</span> <span class="o">*</span> <span class="n">experiment</span><span class="o">.</span><span class="n">n_operators</span><span class="p">))</span> <span class="o">*</span> <span class="mf">100.0</span>
+    
+    <span class="c1"># end of run results: nurse waiting time</span>
+    <span class="n">run_results</span><span class="p">[</span><span class="s1">&#39;03_mean_nurse_waiting_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">nurse_waits</span><span class="p">)</span>
+    
+    <span class="c1"># end of run results: calculate mean nurse utilisation</span>
+    <span class="n">run_results</span><span class="p">[</span><span class="s1">&#39;04_nurse_util&#39;</span><span class="p">]</span> <span class="o">=</span> \
+        <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">nurse_servicetimes</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">rc_period</span> <span class="o">*</span> <span class="n">experiment</span><span class="o">.</span><span class="n">n_nurses</span><span class="p">))</span> <span class="o">*</span> <span class="mf">100.0</span>
+    
+    <span class="c1"># return the results from the run of the model</span>
+    <span class="k">return</span> <span class="n">run_results</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="streamlit-script-implementing-ciw-backend">
+<h2><code class="docutils literal notranslate"><span class="pre">streamlit</span></code> script implementing <code class="docutils literal notranslate"><span class="pre">ciw</span></code> backend<a class="headerlink" href="#streamlit-script-implementing-ciw-backend" title="Permalink to this heading">#</a></h2>
+<p>We modified the <span class="xref myst">plotly with results filtering example</span> to use the <code class="docutils literal notranslate"><span class="pre">ciw</span></code> model.  The model code can be found in <a class="reference download internal" download="" href="../../_downloads/41382ae7e983d29222c7322bfbf7077e/ciw_model.py"><span class="xref download myst">ciw_model.py</span></a> and the streamlit script in <a class="reference download internal" download="" href="../../_downloads/7a3e2c1e091e488a03042e995a57797a/ciw_app.py"><span class="xref download myst">ciw_app.py</span></a>.  The only line of code that is changed is from</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">model</span> <span class="kn">import</span> <span class="n">Experiment</span><span class="p">,</span> <span class="n">multiple_replications</span>
+</pre></div>
+</div>
+<p>to</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ciw_model</span> <span class="kn">import</span> <span class="n">Experiment</span><span class="p">,</span> <span class="n">multiple_replications</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "health-data-science-OR/natcor-simpy",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/03_streamlit"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="12_multiple_experiments.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Loading and running multiple experiments</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../04_exercises/01_sampling.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Random sampling</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#details-on-the-ciw-wrappers">Details on the CiW wrappers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updated-experiment">Updated <code class="docutils literal notranslate"><span class="pre">Experiment</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revised-single-run-function">Revised <code class="docutils literal notranslate"><span class="pre">single_run</span></code> function.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#streamlit-script-implementing-ciw-backend"><code class="docutils literal notranslate"><span class="pre">streamlit</span></code> script implementing <code class="docutils literal notranslate"><span class="pre">ciw</span></code> backend</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Thomas Monks
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

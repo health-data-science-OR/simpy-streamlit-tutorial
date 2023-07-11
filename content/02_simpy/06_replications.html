@@ -178,6 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../03_streamlit/09_adding_text.html">Background text</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03_streamlit/10_adding_plots.html">Adding plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03_streamlit/12_multiple_experiments.html">Loading and running multiple experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/13_ciw_backend.html">Replacing <code class="docutils literal notranslate"><span class="pre">simpy</span></code> with <code class="docutils literal notranslate"><span class="pre">ciw</span></code></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
 <ul class="nav bd-sidenav">
@@ -896,28 +897,28 @@ Experiment complete
   <tbody>
     <tr>
       <th>1</th>
-      <td>1.566537</td>
-      <td>91.460686</td>
+      <td>2.978108</td>
+      <td>93.857777</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>3.708078</td>
-      <td>92.789357</td>
+      <td>1.296643</td>
+      <td>90.191848</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>3.100154</td>
-      <td>91.536522</td>
+      <td>6.631666</td>
+      <td>96.365998</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>3.832985</td>
-      <td>93.613050</td>
+      <td>3.605931</td>
+      <td>93.048460</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>1.558847</td>
-      <td>91.799962</td>
+      <td>2.517193</td>
+      <td>92.360791</td>
     </tr>
   </tbody>
 </table>
@@ -960,38 +961,38 @@ Experiment complete
     </tr>
     <tr>
       <th>mean</th>
-      <td>2.753320</td>
-      <td>92.239916</td>
+      <td>3.405908</td>
+      <td>93.164975</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>1.121690</td>
-      <td>0.933127</td>
+      <td>1.991692</td>
+      <td>2.248683</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>1.558847</td>
-      <td>91.460686</td>
+      <td>1.296643</td>
+      <td>90.191848</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>1.566537</td>
-      <td>91.536522</td>
+      <td>2.517193</td>
+      <td>92.360791</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>3.100154</td>
-      <td>91.799962</td>
+      <td>2.978108</td>
+      <td>93.048460</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>3.708078</td>
-      <td>92.789357</td>
+      <td>3.605931</td>
+      <td>93.857777</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>3.832985</td>
-      <td>93.613050</td>
+      <td>6.631666</td>
+      <td>96.365998</td>
     </tr>
   </tbody>
 </table>
@@ -1087,11 +1088,10 @@ Experiment complete
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model experiments:
 No. experiments to execute = 2
 
-Running base =&gt; 
+Running base =&gt; Experiment complete
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Experiment complete
-Experiment complete
 Experiment complete
 Experiment complete
 Experiment complete
@@ -1101,10 +1101,10 @@ Running operators+1 =&gt; Experiment complete
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Experiment complete
+Experiment complete
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Experiment complete
-Experiment complete
 Experiment complete
 done.
 
