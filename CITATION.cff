@@ -16,8 +16,15 @@ authors:
     family-names: Harper
     affiliation: University of Exeter
     orcid: 'https://orcid.org/0000-0001-5274-5037'
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.8159080
+  - type: url
+    value: 'https://zenodo.org/record/8159080'
 repository-code: >-
   https://github.com/health-data-science-OR/simpy-streamlit-tutorial
+url: >-
+  https://health-data-science-or.github.io/simpy-streamlit-tutorial
 keywords:
   - Discrete-event simulation
   - Health services research
