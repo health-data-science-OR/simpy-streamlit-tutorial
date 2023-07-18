@@ -1,0 +1,29 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  SimPy and StreamLit Tutorial Materials for Healthcare
+  Discrete-Event Simulation
+message: please cite the sofware as below
+type: software
+authors:
+  - given-names: Thomas
+    family-names: Monks
+    affiliation: University of Exeter
+    orcid: 'https://orcid.org/0000-0003-2631-4481'
+  - given-names: Alison
+    family-names: Harper
+    affiliation: University of Exeter
+    orcid: 'https://orcid.org/0000-0001-5274-5037'
+repository-code: >-
+  https://github.com/health-data-science-OR/simpy-streamlit-tutorial
+keywords:
+  - Discrete-event simulation
+  - Health services research
+  - Open science
+  - streamlit
+  - simpy
+  - ciw
+  - simulation
+license: MIT
