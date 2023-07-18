@@ -1,4 +1,4 @@
-name: sim2
+name: sim
 channels:
   - conda-forge
 dependencies:
