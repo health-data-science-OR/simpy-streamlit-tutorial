@@ -6,6 +6,7 @@ parts:
   - file: content/01_setup/install
   - file: content/01_setup/reading
   - file: content/01_setup/contributing
+  - file: content/01_setup/citation
 - caption: Simulation with simpy
   chapters:
   - file: content/02_simpy/01_sampling
