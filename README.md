@@ -31,3 +31,27 @@ All dependencies can be found in [`binder/environment.yml`]() and are pulled fro
 
 * Visit our [jupyter book](https://health-data-science-or.github.io/simpy-streamlit-tutorial) for interactive code and explanatory text
 * Run out Jupyter notebooks in binder [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/health-data-science-OR/simpy-streamlit-tutorial/HEAD)
+
+## Citation
+
+**If you use the work contained in the repository for your research or job then a citation would be very welcome when you write up.**
+
+Please cite the code and work in this repository as follows:
+
+> Monks, Thomas, & Harper, Alison. (2023). SimPy and StreamLit Tutorial Materials for Healthcare Discrete-Event Simulation (v1.1.0). Zenodo. https://doi.org/10.5281/zenodo.8159080
+
+
+```bibtex
+@software{monks_thomas_2023_8159080,
+  author       = {Monks, Thomas and
+                  Harper, Alison},
+  title        = {{SimPy and StreamLit Tutorial Materials for 
+                   Healthcare Discrete-Event Simulation}},
+  month        = jul,
+  year         = 2023,
+  publisher    = {Zenodo},
+  version      = {v1.1.0},
+  doi          = {10.5281/zenodo.8159080},
+  url          = {https://doi.org/10.5281/zenodo.8159080}
+}
+```
