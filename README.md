@@ -41,6 +41,8 @@ Please cite the code and work in this repository as follows:
 > Monks, Thomas, & Harper, Alison. (2023). SimPy and StreamLit Tutorial Materials for Healthcare Discrete-Event Simulation (v1.1.0). Zenodo. https://doi.org/10.5281/zenodo.8159080
 
 
+### Bibtex citation
+
 ```bibtex
 @software{monks_thomas_2023_8159080,
   author       = {Monks, Thomas and
@@ -55,3 +57,37 @@ Please cite the code and work in this repository as follows:
   url          = {https://doi.org/10.5281/zenodo.8159080}
 }
 ```
+
+## Repo Overview
+
+```
+.
+├── binder
+│   └── environment.yml
+├── CITATION.cff
+├── _config.yml
+├── content
+│   ├── 01_setup
+│   ├── 02_simpy
+│   ├── 03_streamlit
+│   ├── 04_exercises
+│   ├── 05_solutions
+│   └── front_page.md
+├── imgs
+├── LICENSE
+├── main.py
+├── README.md
+└── _toc.yml
+
+```
+
+
+* `binder` - contains the environment.yml file (sim) and all dependencies managed via conda
+* `_config.yml` - configuration of our Jupyter Book
+* `content` - the notebooks and markdown arranged by setup, simpy, streamlit, exercises, and solutions.
+* `data` - directory containing data files used by analysis notebooks. 
+* `imgs` - all image files used in the tutorial material
+* `LICENSE` - details of the MIT permissive license of this work.
+* `main.py` - an example simpy model to use to test the virtual environment 
+* `README` - what you are reading now!
+* `_toc.yml` - the table of contents for our Jupyter Book.
