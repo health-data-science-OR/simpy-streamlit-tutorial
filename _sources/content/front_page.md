@@ -1,6 +1,6 @@
 # Preface
 
-Welcome to a short tutorial on building free and open source computer simulation models in python using `simpy` and `streamlit`.
+Welcome to a short method tutorial for building free and open source computer simulation models in python using `simpy` and `streamlit`.
 
 ```{admonition} Free and open source software (FOSS)
 :class: warning
