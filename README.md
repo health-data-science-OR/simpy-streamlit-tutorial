@@ -44,17 +44,18 @@ Please cite the code and work in this repository as follows:
 ### Bibtex citation
 
 ```bibtex
-@software{monks_thomas_2023_8159080,
+@software{monks_thomas_2023_8182404,
   author       = {Monks, Thomas and
                   Harper, Alison},
   title        = {{SimPy and StreamLit Tutorial Materials for 
                    Healthcare Discrete-Event Simulation}},
   month        = jul,
   year         = 2023,
+  note         = {please cite the sofware as below},
   publisher    = {Zenodo},
-  version      = {v1.1.0},
-  doi          = {10.5281/zenodo.8159080},
-  url          = {https://doi.org/10.5281/zenodo.8159080}
+  version      = {v1.1.1},
+  doi          = {10.5281/zenodo.8182404},
+  url          = {https://doi.org/10.5281/zenodo.8182404}
 }
 ```
 
