@@ -5,7 +5,6 @@ cff-version: 1.2.0
 title: >-
   SimPy and StreamLit Tutorial Materials for Healthcare
   Discrete-Event Simulation
-message: please cite the sofware as below
 type: software
 authors:
   - given-names: Thomas

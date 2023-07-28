@@ -26,6 +26,7 @@ html:
 launch_buttons:
   binderhub_url: "https://mybinder.org"
   notebook_interface: "jupyterlab"
+  colab_url: "https://colab.research.google.com"
   thebe: true
 
 # to enable plotly visualisations
