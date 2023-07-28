@@ -38,24 +38,23 @@ All dependencies can be found in [`binder/environment.yml`]() and are pulled fro
 
 Please cite the code and work in this repository as follows:
 
-> Monks, Thomas, & Harper, Alison. (2023). SimPy and StreamLit Tutorial Materials for Healthcare Discrete-Event Simulation (v1.1.0). Zenodo. https://doi.org/10.5281/zenodo.8159080
+> Monks, Thomas, & Harper, Alison. (2023). SimPy and StreamLit Tutorial Materials for Healthcare Discrete-Event Simulation (v1.1.2). Zenodo. https://doi.org/10.5281/zenodo.8193001
 
 
 ### Bibtex citation
 
 ```bibtex
-@software{monks_thomas_2023_8182404,
+@software{monks_thomas_2023_8193001,
   author       = {Monks, Thomas and
                   Harper, Alison},
   title        = {{SimPy and StreamLit Tutorial Materials for 
                    Healthcare Discrete-Event Simulation}},
   month        = jul,
   year         = 2023,
-  note         = {please cite the sofware as below},
   publisher    = {Zenodo},
-  version      = {v1.1.1},
-  doi          = {10.5281/zenodo.8182404},
-  url          = {https://doi.org/10.5281/zenodo.8182404}
+  version      = {v1.1.2},
+  doi          = {10.5281/zenodo.8193001},
+  url          = {https://doi.org/10.5281/zenodo.8193001}
 }
 ```
 

@@ -6,11 +6,11 @@ This version of the book is permanently archived at zenodo: https://doi.org/10.5
 
 Please cite the code and work in this repository as follows:
 
-> Monks, Thomas, & Harper, Alison. (2023). SimPy and StreamLit Tutorial Materials for Healthcare Discrete-Event Simulation (v1.1.0). Zenodo. https://doi.org/10.5281/zenodo.8159080
+> Monks, Thomas, & Harper, Alison. (2023). SimPy and StreamLit Tutorial Materials for Healthcare Discrete-Event Simulation (v1.1.2). Zenodo. https://doi.org/10.5281/zenodo.8193001
 
 
 ```bibtex
-@software{monks_thomas_2023_8159080,
+@software{monks_thomas_2023_8193001,
   author       = {Monks, Thomas and
                   Harper, Alison},
   title        = {{SimPy and StreamLit Tutorial Materials for 
@@ -18,8 +18,8 @@ Please cite the code and work in this repository as follows:
   month        = jul,
   year         = 2023,
   publisher    = {Zenodo},
-  version      = {v1.1.0},
-  doi          = {10.5281/zenodo.8159080},
-  url          = {https://doi.org/10.5281/zenodo.8159080}
+  version      = {v1.1.2},
+  doi          = {10.5281/zenodo.8193001},
+  url          = {https://doi.org/10.5281/zenodo.8193001}
 }
 ```
