@@ -1094,28 +1094,28 @@ document.write(`
   <tbody>
     <tr>
       <th>1</th>
-      <td>2.650313</td>
-      <td>92.283205</td>
+      <td>3.733078</td>
+      <td>93.239602</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2.717488</td>
-      <td>94.023641</td>
+      <td>5.569474</td>
+      <td>92.758325</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2.933638</td>
-      <td>93.043869</td>
+      <td>3.644121</td>
+      <td>89.115009</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>3.120231</td>
-      <td>92.201141</td>
+      <td>5.091446</td>
+      <td>96.125401</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>1.185335</td>
-      <td>90.269999</td>
+      <td>1.475806</td>
+      <td>89.964462</td>
     </tr>
   </tbody>
 </table>
@@ -1148,14 +1148,10 @@ document.write(`
     <span class="n">experiments</span> <span class="o">=</span> <span class="p">{}</span>
     
     <span class="c1"># base case</span>
-    <span class="c1"># we will sync scenarios by using seeds</span>
-    <span class="n">experiments</span><span class="p">[</span><span class="s1">&#39;base&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Experiment</span><span class="p">(</span><span class="n">arrival_seed</span><span class="o">=</span><span class="n">ARRIVAL_SEED</span><span class="p">,</span> 
-                                     <span class="n">call_seed</span><span class="o">=</span><span class="n">CALL_SEED</span><span class="p">)</span>
+    <span class="n">experiments</span><span class="p">[</span><span class="s1">&#39;base&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Experiment</span><span class="p">()</span>
     
     <span class="c1"># +1 extra capacity</span>
-    <span class="n">experiments</span><span class="p">[</span><span class="s1">&#39;operators+1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Experiment</span><span class="p">(</span><span class="n">arrival_seed</span><span class="o">=</span><span class="n">ARRIVAL_SEED</span><span class="p">,</span> 
-                                            <span class="n">call_seed</span><span class="o">=</span><span class="n">CALL_SEED</span><span class="p">,</span>
-                                            <span class="n">n_operators</span><span class="o">=</span><span class="n">N_OPERATORS</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">experiments</span><span class="p">[</span><span class="s1">&#39;operators+1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Experiment</span><span class="p">(</span><span class="n">n_operators</span><span class="o">=</span><span class="n">N_OPERATORS</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
     
     <span class="k">return</span> <span class="n">experiments</span>
 </pre></div>
@@ -1289,13 +1285,13 @@ All experiments are complete.
   <tbody>
     <tr>
       <th>01_mean_waiting_time</th>
-      <td>4.52</td>
-      <td>1.27</td>
+      <td>3.11</td>
+      <td>1.10</td>
     </tr>
     <tr>
       <th>02_operator_util</th>
-      <td>94.15</td>
-      <td>88.07</td>
+      <td>93.08</td>
+      <td>85.36</td>
     </tr>
   </tbody>
 </table>

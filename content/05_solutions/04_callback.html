@@ -1137,38 +1137,38 @@ document.write(`
   <tbody>
     <tr>
       <th>1</th>
-      <td>1.686609</td>
-      <td>88.485827</td>
-      <td>23.832613</td>
-      <td>96.879816</td>
+      <td>3.445808</td>
+      <td>93.467368</td>
+      <td>13.875858</td>
+      <td>97.567471</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>4.344915</td>
-      <td>95.329761</td>
-      <td>62.585112</td>
-      <td>97.442315</td>
+      <td>2.936013</td>
+      <td>90.266369</td>
+      <td>27.263189</td>
+      <td>97.854685</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>3.570845</td>
-      <td>96.015592</td>
-      <td>62.923921</td>
-      <td>97.535409</td>
+      <td>1.785119</td>
+      <td>90.793594</td>
+      <td>27.365663</td>
+      <td>96.972912</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>6.848029</td>
-      <td>94.699263</td>
-      <td>53.323780</td>
-      <td>96.545869</td>
+      <td>3.446497</td>
+      <td>92.724353</td>
+      <td>39.886066</td>
+      <td>97.723901</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>2.012763</td>
-      <td>91.941116</td>
-      <td>74.392547</td>
-      <td>97.806344</td>
+      <td>3.684883</td>
+      <td>94.012851</td>
+      <td>63.802777</td>
+      <td>97.312664</td>
     </tr>
   </tbody>
 </table>
@@ -1201,14 +1201,10 @@ document.write(`
     <span class="n">experiments</span> <span class="o">=</span> <span class="p">{}</span>
     
     <span class="c1"># base case</span>
-    <span class="c1"># we will sync scenarios by using seeds</span>
-    <span class="n">experiments</span><span class="p">[</span><span class="s1">&#39;base&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Experiment</span><span class="p">(</span><span class="n">arrival_seed</span><span class="o">=</span><span class="n">ARRIVAL_SEED</span><span class="p">,</span> 
-                                     <span class="n">call_seed</span><span class="o">=</span><span class="n">CALL_SEED</span><span class="p">)</span>
+    <span class="n">experiments</span><span class="p">[</span><span class="s1">&#39;base&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Experiment</span><span class="p">()</span>
     
     <span class="c1"># +1 extra capacity</span>
-    <span class="n">experiments</span><span class="p">[</span><span class="s1">&#39;operators+1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Experiment</span><span class="p">(</span><span class="n">arrival_seed</span><span class="o">=</span><span class="n">ARRIVAL_SEED</span><span class="p">,</span> 
-                                            <span class="n">call_seed</span><span class="o">=</span><span class="n">CALL_SEED</span><span class="p">,</span>
-                                            <span class="n">n_operators</span><span class="o">=</span><span class="n">N_OPERATORS</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">experiments</span><span class="p">[</span><span class="s1">&#39;operators+1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Experiment</span><span class="p">(</span><span class="n">n_operators</span><span class="o">=</span><span class="n">N_OPERATORS</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
     
     <span class="k">return</span> <span class="n">experiments</span>
 </pre></div>
@@ -1345,23 +1341,23 @@ All experiments are complete.
   <tbody>
     <tr>
       <th>01_mean_waiting_time</th>
-      <td>4.52</td>
-      <td>1.27</td>
+      <td>4.26</td>
+      <td>1.40</td>
     </tr>
     <tr>
       <th>02_operator_util</th>
-      <td>94.15</td>
-      <td>88.07</td>
+      <td>93.21</td>
+      <td>87.76</td>
     </tr>
     <tr>
       <th>03_mean_nurse_waiting_time</th>
-      <td>62.32</td>
-      <td>63.72</td>
+      <td>50.12</td>
+      <td>51.20</td>
     </tr>
     <tr>
       <th>04_nurse_util</th>
-      <td>96.71</td>
-      <td>96.96</td>
+      <td>97.13</td>
+      <td>97.07</td>
     </tr>
   </tbody>
 </table>
