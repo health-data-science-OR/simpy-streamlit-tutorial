@@ -179,6 +179,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="08_sidebar.html">Tidying up controls</a></li>
 <li class="toctree-l1"><a class="reference internal" href="09_adding_text.html">Background text</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10_adding_plots.html">Adding plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_filter_results.html">Filtering results</a></li>
 <li class="toctree-l1"><a class="reference internal" href="12_multiple_experiments.html">Loading and running multiple experiments</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Replacing <code class="docutils literal notranslate"><span class="pre">simpy</span></code> with <code class="docutils literal notranslate"><span class="pre">ciw</span></code></a></li>
 </ul>
@@ -696,7 +697,7 @@ document.write(`
 </section>
 <section id="streamlit-script-implementing-ciw-backend">
 <h2><code class="docutils literal notranslate"><span class="pre">streamlit</span></code> script implementing <code class="docutils literal notranslate"><span class="pre">ciw</span></code> backend<a class="headerlink" href="#streamlit-script-implementing-ciw-backend" title="Permalink to this heading">#</a></h2>
-<p>We modified the <span class="xref myst">plotly with results filtering example</span> to use the <code class="docutils literal notranslate"><span class="pre">ciw</span></code> model.  The model code can be found in <a class="reference download internal" download="" href="../../_downloads/41382ae7e983d29222c7322bfbf7077e/ciw_model.py"><span class="xref download myst">ciw_model.py</span></a> and the streamlit script in <a class="reference download internal" download="" href="../../_downloads/7a3e2c1e091e488a03042e995a57797a/ciw_app.py"><span class="xref download myst">ciw_app.py</span></a>.  The only line of code that is changed is from</p>
+<p>We modified the <a class="reference internal" href="11_filter_results.html"><span class="doc std std-doc">plotly with results filtering example</span></a> to use the <code class="docutils literal notranslate"><span class="pre">ciw</span></code> model.  The model code can be found in <a class="reference download internal" download="" href="../../_downloads/41382ae7e983d29222c7322bfbf7077e/ciw_model.py"><span class="xref download myst">ciw_model.py</span></a> and the streamlit script in <a class="reference download internal" download="" href="../../_downloads/7a3e2c1e091e488a03042e995a57797a/ciw_app.py"><span class="xref download myst">ciw_app.py</span></a>.  The only line of code that is changed is from</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">model</span> <span class="kn">import</span> <span class="n">Experiment</span><span class="p">,</span> <span class="n">multiple_replications</span>
 </pre></div>
 </div>
