@@ -1,0 +1,73 @@
+Traceback (most recent call last):
+  File "/home/tom/miniconda3/lib/python3.10/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/tom/miniconda3/lib/python3.10/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/tom/miniconda3/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 173, in wrapped
+    return loop.run_until_complete(inner)
+  File "/home/tom/miniconda3/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/tom/miniconda3/lib/python3.10/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/home/tom/miniconda3/lib/python3.10/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/tom/miniconda3/lib/python3.10/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+'''
+The code in this streamlit script modifies the basic script 
+we had for running a scenario
+'''
+import streamlit as st
+from model import Experiment, multiple_replications
+
+# We add in a title for our web app's page
+st.title("Urgent care call centre")
+
+# ##############################################################################
+# MODIFICATION: set the variables for the run
+# these are just a subset of the total available for this example...
+# in streamlit we are going to set these using sliders.
+
+# set number of resources
+n_operators = st.slider('Call operators', 1, 20, 13, step=1)
+n_nurses = st.slider('Nurses', 1, 15, 9, step=1)
+
+# set chance of nurse
+chance_callback = st.slider('Chance of nurse callback', 0.1, 1.0, 0.4,
+                            step=0.05, help='Set the chance of a call back')
+
+# set number of replications
+n_reps = st.slider("No. of replications", 5, 100, step=1)
+
+################################################################################
+
+# create experiment
+exp = Experiment(n_operators=n_operators, n_nurses=n_nurses,
+                 chance_callback=chance_callback)
+
+# A user must press a streamlit button to run the model
+if st.button("Run simulation"):
+
+    # run multiple replications of experment
+    results = multiple_replications(exp, n_reps=n_reps)
+
+    # show results
+    st.dataframe(results.describe())
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [0;32mIn[1], line 5[0m
+[1;32m      1[0m [38;5;124;03m'''[39;00m
+[1;32m      2[0m [38;5;124;03mThe code in this streamlit script modifies the basic script [39;00m
+[1;32m      3[0m [38;5;124;03mwe had for running a scenario[39;00m
+[1;32m      4[0m [38;5;124;03m'''[39;00m
+[0;32m----> 5[0m [38;5;28;01mimport[39;00m [38;5;21;01mstreamlit[39;00m [38;5;28;01mas[39;00m [38;5;21;01mst[39;00m
+[1;32m      6[0m [38;5;28;01mfrom[39;00m [38;5;21;01mmodel[39;00m [38;5;28;01mimport[39;00m Experiment, multiple_replications
+[1;32m      8[0m [38;5;66;03m# We add in a title for our web app's page[39;00m
+
+[0;31mModuleNotFoundError[0m: No module named 'streamlit'
+
