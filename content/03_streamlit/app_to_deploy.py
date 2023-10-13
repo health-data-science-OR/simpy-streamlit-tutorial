@@ -4,15 +4,14 @@ chart to display a histogram of replications. The results shown in the
 histogram can be selected by the user.
 '''
 import streamlit as st
-from st_files_connection import FilesConnection
 
-
-# import graph_objects instead of plotly.express
+#################################################################################
+# MODIFICATION: import graph_objects instead of plotly.express
 import plotly.graph_objects as go
+#################################################################################
 from model import Experiment, multiple_replications
 
-INTRO_FILE = 'https://raw.githubusercontent.com/health-data-science-OR/' \
-    + 'simpy-streamlit-tutorial/main/content/03_streamlit/resources/model_info.md'
+INTRO_FILE = './resources/model_info.md'
 
 def read_file_contents(file_name):
     ''''
@@ -26,14 +25,13 @@ def read_file_contents(file_name):
     Returns:
     -------
     str
-    '''       
-    with st.echo():
-        # Read back the contents of the file
-        conn = st.experimental_connection('contents_connection', type=FilesConnection)
-        return conn.read(test_file, input_format='text')
-
+    '''
+    with open(file_name) as f:
+        return f.read()
     
 
+###################################################################################
+# MODIFICATION: user filtered chart
 def create_user_filtered_hist(results):
     '''
     Create a plotly histogram that includes a drop down list that allows a user
