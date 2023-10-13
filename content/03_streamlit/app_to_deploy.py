@@ -5,33 +5,39 @@ histogram can be selected by the user.
 '''
 import streamlit as st
 
-#################################################################################
-# MODIFICATION: import graph_objects instead of plotly.express
+import urllib.request as request
+
+# import graph_objects instead of plotly.express
 import plotly.graph_objects as go
-#################################################################################
 from model import Experiment, multiple_replications
 
-INTRO_FILE = './resources/model_info.md'
+INTRO_FILE = 'https://raw.githubusercontent.com/health-data-science-OR/' \
+    + 'simpy-streamlit-tutorial/main/content/03_streamlit/resources/model_info.md'
 
-def read_file_contents(file_name):
-    ''''
-    Read the contents of a file.
+def read_file_contents(path):
+    '''
+    Download the content of a file from the GitHub Repo and return as a utf-8 string
 
-    Params:
-    ------
-    file_name: str
-        Path to file.
+    Notes:
+    -------
+        temporarily this is pointing at the `dev` branch
+
+        adapted from 'https://github.com/streamlit/demo-self-driving'
+
+    Parameters:
+    ----------
+    path: str
+        e.g. file_name.md
 
     Returns:
-    -------
-    str
-    '''
-    with open(file_name) as f:
-        return f.read()
-    
+    --------
+    utf-8 str
 
-###################################################################################
-# MODIFICATION: user filtered chart
+    '''
+    response = request.urlopen(path)
+    return response.read().decode("utf-8")
+  
+
 def create_user_filtered_hist(results):
     '''
     Create a plotly histogram that includes a drop down list that allows a user
@@ -89,12 +95,9 @@ def create_user_filtered_hist(results):
     updatemenu[0]['yanchor'] = 'bottom'
     #updatemenu[0]['pad'] = {"r": 10, "t": 10}
     
-    
-    
     # add dropdown menus to the figure
     fig.update_layout(showlegend=False, 
                       updatemenus=updatemenu)
-    
     
     # add label for selecting performance measure
     fig.update_layout(
