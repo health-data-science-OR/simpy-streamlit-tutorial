@@ -36,12 +36,32 @@ All dependencies can be found in [`binder/environment.yml`]() and are pulled fro
 
 **If you use the work contained in the repository for your research or job then a citation would be very welcome when you write up.**
 
+### Citing the journal article
+
+We have a [journal article](https://openresearch.nihr.ac.uk/articles/3-48) that accompanies this repo published in NIHR open research: https://openresearch.nihr.ac.uk/articles/3-48
+
+>  Monks T and Harper A. Improving the usability of open health service delivery simulation models using Python and web apps [version 1; peer review: 1 approved, 1 approved with reservations]. NIHR Open Res 2023, 3:48 (https://doi.org/10.3310/nihropenres.13467.1) 
+
+```bibtex
+@article{monksharper2023improving,
+  title={Improving the usability of open health service delivery simulation models using Python and web apps},
+  author={Monks, Tom and Harper, Andrew},
+  journal={NIHR Open Research},
+  volume={3},
+  pages={48},
+  year={2023},
+  doi={10.3310/nihropenres.13467.1},
+  url={https://doi.org/10.3310/nihropenres.13467.1},
+  note={Version 1; Peer Review: 1 Approved, 1 Approved with Reservations}
+}
+
+```
+### Citing the code
+
 Please cite the code and work in this repository as follows:
 
 > Monks, Thomas, & Harper, Alison. (2023). SimPy and StreamLit Tutorial Materials for Healthcare Discrete-Event Simulation (v1.1.2). Zenodo. https://doi.org/10.5281/zenodo.8193001
 
-
-### Bibtex citation
 
 ```bibtex
 @software{monks_thomas_2023_8193001,
