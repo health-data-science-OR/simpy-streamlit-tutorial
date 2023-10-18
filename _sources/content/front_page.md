@@ -15,7 +15,25 @@ Most people are familiar with "open source" software.  The "free" in FOSS is les
 
 ## Citation
 
-Please cite the code and work in this repository as follows:
+We have a [journal article](https://openresearch.nihr.ac.uk/articles/3-48) that accompanies this online book published in NIHR open research: https://openresearch.nihr.ac.uk/articles/3-48
+
+>   Monks T and Harper A. Improving the usability of open health service delivery simulation models using Python and web apps [version 1; peer review: 1 approved, 2 approved with reservations]. NIHR Open Res 2023, 3:48 (https://doi.org/10.3310/nihropenres.13467.1) 
+
+```bibtex
+@article{monksharper2023improving,
+  title={Improving the usability of open health service delivery simulation models using Python and web apps},
+  author={Monks, T and Harper, A},
+  journal={NIHR Open Research},
+  volume={3},
+  pages={48},
+  year={2023},
+  url={https://doi.org/10.3310/nihropenres.13467.1},
+  doi={10.3310/nihropenres.13467.1},
+  note={Version 1; Peer Review: 1 Approved, 2 Approved with Reservations}
+}
+```
+
+To reference the code in this book please use the following citation
 
 > Monks, Thomas, & Harper, Alison. (2023). SimPy and StreamLit Tutorial Materials for Healthcare Discrete-Event Simulation (v1.1.0). Zenodo. https://doi.org/10.5281/zenodo.8159080
 
@@ -34,7 +52,7 @@ Please cite the code and work in this repository as follows:
   url          = {https://doi.org/10.5281/zenodo.8193001}
 }
 ```
-
+> We would appreciate a citation to both artefacts thank you! :)
 
 
 
