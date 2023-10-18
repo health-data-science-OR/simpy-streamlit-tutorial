@@ -45,14 +45,14 @@ We have a [journal article](https://openresearch.nihr.ac.uk/articles/3-48) that 
 ```bibtex
 @article{monksharper2023improving,
   title={Improving the usability of open health service delivery simulation models using Python and web apps},
-  author={Monks, Tom and Harper, Andrew},
+  author={Monks, T and Harper, A},
   journal={NIHR Open Research},
   volume={3},
   pages={48},
   year={2023},
-  doi={10.3310/nihropenres.13467.1},
   url={https://doi.org/10.3310/nihropenres.13467.1},
-  note={Version 1; Peer Review: 1 Approved, 1 Approved with Reservations}
+  doi={10.3310/nihropenres.13467.1},
+  note={Version 1; Peer Review: 1 Approved, 2 Approved with Reservations}
 }
 
 ```
@@ -61,7 +61,6 @@ We have a [journal article](https://openresearch.nihr.ac.uk/articles/3-48) that 
 Please cite the code and work in this repository as follows:
 
 > Monks, Thomas, & Harper, Alison. (2023). SimPy and StreamLit Tutorial Materials for Healthcare Discrete-Event Simulation (v1.1.2). Zenodo. https://doi.org/10.5281/zenodo.8193001
-
 
 ```bibtex
 @software{monks_thomas_2023_8193001,
