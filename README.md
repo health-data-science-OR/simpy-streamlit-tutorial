@@ -40,7 +40,7 @@ All dependencies can be found in [`binder/environment.yml`]() and are pulled fro
 
 We have a [journal article](https://openresearch.nihr.ac.uk/articles/3-48) that accompanies this repo published in NIHR open research: https://openresearch.nihr.ac.uk/articles/3-48
 
->  Monks T and Harper A. Improving the usability of open health service delivery simulation models using Python and web apps [version 1; peer review: 1 approved, 1 approved with reservations]. NIHR Open Res 2023, 3:48 (https://doi.org/10.3310/nihropenres.13467.1) 
+> Monks T and Harper A. Improving the usability of open health service delivery simulation models using Python and web apps [version 2; peer review: 3 approved]. NIHR Open Res 2023, 3:48 (https://doi.org/10.3310/nihropenres.13467.2) 
 
 ```bibtex
 @article{monksharper2023improving,
@@ -50,9 +50,9 @@ We have a [journal article](https://openresearch.nihr.ac.uk/articles/3-48) that 
   volume={3},
   pages={48},
   year={2023},
-  url={https://doi.org/10.3310/nihropenres.13467.1},
-  doi={10.3310/nihropenres.13467.1},
-  note={Version 1; Peer Review: 1 Approved, 2 Approved with Reservations}
+  url={https://doi.org/10.3310/nihropenres.13467.2},
+  doi={10.3310/nihropenres.13467.2},
+  note={Version 2; Peer Review: 3 Approved}
 }
 
 ```
