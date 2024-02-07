@@ -9,10 +9,12 @@ dependencies:
   - pandas=2.0.2
   - pip=23.1.2
   - plotly=5.15.0
-  - python=3.9.16
+  - python=3.10.13
   - scipy=1.10.1
   - simpy=4.0.1
   - pip:
     - ciw==2.3.1
     - streamlit
+    - sim-tools==0.3.3
     - treat-sim==1.0.0
+    
