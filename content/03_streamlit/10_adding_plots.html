@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Adding plots &#8212; Simulation in python</title>
   
@@ -19,51 +18,55 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/03_streamlit/10_adding_plots';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Loading and running multiple experiments" href="12_multiple_experiments.html" />
@@ -77,10 +80,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -121,11 +123,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -140,6 +145,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../front_page.html">
@@ -148,10 +154,28 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
-    <p class="title logo__title">Simulation in python</p>
+    
+    
+      
+    
+    
+    <img src="../../_static/sim_book_logo.png" class="logo__image only-light" alt="Simulation in python - Home"/>
+    <script>document.write(`<img src="../../_static/sim_book_logo.png" class="logo__image only-dark" alt="Simulation in python - Home"/>`);</script>
+  
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -171,6 +195,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulation with simpy</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../02_simpy/01_sampling.html">Random variables and simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_simpy/01a_sim_tools.html">Sampling using <code class="docutils literal notranslate"><span class="pre">sim_tools</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02_simpy/02_basic_simpy.html">A first look at simpy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02_simpy/03_111_model.html">A full model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02_simpy/04_basic_results.html">Collecting results from a single run</a></li>
@@ -435,6 +460,7 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -444,6 +470,7 @@ document.write(`
   </button>
 `);
 </script>
+
 
 <script>
 document.write(`
@@ -491,16 +518,16 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="adding-plots">
-<h1>Adding plots<a class="headerlink" href="#adding-plots" title="Permalink to this heading">#</a></h1>
+<h1>Adding plots<a class="headerlink" href="#adding-plots" title="Link to this heading">#</a></h1>
 <p>It is also possible to display <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> and <code class="docutils literal notranslate"><span class="pre">plotly</span></code> figures and plots in <code class="docutils literal notranslate"><span class="pre">streamlit</span></code>. Here we will explore displaying a histogram of replications for a chosen performance
 measure.</p>
 <p>We will use <code class="docutils literal notranslate"><span class="pre">plotly</span></code> to create the chart.</p>
 <p>We will also introduce a more advanced layout to our web app by introducing columns to the results page.</p>
 <section id="imports">
-<h2>1. Imports<a class="headerlink" href="#imports" title="Permalink to this heading">#</a></h2>
+<h2>1. Imports<a class="headerlink" href="#imports" title="Link to this heading">#</a></h2>
 <p>We use <code class="docutils literal notranslate"><span class="pre">plotly.express</span></code> simplify the creation of our charts.  This provides a high level wrapper around <code class="docutils literal notranslate"><span class="pre">plotly</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -520,11 +547,11 @@ measure.</p>
 </div>
 </section>
 <section id="code-for-creating-the-plotly-histogram">
-<h2>2. Code for creating the <code class="docutils literal notranslate"><span class="pre">plotly</span></code> histogram<a class="headerlink" href="#code-for-creating-the-plotly-histogram" title="Permalink to this heading">#</a></h2>
+<h2>2. Code for creating the <code class="docutils literal notranslate"><span class="pre">plotly</span></code> histogram<a class="headerlink" href="#code-for-creating-the-plotly-histogram" title="Link to this heading">#</a></h2>
 <p>We will run 100 replications of the simulation model and then display the results in a histogram.</p>
 <p>We can use the <code class="docutils literal notranslate"><span class="pre">px.histogram</span></code> method to quickly produce a histogram.</p>
 <section id="get-the-replications">
-<h3>2.1 Get the replications<a class="headerlink" href="#get-the-replications" title="Permalink to this heading">#</a></h3>
+<h3>2.1 Get the replications<a class="headerlink" href="#get-the-replications" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">default_experiment</span> <span class="o">=</span> <span class="n">Experiment</span><span class="p">()</span>
@@ -551,7 +578,7 @@ memory usage: 3.9 KB
 </div>
 </section>
 <section id="histogram-of-mean-waiting-time">
-<h3>2.2. Histogram of mean waiting time<a class="headerlink" href="#histogram-of-mean-waiting-time" title="Permalink to this heading">#</a></h3>
+<h3>2.2. Histogram of mean waiting time<a class="headerlink" href="#histogram-of-mean-waiting-time" title="Link to this heading">#</a></h3>
 <p>In addition to the box plot we will also add a boxplot to see the median and the lower and upper quartiles of the distribution.</p>
 <blockquote>
 <div><p>As an alternative you could try <code class="docutils literal notranslate"><span class="pre">marginal='violin'</span></code> or <code class="docutils literal notranslate"><span class="pre">marginal='rug'</span></code></p>
@@ -589,9 +616,9 @@ memory usage: 3.9 KB
         });
         }
         </script>
-        </div><div class="output text_html"><div>                            <div id="fd82d99b-dd68-41d1-a832-c4994af1b981" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("fd82d99b-dd68-41d1-a832-c4994af1b981")) {                    Plotly.newPlot(                        "fd82d99b-dd68-41d1-a832-c4994af1b981",                        [{"alignmentgroup":"True","bingroup":"x","hovertemplate":"variable=01_mean_waiting_time\u003cbr\u003eMean waiting time for operator=%{x}\u003cbr\u003ecount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"01_mean_waiting_time","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"01_mean_waiting_time","offsetgroup":"01_mean_waiting_time","orientation":"v","showlegend":true,"x":[2.1886487505068275,5.6846837292834165,3.0176304944829777,3.0887131897789484,5.258850700007743,19.58085004767399,6.630122695582755,4.994671828138442,2.1458294782650587,4.9055985592664095,2.675907711271278,5.3435621257862,9.268288291043268,3.6420439948597587,1.767301932162855,3.4209818428510936,3.1996830231688276,2.5630701208182023,2.0971496209099953,2.6102376018602675,2.2606415316985204,2.7898588844248806,2.749474923909296,3.894058088468255,0.8420972351215219,10.396097818845565,3.2475272480938324,1.4707021232492625,2.6317355623989442,2.0898941671272477,2.137327740009667,2.856801687859305,3.1950817014583777,3.375860456703634,2.4588250525263455,5.792249280896057,6.4730966719751875,2.4007716285379357,4.171746119209551,4.529180512521628,2.7462598530113795,3.860987117470261,2.2558991215599073,4.08826799576625,1.3374232503751422,1.9711983322332187,0.9494886068454866,10.162470114151084,6.484213753716079,2.2607155450670295,2.9431592247274887,4.265676937641266,3.3489338964150686,4.871223563884705,2.9814551415180794,2.668959110807201,3.699466382782633,1.1344298284994185,4.010251751298565,3.1630604694588618,1.540289536024698,1.1611128249817515,2.231509717630577,3.242902638102037,1.6538193376803811,3.6700245990821423,4.206321841944732,1.7444688773060184,3.317453127960241,2.21053543656214,2.6469009380520285,3.085554043720843,2.7342465456832183,2.560846061090544,3.970958438342465,1.5860831111925704,2.714588732918858,2.3714156397778927,2.227957913907164,2.4002903276591154,1.5979513994787315,5.420386882042205,2.0086451657214615,2.7584983673310033,2.2971403026228305,1.5197708682307844,4.981143503703021,4.425443262985745,5.223015180590362,12.88710374723257,1.794672784121005,1.7217562636894495,7.384651016725164,4.519090627893574,3.411786468556501,5.3405831452515775,4.210393829898016,10.659060608240697,3.245240882641729,3.357491121302817],"xaxis":"x","yaxis":"y","type":"histogram"},{"alignmentgroup":"True","hovertemplate":"variable=01_mean_waiting_time\u003cbr\u003eMean waiting time for operator=%{x}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"01_mean_waiting_time","marker":{"color":"#636efa"},"name":"01_mean_waiting_time","notched":true,"offsetgroup":"01_mean_waiting_time","showlegend":false,"x":[2.1886487505068275,5.6846837292834165,3.0176304944829777,3.0887131897789484,5.258850700007743,19.58085004767399,6.630122695582755,4.994671828138442,2.1458294782650587,4.9055985592664095,2.675907711271278,5.3435621257862,9.268288291043268,3.6420439948597587,1.767301932162855,3.4209818428510936,3.1996830231688276,2.5630701208182023,2.0971496209099953,2.6102376018602675,2.2606415316985204,2.7898588844248806,2.749474923909296,3.894058088468255,0.8420972351215219,10.396097818845565,3.2475272480938324,1.4707021232492625,2.6317355623989442,2.0898941671272477,2.137327740009667,2.856801687859305,3.1950817014583777,3.375860456703634,2.4588250525263455,5.792249280896057,6.4730966719751875,2.4007716285379357,4.171746119209551,4.529180512521628,2.7462598530113795,3.860987117470261,2.2558991215599073,4.08826799576625,1.3374232503751422,1.9711983322332187,0.9494886068454866,10.162470114151084,6.484213753716079,2.2607155450670295,2.9431592247274887,4.265676937641266,3.3489338964150686,4.871223563884705,2.9814551415180794,2.668959110807201,3.699466382782633,1.1344298284994185,4.010251751298565,3.1630604694588618,1.540289536024698,1.1611128249817515,2.231509717630577,3.242902638102037,1.6538193376803811,3.6700245990821423,4.206321841944732,1.7444688773060184,3.317453127960241,2.21053543656214,2.6469009380520285,3.085554043720843,2.7342465456832183,2.560846061090544,3.970958438342465,1.5860831111925704,2.714588732918858,2.3714156397778927,2.227957913907164,2.4002903276591154,1.5979513994787315,5.420386882042205,2.0086451657214615,2.7584983673310033,2.2971403026228305,1.5197708682307844,4.981143503703021,4.425443262985745,5.223015180590362,12.88710374723257,1.794672784121005,1.7217562636894495,7.384651016725164,4.519090627893574,3.411786468556501,5.3405831452515775,4.210393829898016,10.659060608240697,3.245240882641729,3.357491121302817],"xaxis":"x2","yaxis":"y2","type":"box"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Mean waiting time for operator"}},"yaxis":{"anchor":"x","domain":[0.0,0.7326],"title":{"text":"count"}},"xaxis2":{"anchor":"y2","domain":[0.0,1.0],"matches":"x","showticklabels":false,"showgrid":true},"yaxis2":{"anchor":"x2","domain":[0.7426,1.0],"matches":"y2","showticklabels":false,"showline":false,"ticks":"","showgrid":false},"legend":{"title":{"text":"variable"},"tracegroupgap":0},"margin":{"t":60},"barmode":"relative","showlegend":false},                        {"responsive": true}                    ).then(function(){
+        </div><div class="output text_html"><div>                            <div id="f98c9de9-dc80-4753-9dbb-f3d6845be921" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("f98c9de9-dc80-4753-9dbb-f3d6845be921")) {                    Plotly.newPlot(                        "f98c9de9-dc80-4753-9dbb-f3d6845be921",                        [{"alignmentgroup":"True","bingroup":"x","hovertemplate":"variable=01_mean_waiting_time\u003cbr\u003eMean waiting time for operator=%{x}\u003cbr\u003ecount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"01_mean_waiting_time","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"01_mean_waiting_time","offsetgroup":"01_mean_waiting_time","orientation":"v","showlegend":true,"x":[3.547599449678054,4.5350411963236885,2.0763599186324315,3.1097450399930007,2.1536638308228664,2.857599826499767,1.8923028342760735,3.238544805621161,1.383906407970283,1.8160176386943783,3.0137846878342587,2.1974168207663154,1.8970821409904317,3.9260731639390696,2.2822009883537113,2.3194577180339038,1.9345504551366788,2.7496878181172524,3.894651722918505,1.7264083875703784,8.195223242810497,2.0761384146351616,2.9209534266056654,2.578136481956022,3.7931695893555477,2.7458297362229938,2.2418209203571635,3.488752277286067,3.50973629593538,3.6408686972006006,2.035088020069083,2.1197843068023046,8.285509120302947,7.7768731668438935,3.133386786165843,3.0964316122126645,2.668069236836923,2.8131683197599457,3.870506305902863,3.540815561843289,3.5346904619510937,2.0640863390590924,4.326391407587521,2.4880516556722108,2.4242628861817113,6.59276851013586,4.116584815058891,1.9388674193370101,2.077494706277463,1.9512378156436874,2.6397907887075447,2.4274630723382953,2.133689554926543,3.775015129746574,2.726244064972347,3.6688360687365553,1.7579904516260654,1.4900449408500902,9.1242805724398,2.302516049947667,10.244545254517567,2.623929148951312,1.8810002204595595,2.5474661743094993,2.0740027220458863,2.447729221767309,1.1046525736314465,2.979518819270523,3.726476214187827,6.804621740309724,3.3029569266543786,3.0513413985303646,1.8733598676094856,3.7814264154683896,3.009484345341095,5.224098819984729,2.9611357108397427,1.6600673350900284,1.1127746468131627,3.766182225747356,9.40155239101102,4.349803107129149,3.1519088989326596,2.4311631823329516,4.398296048734011,4.129054118845564,2.7267364115132455,3.5793904155074836,2.8167050167181142,3.8314555342439887,1.9598110395940518,2.5631309103446602,1.2976665785590125,4.240830697145463,8.478165001938839,2.1974370745093528,1.4434264413213627,3.573677777287325,2.8486369244593854,3.338556409790739],"xaxis":"x","yaxis":"y","type":"histogram"},{"alignmentgroup":"True","hovertemplate":"variable=01_mean_waiting_time\u003cbr\u003eMean waiting time for operator=%{x}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"01_mean_waiting_time","marker":{"color":"#636efa"},"name":"01_mean_waiting_time","notched":true,"offsetgroup":"01_mean_waiting_time","showlegend":false,"x":[3.547599449678054,4.5350411963236885,2.0763599186324315,3.1097450399930007,2.1536638308228664,2.857599826499767,1.8923028342760735,3.238544805621161,1.383906407970283,1.8160176386943783,3.0137846878342587,2.1974168207663154,1.8970821409904317,3.9260731639390696,2.2822009883537113,2.3194577180339038,1.9345504551366788,2.7496878181172524,3.894651722918505,1.7264083875703784,8.195223242810497,2.0761384146351616,2.9209534266056654,2.578136481956022,3.7931695893555477,2.7458297362229938,2.2418209203571635,3.488752277286067,3.50973629593538,3.6408686972006006,2.035088020069083,2.1197843068023046,8.285509120302947,7.7768731668438935,3.133386786165843,3.0964316122126645,2.668069236836923,2.8131683197599457,3.870506305902863,3.540815561843289,3.5346904619510937,2.0640863390590924,4.326391407587521,2.4880516556722108,2.4242628861817113,6.59276851013586,4.116584815058891,1.9388674193370101,2.077494706277463,1.9512378156436874,2.6397907887075447,2.4274630723382953,2.133689554926543,3.775015129746574,2.726244064972347,3.6688360687365553,1.7579904516260654,1.4900449408500902,9.1242805724398,2.302516049947667,10.244545254517567,2.623929148951312,1.8810002204595595,2.5474661743094993,2.0740027220458863,2.447729221767309,1.1046525736314465,2.979518819270523,3.726476214187827,6.804621740309724,3.3029569266543786,3.0513413985303646,1.8733598676094856,3.7814264154683896,3.009484345341095,5.224098819984729,2.9611357108397427,1.6600673350900284,1.1127746468131627,3.766182225747356,9.40155239101102,4.349803107129149,3.1519088989326596,2.4311631823329516,4.398296048734011,4.129054118845564,2.7267364115132455,3.5793904155074836,2.8167050167181142,3.8314555342439887,1.9598110395940518,2.5631309103446602,1.2976665785590125,4.240830697145463,8.478165001938839,2.1974370745093528,1.4434264413213627,3.573677777287325,2.8486369244593854,3.338556409790739],"xaxis":"x2","yaxis":"y2","type":"box"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Mean waiting time for operator"}},"yaxis":{"anchor":"x","domain":[0.0,0.7326],"title":{"text":"count"}},"xaxis2":{"anchor":"y2","domain":[0.0,1.0],"matches":"x","showticklabels":false,"showgrid":true},"yaxis2":{"anchor":"x2","domain":[0.7426,1.0],"matches":"y2","showticklabels":false,"showline":false,"ticks":"","showgrid":false},"legend":{"title":{"text":"variable"},"tracegroupgap":0},"margin":{"t":60},"barmode":"relative","showlegend":false},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('fd82d99b-dd68-41d1-a832-c4994af1b981');
+var gd = document.getElementById('f98c9de9-dc80-4753-9dbb-f3d6845be921');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -618,7 +645,7 @@ if (outputEl) {{
 </section>
 </section>
 <section id="adding-a-chart-to-the-web-app">
-<h2>3. Adding a chart to the web app<a class="headerlink" href="#adding-a-chart-to-the-web-app" title="Permalink to this heading">#</a></h2>
+<h2>3. Adding a chart to the web app<a class="headerlink" href="#adding-a-chart-to-the-web-app" title="Link to this heading">#</a></h2>
 <p>We will make the following changes to the web app script:</p>
 <ol class="arabic simple">
 <li><p>Add in a function called <code class="docutils literal notranslate"><span class="pre">create_hist</span></code>. This will implement the <code class="docutils literal notranslate"><span class="pre">plotly</span></code> histogram code we included above.</p></li>
@@ -763,7 +790,7 @@ if (outputEl) {{
               
               
                 <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="09_adding_text.html"
@@ -791,6 +818,7 @@ if (outputEl) {{
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -826,9 +854,10 @@ By Thomas Monks
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -852,8 +881,8 @@ By Thomas Monks
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

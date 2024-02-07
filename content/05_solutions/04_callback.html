@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Adding a patient callback from a nurse &#8212; Simulation in python</title>
   
@@ -19,51 +18,55 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/05_solutions/04_callback';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="simpy treatment centre model" href="05_treat_sim.html" />
@@ -77,10 +80,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -121,11 +123,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -140,6 +145,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../front_page.html">
@@ -148,10 +154,28 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
-    <p class="title logo__title">Simulation in python</p>
+    
+    
+      
+    
+    
+    <img src="../../_static/sim_book_logo.png" class="logo__image only-light" alt="Simulation in python - Home"/>
+    <script>document.write(`<img src="../../_static/sim_book_logo.png" class="logo__image only-dark" alt="Simulation in python - Home"/>`);</script>
+  
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -171,6 +195,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulation with simpy</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../02_simpy/01_sampling.html">Random variables and simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_simpy/01a_sim_tools.html">Sampling using <code class="docutils literal notranslate"><span class="pre">sim_tools</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02_simpy/02_basic_simpy.html">A first look at simpy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02_simpy/03_111_model.html">A full model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02_simpy/04_basic_results.html">Collecting results from a single run</a></li>
@@ -435,6 +460,7 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -444,6 +470,7 @@ document.write(`
   </button>
 `);
 </script>
+
 
 <script>
 document.write(`
@@ -491,10 +518,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="adding-a-patient-callback-from-a-nurse">
-<h1>Adding a patient callback from a nurse<a class="headerlink" href="#adding-a-patient-callback-from-a-nurse" title="Permalink to this heading">#</a></h1>
+<h1>Adding a patient callback from a nurse<a class="headerlink" href="#adding-a-patient-callback-from-a-nurse" title="Link to this heading">#</a></h1>
 <p>After a patient has spoken to a call operator their priority is triaged.  It is estimated that 40% of patients require a callback from a nurse.  There are 9 nurses available.  A nurse patient consultation has a Uniform distribution lasting between 10 and 20 minutes.</p>
 <p><img alt="111 image" src="../../_images/111_call_system.png" /></p>
 <p><strong>Task</strong></p>
@@ -511,7 +538,7 @@ document.write(`
 <li><p>The logic for taking a nurse resource and then undergoing a nurse consultation is the same the operator process.</p></li>
 </ul>
 <section id="imports">
-<h2>1. Imports<a class="headerlink" href="#imports" title="Permalink to this heading">#</a></h2>
+<h2>1. Imports<a class="headerlink" href="#imports" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -524,7 +551,7 @@ document.write(`
 </div>
 </section>
 <section id="notebook-level-variables-constants-and-default-values">
-<h2>2. Notebook level variables, constants, and default values<a class="headerlink" href="#notebook-level-variables-constants-and-default-values" title="Permalink to this heading">#</a></h2>
+<h2>2. Notebook level variables, constants, and default values<a class="headerlink" href="#notebook-level-variables-constants-and-default-values" title="Link to this heading">#</a></h2>
 <p>A useful first step when setting up a simulation model is to define the base case or as-is parameters.  Here we will create a set of constant/default values for our <code class="docutils literal notranslate"><span class="pre">Experiment</span></code> class, but you could also consider reading these in from a file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -573,7 +600,7 @@ document.write(`
 </div>
 </section>
 <section id="distribution-classes">
-<h2>3. Distribution classes<a class="headerlink" href="#distribution-classes" title="Permalink to this heading">#</a></h2>
+<h2>3. Distribution classes<a class="headerlink" href="#distribution-classes" title="Link to this heading">#</a></h2>
 <p>We will define two additional distribution classes (<code class="docutils literal notranslate"><span class="pre">Uniform</span></code> and <code class="docutils literal notranslate"><span class="pre">Bernoulli</span></code>) to encapsulate the random number generation, parameters and random seeds used in the sampling.  Take a look at how they work.</p>
 <blockquote>
 <div><p>You should be able to reuse these classes in your own simulation models.  It is actually not a lot of code, but it is useful to build up a code base that you can reuse with confidence in your own projects.</p>
@@ -762,7 +789,7 @@ document.write(`
 </div>
 </section>
 <section id="experiment-class">
-<h2>3. Experiment class<a class="headerlink" href="#experiment-class" title="Permalink to this heading">#</a></h2>
+<h2>3. Experiment class<a class="headerlink" href="#experiment-class" title="Link to this heading">#</a></h2>
 <p>We will modify the experiment class to include new results collection for the additional nurse process.</p>
 <ol class="arabic simple">
 <li><p>Modify the <strong>init</strong> method to accept additional parameters: <code class="docutils literal notranslate"><span class="pre">chance_callback</span></code>, <code class="docutils literal notranslate"><span class="pre">nurse_call_low</span></code>, <code class="docutils literal notranslate"><span class="pre">nurse_call_high</span></code>, <code class="docutils literal notranslate"><span class="pre">callback_seed</span></code>, <code class="docutils literal notranslate"><span class="pre">nurse_seed</span></code>. Remember to include the default values for these parameters.</p></li>
@@ -846,7 +873,7 @@ document.write(`
 </div>
 </section>
 <section id="model-code">
-<h2>4. Model code<a class="headerlink" href="#model-code" title="Permalink to this heading">#</a></h2>
+<h2>4. Model code<a class="headerlink" href="#model-code" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">trace</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
@@ -987,7 +1014,7 @@ document.write(`
 </div>
 </section>
 <section id="model-wrapper-functions">
-<h2>5. Model wrapper functions<a class="headerlink" href="#model-wrapper-functions" title="Permalink to this heading">#</a></h2>
+<h2>5. Model wrapper functions<a class="headerlink" href="#model-wrapper-functions" title="Link to this heading">#</a></h2>
 <p>Modifications to make to the <code class="docutils literal notranslate"><span class="pre">single_run</span></code> function:</p>
 <ul class="simple">
 <li><p>Create and the nurses resource to the experiment</p></li>
@@ -1148,38 +1175,38 @@ document.write(`
   <tbody>
     <tr>
       <th>1</th>
-      <td>1.723402</td>
-      <td>91.405028</td>
-      <td>40.320009</td>
-      <td>98.095209</td>
+      <td>1.178718</td>
+      <td>89.320635</td>
+      <td>16.713391</td>
+      <td>95.961422</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.893961</td>
-      <td>88.316168</td>
-      <td>48.245436</td>
-      <td>97.616093</td>
+      <td>3.161625</td>
+      <td>92.279229</td>
+      <td>48.326238</td>
+      <td>97.094887</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2.458292</td>
-      <td>93.343088</td>
-      <td>49.883218</td>
-      <td>97.821382</td>
+      <td>2.349819</td>
+      <td>93.638419</td>
+      <td>53.604470</td>
+      <td>97.788670</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2.315960</td>
-      <td>90.546897</td>
-      <td>52.709510</td>
-      <td>97.905453</td>
+      <td>2.789133</td>
+      <td>95.091617</td>
+      <td>70.763511</td>
+      <td>97.604093</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>2.624871</td>
-      <td>91.850387</td>
-      <td>45.438445</td>
-      <td>97.446660</td>
+      <td>2.297572</td>
+      <td>92.635203</td>
+      <td>62.665406</td>
+      <td>97.411327</td>
     </tr>
   </tbody>
 </table>
@@ -1187,7 +1214,7 @@ document.write(`
 </div>
 </section>
 <section id="multiple-experiments">
-<h2>6. Multiple experiments<a class="headerlink" href="#multiple-experiments" title="Permalink to this heading">#</a></h2>
+<h2>6. Multiple experiments<a class="headerlink" href="#multiple-experiments" title="Link to this heading">#</a></h2>
 <blockquote>
 <div><p>No modifications are needed to code in this section.</p>
 </div></blockquote>
@@ -1274,10 +1301,7 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model experiments:
 No. experiments to execute = 2
 
-Running base =&gt; 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done.
+Running base =&gt; done.
 
 Running operators+1 =&gt; 
 </pre></div>
@@ -1352,23 +1376,23 @@ All experiments are complete.
   <tbody>
     <tr>
       <th>01_mean_waiting_time</th>
-      <td>2.90</td>
-      <td>1.16</td>
+      <td>5.69</td>
+      <td>1.04</td>
     </tr>
     <tr>
       <th>02_operator_util</th>
-      <td>92.83</td>
-      <td>86.21</td>
+      <td>93.77</td>
+      <td>85.74</td>
     </tr>
     <tr>
       <th>03_mean_nurse_waiting_time</th>
-      <td>35.88</td>
-      <td>52.49</td>
+      <td>47.39</td>
+      <td>52.81</td>
     </tr>
     <tr>
       <th>04_nurse_util</th>
-      <td>97.31</td>
-      <td>97.41</td>
+      <td>96.90</td>
+      <td>97.17</td>
     </tr>
   </tbody>
 </table>
@@ -1405,7 +1429,7 @@ All experiments are complete.
               
               
                 <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="03_basic_results.html"
@@ -1433,6 +1457,7 @@ All experiments are complete.
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1468,9 +1493,10 @@ By Thomas Monks
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1494,8 +1520,8 @@ By Thomas Monks
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

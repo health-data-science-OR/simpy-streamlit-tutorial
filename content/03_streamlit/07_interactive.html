@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>An interactive app &#8212; Simulation in python</title>
   
@@ -19,51 +18,55 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/03_streamlit/07_interactive';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Tidying up controls" href="08_sidebar.html" />
@@ -77,10 +80,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -121,11 +123,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -140,6 +145,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../front_page.html">
@@ -148,10 +154,28 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
-    <p class="title logo__title">Simulation in python</p>
+    
+    
+      
+    
+    
+    <img src="../../_static/sim_book_logo.png" class="logo__image only-light" alt="Simulation in python - Home"/>
+    <script>document.write(`<img src="../../_static/sim_book_logo.png" class="logo__image only-dark" alt="Simulation in python - Home"/>`);</script>
+  
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -171,6 +195,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulation with simpy</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../02_simpy/01_sampling.html">Random variables and simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_simpy/01a_sim_tools.html">Sampling using <code class="docutils literal notranslate"><span class="pre">sim_tools</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02_simpy/02_basic_simpy.html">A first look at simpy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02_simpy/03_111_model.html">A full model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02_simpy/04_basic_results.html">Collecting results from a single run</a></li>
@@ -435,6 +460,7 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -444,6 +470,7 @@ document.write(`
   </button>
 `);
 </script>
+
 
 <script>
 document.write(`
@@ -489,13 +516,13 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="an-interactive-app">
-<h1>An interactive app<a class="headerlink" href="#an-interactive-app" title="Permalink to this heading">#</a></h1>
+<h1>An interactive app<a class="headerlink" href="#an-interactive-app" title="Link to this heading">#</a></h1>
 <p>We will now modify our app so that it is interactive.  We will do this using <code class="docutils literal notranslate"><span class="pre">streamlit.slider</span></code> widgets</p>
 <section id="adding-a-first-slider">
-<h2>1. Adding a first slider<a class="headerlink" href="#adding-a-first-slider" title="Permalink to this heading">#</a></h2>
+<h2>1. Adding a first slider<a class="headerlink" href="#adding-a-first-slider" title="Link to this heading">#</a></h2>
 <p>A slider provides a simple way to vary an input. We specify a minimum and maximum value inputs can accept, the default value, and a step.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">slider_name</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="n">slider_name</span><span class="p">,</span> <span class="n">min_value</span><span class="p">,</span> <span class="n">max_value</span><span class="p">,</span> <span class="n">default_value</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
 </pre></div>
@@ -508,11 +535,11 @@ document.write(`
 <p>This displays a slider on the page with a label “Call operators”.  Its minimum value is 1.0, its maximum value is 20.0. its default value is 13.0 and it increments (slides) by 1.  The variable <code class="docutils literal notranslate"><span class="pre">n_operators</span></code> is an int.</p>
 </section>
 <section id="how-streamlit-works">
-<h2>2. How <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> works<a class="headerlink" href="#how-streamlit-works" title="Permalink to this heading">#</a></h2>
+<h2>2. How <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> works<a class="headerlink" href="#how-streamlit-works" title="Link to this heading">#</a></h2>
 <p>Each time a user updates the value of a slider or clicks the run button <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> executes the full <code class="docutils literal notranslate"><span class="pre">interactive_app.py</span></code> script i.e. from top to bottom. This means that the int value of <code class="docutils literal notranslate"><span class="pre">n_operators</span></code> changes each time the slider is moved. This also explains how the <code class="docutils literal notranslate"><span class="pre">st.button</span></code> function works. When clicked it is assigned the value <code class="docutils literal notranslate"><span class="pre">True</span></code>.  Streamlit then executes the full script and will also execute the conditional logic contained under the if statement.  When a slider is change the button has a value of <code class="docutils literal notranslate"><span class="pre">False</span></code> so the model will not run unnecessarily.</p>
 </section>
 <section id="add-remaining-sliders">
-<h2>3. Add remaining sliders<a class="headerlink" href="#add-remaining-sliders" title="Permalink to this heading">#</a></h2>
+<h2>3. Add remaining sliders<a class="headerlink" href="#add-remaining-sliders" title="Link to this heading">#</a></h2>
 <p>We can do the same for nurses, chance of callback and number of replications</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n_operators</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s1">&#39;Call operators&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
@@ -526,7 +553,7 @@ document.write(`
 </div>
 </section>
 <section id="run-the-app">
-<h2>4. Run the app<a class="headerlink" href="#run-the-app" title="Permalink to this heading">#</a></h2>
+<h2>4. Run the app<a class="headerlink" href="#run-the-app" title="Link to this heading">#</a></h2>
 <p>As before run the app using the following command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">streamlit</span> <span class="n">run</span> <span class="n">interactive_app</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
@@ -534,7 +561,7 @@ document.write(`
 <p>The full code listing and a screen shot of the app is below.</p>
 </section>
 <section id="full-listing">
-<h2>Full listing<a class="headerlink" href="#full-listing" title="Permalink to this heading">#</a></h2>
+<h2>Full listing<a class="headerlink" href="#full-listing" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
@@ -581,14 +608,18 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-10-18 11:00:50.751 
-  <span class=" -Color -Color-Bold -Color-Bold-Yellow">Warning:</span> to view this Streamlit app on a browser, run it with the following
-  command:
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span><span class="w"> </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span><span class="sd"> The code in this streamlit script modifies the basic script </span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd"> we had for running a scenario</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span><span class="sd"> &#39;&#39;&#39;</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">model</span> <span class="kn">import</span> <span class="n">Experiment</span><span class="p">,</span> <span class="n">multiple_replications</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># We add in a title for our web app&#39;s page</span>
 
-    streamlit run /home/tom/miniconda3/envs/sim/lib/python3.9/site-packages/ipykernel_launcher.py [ARGUMENTS]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-10-18 11:00:50.752 Session state does not function when running a script without `streamlit run`
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;streamlit&#39;
 </pre></div>
 </div>
 </div>
@@ -625,7 +656,7 @@ document.write(`
               
               
                 <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="06_basic_app.html"
@@ -653,6 +684,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -686,9 +718,10 @@ By Thomas Monks
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -712,8 +745,8 @@ By Thomas Monks
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Random variables and simulation &#8212; Simulation in python</title>
   
@@ -19,54 +18,58 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/02_simpy/01_sampling';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="A first look at simpy" href="02_basic_simpy.html" />
+    <link rel="next" title="Sampling using sim_tools" href="01a_sim_tools.html" />
     <link rel="prev" title="Citation" href="../01_setup/citation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -77,10 +80,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -121,11 +123,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -140,6 +145,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../front_page.html">
@@ -148,10 +154,28 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
-    <p class="title logo__title">Simulation in python</p>
+    
+    
+      
+    
+    
+    <img src="../../_static/sim_book_logo.png" class="logo__image only-light" alt="Simulation in python - Home"/>
+    <script>document.write(`<img src="../../_static/sim_book_logo.png" class="logo__image only-dark" alt="Simulation in python - Home"/>`);</script>
+  
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -171,6 +195,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulation with simpy</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Random variables and simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01a_sim_tools.html">Sampling using <code class="docutils literal notranslate"><span class="pre">sim_tools</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_basic_simpy.html">A first look at simpy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_111_model.html">A full model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_basic_results.html">Collecting results from a single run</a></li>
@@ -435,6 +460,7 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -444,6 +470,7 @@ document.write(`
   </button>
 `);
 </script>
+
 
 <script>
 document.write(`
@@ -500,13 +527,13 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="random-variables-and-simulation">
-<h1>Random variables and simulation<a class="headerlink" href="#random-variables-and-simulation" title="Permalink to this heading">#</a></h1>
+<h1>Random variables and simulation<a class="headerlink" href="#random-variables-and-simulation" title="Link to this heading">#</a></h1>
 <p>If you are working in simulation modelling in python it is highly likely that you will need to make use of the <code class="docutils literal notranslate"><span class="pre">numpy.random</span></code> namespace.  This provides a variety of statistical distributions that you can use for efficient sampling.  Let’s take a look at a few example distributions. For example generating 100,000 samples from the uniform, exponential distributions and normal distributions:</p>
 <section id="imports">
-<h2>1. Imports<a class="headerlink" href="#imports" title="Permalink to this heading">#</a></h2>
+<h2>1. Imports<a class="headerlink" href="#imports" title="Link to this heading">#</a></h2>
 <p>We will import <code class="docutils literal notranslate"><span class="pre">numpy</span></code> for our sampling and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> to plot our distributions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -518,7 +545,7 @@ document.write(`
 </div>
 </section>
 <section id="helper-functions">
-<h2>2. Helper functions<a class="headerlink" href="#helper-functions" title="Permalink to this heading">#</a></h2>
+<h2>2. Helper functions<a class="headerlink" href="#helper-functions" title="Link to this heading">#</a></h2>
 <p>The simple function below can be used to automatically produce a plot illustrating a distribution of samples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -557,7 +584,7 @@ document.write(`
 </div>
 </section>
 <section id="creating-a-random-number-generator-object">
-<h2>3. Creating a random number generator object<a class="headerlink" href="#creating-a-random-number-generator-object" title="Permalink to this heading">#</a></h2>
+<h2>3. Creating a random number generator object<a class="headerlink" href="#creating-a-random-number-generator-object" title="Link to this heading">#</a></h2>
 <p>To create a <code class="docutils literal notranslate"><span class="pre">Generator</span></code> use the <code class="docutils literal notranslate"><span class="pre">default_rng()</span></code> function of the random module.</p>
 <p>For more information on <code class="docutils literal notranslate"><span class="pre">Generator</span></code> you can look at <a class="reference external" href="https://numpy.org/doc/stable/reference/random/generator.html"><code class="docutils literal notranslate"><span class="pre">numpy</span></code> online documentation.</a></p>
 <div class="cell docutils container">
@@ -585,7 +612,7 @@ document.write(`
 </div>
 </section>
 <section id="steps-to-create-a-sample">
-<h2>4. Steps to create a sample<a class="headerlink" href="#steps-to-create-a-sample" title="Permalink to this heading">#</a></h2>
+<h2>4. Steps to create a sample<a class="headerlink" href="#steps-to-create-a-sample" title="Link to this heading">#</a></h2>
 <p>.
 In general the approach to sampling is:</p>
 <ol class="arabic simple">
@@ -599,7 +626,7 @@ In general the approach to sampling is:</p>
 <li><p>Store the result in an appropriately named variable.</p></li>
 </ol>
 <section id="uniform-distribution">
-<h3>4.1 Uniform distribution<a class="headerlink" href="#uniform-distribution" title="Permalink to this heading">#</a></h3>
+<h3>4.1 Uniform distribution<a class="headerlink" href="#uniform-distribution" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># step 1: create a random number generator object</span>
@@ -614,12 +641,12 @@ In general the approach to sampling is:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5b6572779920a02dbc6061bc61fa02ddda042f623ec13b5c0f1642bd81a6d19d.png" src="../../_images/5b6572779920a02dbc6061bc61fa02ddda042f623ec13b5c0f1642bd81a6d19d.png" />
+<img alt="../../_images/e3e2ce1812a8c34f47a0c0f72561ea865d8449cf08ad0fbf09d4bb4215f0f99c.png" src="../../_images/e3e2ce1812a8c34f47a0c0f72561ea865d8449cf08ad0fbf09d4bb4215f0f99c.png" />
 </div>
 </div>
 </section>
 <section id="exponential-distribution">
-<h3>4.2 Exponential distribution<a class="headerlink" href="#exponential-distribution" title="Permalink to this heading">#</a></h3>
+<h3>4.2 Exponential distribution<a class="headerlink" href="#exponential-distribution" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">()</span>
@@ -632,13 +659,13 @@ In general the approach to sampling is:</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 500x300 with 1 Axes&gt;, &lt;Axes: xlabel=&#39;x&#39;, ylabel=&#39;p(x)&#39;&gt;)
 </pre></div>
 </div>
-<img alt="../../_images/5c9b7ac1b936bf6773e0cb1de1301d705ddcf2ff2d994bec52979bdd9267369e.png" src="../../_images/5c9b7ac1b936bf6773e0cb1de1301d705ddcf2ff2d994bec52979bdd9267369e.png" />
+<img alt="../../_images/6685edb22725bc7e2614ab0f6d34ce8087a6b8fd90e3fdbb0221926d3f8c46c1.png" src="../../_images/6685edb22725bc7e2614ab0f6d34ce8087a6b8fd90e3fdbb0221926d3f8c46c1.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="normal-distribution">
-<h2>4.3 Normal distribution<a class="headerlink" href="#normal-distribution" title="Permalink to this heading">#</a></h2>
+<h2>4.3 Normal distribution<a class="headerlink" href="#normal-distribution" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">()</span>
@@ -651,12 +678,12 @@ In general the approach to sampling is:</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 500x300 with 1 Axes&gt;, &lt;Axes: xlabel=&#39;x&#39;, ylabel=&#39;p(x)&#39;&gt;)
 </pre></div>
 </div>
-<img alt="../../_images/f2ad4dc313515494036d90e275d89a308df37ec3b8e4d3d16a9e62c916ba22a2.png" src="../../_images/f2ad4dc313515494036d90e275d89a308df37ec3b8e4d3d16a9e62c916ba22a2.png" />
+<img alt="../../_images/3e777eb966e2f372f2cba382a2398e4408dc035411bb11747fb0c4be7b34c683.png" src="../../_images/3e777eb966e2f372f2cba382a2398e4408dc035411bb11747fb0c4be7b34c683.png" />
 </div>
 </div>
 </section>
 <section id="generating-a-single-sample">
-<h2>4.4 Generating a single sample<a class="headerlink" href="#generating-a-single-sample" title="Permalink to this heading">#</a></h2>
+<h2>4.4 Generating a single sample<a class="headerlink" href="#generating-a-single-sample" title="Link to this heading">#</a></h2>
 <p>If we just need to generate the a single sample we omit the <code class="docutils literal notranslate"><span class="pre">size</span></code> parameter. This returns a scalar value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -668,7 +695,7 @@ In general the approach to sampling is:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25.6007644007629
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>21.832588713560828
 &lt;class &#39;float&#39;&gt;
 </pre></div>
 </div>
@@ -689,16 +716,16 @@ In general the approach to sampling is:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[27.3764429]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[29.13906225]
 &lt;class &#39;numpy.ndarray&#39;&gt;
-27.37644290467727
+29.13906224574349
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="controlling-sampling-in-simulations">
-<h2>5. Controlling sampling in simulations<a class="headerlink" href="#controlling-sampling-in-simulations" title="Permalink to this heading">#</a></h2>
+<h2>5. Controlling sampling in simulations<a class="headerlink" href="#controlling-sampling-in-simulations" title="Link to this heading">#</a></h2>
 <p>A Professor of Computer Simulation once told me ‘<em>remember that a stochastic simulation is not a random game against nature - you are in control</em>’.  This has always stuck with me.  What the famous Prof was referring to is that in a simulation we can control the streams of psuedo random numbers and hence make our results repeatable.</p>
 <blockquote>
 <div><p>In case you are wondering <strong>stochastic</strong> here refers to a model that is probabilistic.  This means that a single run of a model does not provide an accurate picture of model performance/behaviour.  You need to run the model multiple times to generate a distribution.</p>
@@ -727,13 +754,13 @@ In general the approach to sampling is:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.72669258, 2.43009976, 0.34722906, 1.21347412, 7.32056551])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.7142268 , 1.78362273, 3.36675798, 4.23215817, 4.82423977])
 </pre></div>
 </div>
 </div>
 </div>
 <section id="problem-repeatability">
-<h3>5.1 Problem: repeatability<a class="headerlink" href="#problem-repeatability" title="Permalink to this heading">#</a></h3>
+<h3>5.1 Problem: repeatability<a class="headerlink" href="#problem-repeatability" title="Link to this heading">#</a></h3>
 <p>The first problem we encounter is repeatability. Each time you run the code above you will get a different result.  For any scientific study we produce or publish we want the results to be repeatable.  On a practical level the lack of repeatability makes debugging, testing and fixing code very difficult. We can solve this problem using a random seed.  This is just a parameter you pass to <code class="docutils literal notranslate"><span class="pre">default_rng</span></code>.  Try running the code below multiple times you should get the same results each run.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -761,7 +788,7 @@ In general the approach to sampling is:</p>
 </section>
 </section>
 <section id="encapsulating-distributions-parameters-and-random-seeds">
-<h2>6. Encapsulating distributions, parameters, and random seeds.<a class="headerlink" href="#encapsulating-distributions-parameters-and-random-seeds" title="Permalink to this heading">#</a></h2>
+<h2>6. Encapsulating distributions, parameters, and random seeds.<a class="headerlink" href="#encapsulating-distributions-parameters-and-random-seeds" title="Link to this heading">#</a></h2>
 <p>When building a simulation model it is often useful to <em>package up</em> both a random number generator, parameters for a specific distribution, and a seed in a python class.  This allows easy creation of generator objects, straightforward sampling, and improves management of streams for each activity in a simulation model.</p>
 <p>As an example here a class <code class="docutils literal notranslate"><span class="pre">Exponential</span></code> representing the exponential distribution. It accepts a mean value parameter and you can set the random seed.</p>
 <p>We will then instantiate two <code class="docutils literal notranslate"><span class="pre">Exponential</span></code> objects for two different processes in our simulation: acute length of stay, and rehab length of stay.</p>
@@ -837,7 +864,7 @@ In general the approach to sampling is:</p>
 </div>
 </section>
 <section id="next-steps">
-<h2>7. Next steps<a class="headerlink" href="#next-steps" title="Permalink to this heading">#</a></h2>
+<h2>7. Next steps<a class="headerlink" href="#next-steps" title="Link to this heading">#</a></h2>
 <p>We can now move onto creating simple <code class="docutils literal notranslate"><span class="pre">simpy</span></code> models that make use of <code class="docutils literal notranslate"><span class="pre">numpy</span></code> sampling.</p>
 </section>
 </section>
@@ -870,7 +897,7 @@ In general the approach to sampling is:</p>
               
               
                 <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="../01_setup/citation.html"
@@ -882,11 +909,11 @@ In general the approach to sampling is:</p>
       </div>
     </a>
     <a class="right-next"
-       href="02_basic_simpy.html"
+       href="01a_sim_tools.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">A first look at simpy</p>
+        <p class="prev-next-title">Sampling using <code class="docutils literal notranslate"><span class="pre">sim_tools</span></code></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -898,6 +925,7 @@ In general the approach to sampling is:</p>
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -942,9 +970,10 @@ By Thomas Monks
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -968,8 +997,8 @@ By Thomas Monks
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

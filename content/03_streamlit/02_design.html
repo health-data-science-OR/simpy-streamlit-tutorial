@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Main concepts &#8212; Simulation in python</title>
   
@@ -19,51 +18,55 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/03_streamlit/02_design';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="The Experiment class" href="03_experiment.html" />
@@ -77,10 +80,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -121,11 +123,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -140,6 +145,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../front_page.html">
@@ -148,10 +154,28 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
-    <p class="title logo__title">Simulation in python</p>
+    
+    
+      
+    
+    
+    <img src="../../_static/sim_book_logo.png" class="logo__image only-light" alt="Simulation in python - Home"/>
+    <script>document.write(`<img src="../../_static/sim_book_logo.png" class="logo__image only-dark" alt="Simulation in python - Home"/>`);</script>
+  
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -171,6 +195,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulation with simpy</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../02_simpy/01_sampling.html">Random variables and simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_simpy/01a_sim_tools.html">Sampling using <code class="docutils literal notranslate"><span class="pre">sim_tools</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02_simpy/02_basic_simpy.html">A first look at simpy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02_simpy/03_111_model.html">A full model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02_simpy/04_basic_results.html">Collecting results from a single run</a></li>
@@ -368,6 +393,7 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -377,6 +403,7 @@ document.write(`
   </button>
 `);
 </script>
+
 
 <script>
 document.write(`
@@ -431,10 +458,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="main-concepts">
-<h1>Main concepts<a class="headerlink" href="#main-concepts" title="Permalink to this heading">#</a></h1>
+<h1>Main concepts<a class="headerlink" href="#main-concepts" title="Link to this heading">#</a></h1>
 <p>The figure below illustrates the basic design of the creating a simulation model with a <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> web app front end.  The diagram is illustrative and is intended to communicate the main concepts and tasks to complete. There are two files in the diagram below: a</p>
 <ul class="simple">
 <li><p>a python module containing the simulation model (e.g. <a class="reference external" href="http://model.py">model.py</a>)</p></li>
@@ -442,21 +469,21 @@ document.write(`
 </ul>
 <p><img alt="image" src="../../_images/streamlit_design.png" /></p>
 <section id="python-module">
-<h2>Python module<a class="headerlink" href="#python-module" title="Permalink to this heading">#</a></h2>
+<h2>Python module<a class="headerlink" href="#python-module" title="Link to this heading">#</a></h2>
 <p>A standard python module (e.g. <code class="docutils literal notranslate"><span class="pre">model.py</span></code>) that contains the simulation model and associated functions.</p>
 <section id="model-logic-functions-classes-and-constants">
-<h3>Model logic, functions, classes, and constants<a class="headerlink" href="#model-logic-functions-classes-and-constants" title="Permalink to this heading">#</a></h3>
+<h3>Model logic, functions, classes, and constants<a class="headerlink" href="#model-logic-functions-classes-and-constants" title="Link to this heading">#</a></h3>
 <p>Modellers should build the simulation model independently from the <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> front end.  It should be designed in a way that the model could be run from a standard python script, Jupyter notebook, or even a command line programme.</p>
-<p>We provide a simple example of a simulation model in this tutorial: <a class="reference internal" href="../05_solutions/04_callback.html"><span class="doc std std-doc">the 111 urgent call centre model.</span></a>.   The model is implemented in <code class="docutils literal notranslate"><span class="pre">simpy</span></code>.  An overview of the process logic is provided in the figure below.  Call arrive at random, after a wait speak to one of a set of call operators and then either leave the model or wait for and engage in a nurse consultation.</p>
+<p>We provide a simple example of a simulation model in this tutorial: <a class="reference internal" href="../05_solutions/04_callback.html"><span class="std std-doc">the 111 urgent call centre model.</span></a>.   The model is implemented in <code class="docutils literal notranslate"><span class="pre">simpy</span></code>.  An overview of the process logic is provided in the figure below.  Call arrive at random, after a wait speak to one of a set of call operators and then either leave the model or wait for and engage in a nurse consultation.</p>
 <p>This is a simple model and the logic is contained within two functions <code class="docutils literal notranslate"><span class="pre">arrival_generator()</span></code> and <code class="docutils literal notranslate"><span class="pre">service()</span></code>.</p>
 <p><img alt="image" src="../../_images/111_call_system.png" /></p>
 </section>
 <section id="experiment-class">
-<h3><code class="docutils literal notranslate"><span class="pre">Experiment</span></code> class<a class="headerlink" href="#experiment-class" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">Experiment</span></code> class<a class="headerlink" href="#experiment-class" title="Link to this heading">#</a></h3>
 <p>The experiment class is tightly coupled to the design of the simulation model.  It contains a configuration of the simulation model that can be executed to obtain results. Another way to describe an experiment is that it is a collection of input parameters for the simulation model.  For example, a user might set up two experiments; one containing the default number of call operators and one containing an additional call operator. The results of the experiments (such as patient waiting time and operator utilisation) can then be compared.</p>
 </section>
 <section id="single-run-wrapper-function">
-<h3><code class="docutils literal notranslate"><span class="pre">single_run()</span></code> wrapper function<a class="headerlink" href="#single-run-wrapper-function" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">single_run()</span></code> wrapper function<a class="headerlink" href="#single-run-wrapper-function" title="Link to this heading">#</a></h3>
 <p>This function acts as a wrapper to running a simulated experiment and processing end of run results.  A key aspect of the design is that <code class="docutils literal notranslate"><span class="pre">single_run</span></code> accepts an instance of <code class="docutils literal notranslate"><span class="pre">Experiment</span></code>.  The listing below provides pseudo code for the design of this function. It is indicative of the general pattern you will follow; the exact details will vary depending on the simulation package in use.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="k">def</span> <span class="nf">single_run</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">run_length</span><span class="p">):</span>
@@ -470,27 +497,27 @@ document.write(`
 </div>
 </section>
 <section id="multiple-replications-wrapper-function">
-<h3><code class="docutils literal notranslate"><span class="pre">multiple_replications()</span></code> wrapper function<a class="headerlink" href="#multiple-replications-wrapper-function" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">multiple_replications()</span></code> wrapper function<a class="headerlink" href="#multiple-replications-wrapper-function" title="Link to this heading">#</a></h3>
 <p>The most likely usage scenario is that a model is run using multiple independent replications.  This is a simple function that accepts an <code class="docutils literal notranslate"><span class="pre">Experiment</span></code> object and the number of replications to run.  It then calls the <code class="docutils literal notranslate"><span class="pre">single_run()</span></code> function the appropriate number of times to create the distribution of results.</p>
 </section>
 </section>
 <section id="the-streamlit-script">
-<h2>The <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> script<a class="headerlink" href="#the-streamlit-script" title="Permalink to this heading">#</a></h2>
+<h2>The <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> script<a class="headerlink" href="#the-streamlit-script" title="Link to this heading">#</a></h2>
 <p>The script imports the <code class="docutils literal notranslate"><span class="pre">Experiment</span></code> class, and the <code class="docutils literal notranslate"><span class="pre">single_run()</span></code> and/or <code class="docutils literal notranslate"><span class="pre">multiple_replications()</span></code> wrapper classes from the simulation model module. This is all that is needed to enable the interaction between the front-end and the model.</p>
 <section id="streamlit-input-widgets">
-<h3><code class="docutils literal notranslate"><span class="pre">streamlit</span></code> input widgets<a class="headerlink" href="#streamlit-input-widgets" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">streamlit</span></code> input widgets<a class="headerlink" href="#streamlit-input-widgets" title="Link to this heading">#</a></h3>
 <p>The package has a number of standard input widgets available.  For example, sliders, and text boxes to allow users to vary numeric values representing model parameters, and buttons to allow users to run models.</p>
 </section>
 <section id="experiment-object">
-<h3><code class="docutils literal notranslate"><span class="pre">Experiment</span></code> object<a class="headerlink" href="#experiment-object" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">Experiment</span></code> object<a class="headerlink" href="#experiment-object" title="Link to this heading">#</a></h3>
 <p>The script creates one ore more instances of <code class="docutils literal notranslate"><span class="pre">Experiment</span></code>. The experiment object is parameterised by the script i.e the number of operators and nurses is varied using two the values contained in <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> input sliders.</p>
 </section>
 <section id="calling-multiple-replications">
-<h3>Calling <code class="docutils literal notranslate"><span class="pre">multiple_replications()</span></code><a class="headerlink" href="#calling-multiple-replications" title="Permalink to this heading">#</a></h3>
+<h3>Calling <code class="docutils literal notranslate"><span class="pre">multiple_replications()</span></code><a class="headerlink" href="#calling-multiple-replications" title="Link to this heading">#</a></h3>
 <p>The interface could be setup so that a user clicks on <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> button that passes a parameterised instance of <code class="docutils literal notranslate"><span class="pre">Experiment</span></code> to <code class="docutils literal notranslate"><span class="pre">multiple_replications()</span></code>  along with the number of replications to run.</p>
 </section>
 <section id="streamlit-output-widgets">
-<h3><code class="docutils literal notranslate"><span class="pre">streamlit</span></code> output widgets<a class="headerlink" href="#streamlit-output-widgets" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">streamlit</span></code> output widgets<a class="headerlink" href="#streamlit-output-widgets" title="Link to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">multiple_replications()</span></code> function should return some form of results to the <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> script.  In this tutorial we return a <code class="docutils literal notranslate"><span class="pre">pandas</span></code> dataframe.  The streamlit script then uses a output widget e.g. a <code class="docutils literal notranslate"><span class="pre">streamlist.dataframe</span></code> to display the results to the user.</p>
 </section>
 </section>
@@ -524,7 +551,7 @@ document.write(`
               
               
                 <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="01_intro.html"
@@ -552,6 +579,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -594,9 +622,10 @@ By Thomas Monks
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -620,8 +649,8 @@ By Thomas Monks
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,0 +1,806 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Sampling using sim_tools &#8212; Simulation in python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/02_simpy/01a_sim_tools';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="A first look at simpy" href="02_basic_simpy.html" />
+    <link rel="prev" title="Random variables and simulation" href="01_sampling.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../front_page.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/sim_book_logo.png" class="logo__image only-light" alt="Simulation in python - Home"/>
+    <script>document.write(`<img src="../../_static/sim_book_logo.png" class="logo__image only-dark" alt="Simulation in python - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../front_page.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_setup/install.html">Install python and an IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_setup/reading.html">Recommended Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_setup/contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_setup/citation.html">Citation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulation with simpy</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_sampling.html">Random variables and simulation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Sampling using <code class="docutils literal notranslate"><span class="pre">sim_tools</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_basic_simpy.html">A first look at simpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_111_model.html">A full model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_basic_results.html">Collecting results from a single run</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_experiments.html">Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_replications.html">Multiple replications</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">streamlit sim apps</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/01_intro.html">What is streamlit?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/02_design.html">Main concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/03_experiment.html">The <code class="docutils literal notranslate"><span class="pre">Experiment</span></code> class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/04_wrapper.html">Wrapper functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/05_module.html">Python module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/06_basic_app.html">A first web app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/07_interactive.html">An interactive app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/08_sidebar.html">Tidying up controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/09_adding_text.html">Background text</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/10_adding_plots.html">Adding plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/12_multiple_experiments.html">Loading and running multiple experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_streamlit/13_ciw_backend.html">Replacing <code class="docutils literal notranslate"><span class="pre">simpy</span></code> with <code class="docutils literal notranslate"><span class="pre">ciw</span></code></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/01_sampling.html">Random sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/02_generator.html">Generator exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/03_basic_results.html">Results collection exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/04_callback.html">Adding a patient callback from a nurse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/05_treat_sim.html"><code class="docutils literal notranslate"><span class="pre">simpy</span></code> treatment centre model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/06_streamlit.html">Treatment sim <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> app</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../04_exercises/07_plotting.html">Adding a plot</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05_solutions/01_sampling.html">Random sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_solutions/02_generator.html">Generator exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_solutions/03_basic_results.html">Results collection exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_solutions/04_callback.html">Adding a patient callback from a nurse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_solutions/05_treat_sim.html"><code class="docutils literal notranslate"><span class="pre">simpy</span></code> treatment centre model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_solutions/06_streamlit.html">Treatment sim <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_solutions/07_plotting.html">Adding a plot</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/health-data-science-OR/natcor-simpy/main?urlpath=lab/tree/content/02_simpy/01a_sim_tools.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/health-data-science-OR/natcor-simpy/blob/main/content/02_simpy/01a_sim_tools.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/health-data-science-OR/natcor-simpy" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/health-data-science-OR/natcor-simpy/issues/new?title=Issue%20on%20page%20%2Fcontent/02_simpy/01a_sim_tools.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/02_simpy/01a_sim_tools.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Sampling using sim_tools</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-implemented-distributions">Summary of implemented distributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-distribution-classes">Importing distribution classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-and-visualise-the-distributions">Create and visualise the distributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-individual-samples">Generating individual samples</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="sampling-using-sim-tools">
+<h1>Sampling using <code class="docutils literal notranslate"><span class="pre">sim_tools</span></code><a class="headerlink" href="#sampling-using-sim-tools" title="Link to this heading">#</a></h1>
+<p>To reduce the amount of coding you have to do to implement sampling from distributions you can use the <a class="reference external" href="https://pypi.org/project/sim-tools/"><code class="docutils literal notranslate"><span class="pre">sim-tools</span></code> package</a>.  You can read the <code class="docutils literal notranslate"><span class="pre">sim-tools</span></code> documentation <a class="reference external" href="https://tommonks.github.io/sim-tools">here</a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">sim-tools</span></code> package aims provide python implementations of all the common distributions seen in commercial discrete-event simulation software in easy to use classes.  This includes several distributions not directly implemented in <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">sim-tools</span></code> package is included in the <code class="docutils literal notranslate"><span class="pre">sim</span></code> conda virtual environment.  To install manually you can use the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sim</span><span class="o">-</span><span class="n">tools</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>The code below uses <code class="docutils literal notranslate"><span class="pre">sim-tools</span></code> &gt;= 0.3.2. This works with Python &gt;= 3.10</p>
+</div></blockquote>
+</section>
+<section id="summary-of-implemented-distributions">
+<h2>Summary of implemented distributions<a class="headerlink" href="#summary-of-implemented-distributions" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Exponential</span></code>: This class is used for modeling the time between events in a Poisson process, where events occur continuously and independently at a constant average rate. It takes the mean of the distribution and an optional random seed as parameters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Bernoulli</span></code>: This class models a process where an event has only two possible outcomes (success or failure). It takes the probability of success and an optional random seed as parameters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Lognormal</span></code>: This class is used when the logarithm of a variable is normally distributed. It takes the mean and standard deviation of the lognormal distribution and an optional random seed as parameters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Normal</span></code>: This class models a process where a variable is normally distributed. It takes the mean and standard deviation of the normal distribution, a boolean to allow or disallow negative samples, and an optional random seed as parameters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Uniform</span></code>: This class models a process where all outcomes are equally likely. It takes the lower and upper range of the uniform distribution and an optional random seed as parameters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Triangular</span></code>: This class models a process where a variable is most likely to be at the mode (peak) and the probabilities decrease uniformly on either side. It takes the lower limit, mode, upper limit, and an optional random seed as parameters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FixedDistribution</span></code>: This class returns a fixed value, useful when a constant value is needed in a simulation. It takes a fixed value as a parameter.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CombinationDistribution</span></code>: This class is used to model a process where the outcome is the sum of outcomes from multiple distributions. It takes multiple distribution instances as parameters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ContinuousEmpirical</span></code>: This class is used to model a process based on observed data, where the probability of an outcome is proportional to its frequency in the data. To produce a continuous value, linear interpolation between bounds is used. It takes lower bounds (of a discrete empirical distribution), upper bounds, observed frequencies, and an optional random seed as parameters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Erlang</span></code>: This class is used for modeling the time between events in a Poisson process, where events occur continuously and independently at a constant average rate. The class is implemented to allow for users to input the mean, and stdev of the distribution as opposed to k and theta. This allows for compatibility of parameters with other commerical simulation packages. The mean and stdev are converted to k and theta internally. The Erlang is a special case of the gamma distribution where  is an integer.  Internally this is implemented using numpy Generator’s gamma method. As k is calculated from the mean and stdev it is rounded to an integer value using python’s built in ‘round’ function. Optionally a user can offet the original of the distribution using the location parameter.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ErlangK</span></code>: The same as <strong>Erlang</strong>, but <code class="docutils literal notranslate"><span class="pre">k</span></code> and <code class="docutils literal notranslate"><span class="pre">theta</span></code> are specified directly by a user.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Weibull</span></code> distribution class is characterized by a shape parameter (alpha) and a scale parameter (beta), both of which must be greater than zero. The scale parameter influences the variance of the samples. An optional location parameter can shift the distribution to set a lower bound. This distribution is useful for modeling the life duration of materials and systems, where the failure rate is not constant over time[1].</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Gamma</span></code> distribution class is defined by an alpha (scale) and beta (shape) parameter. It includes methods to compute the mean and variance, as well as a static method to determine alpha and beta from a specified mean and variance. The Gamma distribution is often used to model waiting times for multiple events in a Poisson process.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Beta</span></code> distribution class accepts two shape parameters (alpha1 and alpha2) and can be rescaled to a specific range using lower and upper bounds. It is commonly used to model random variables that are constrained to an interval, such as proportions and percentages.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Discrete</span></code> distribution class allows sampling from a set of values with given observed frequencies. It is particularly useful for modeling scenarios where outcomes have specific probabilities, such as routing percentages or entity classes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TruncatedDistribution</span></code> class can truncate any given distribution at a specified lower bound. It is useful when modeling variables that have a natural lower limit, ensuring that no sampled values fall below this threshold.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">RawEmpirical</span></code> distribution class enables sampling with replacement from a list of raw empirical values. This class is beneficial when no theoretical distribution fits the observed data well, and a non-parametric approach is preferred.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">PearsonV</span></code> (Pearson type 5) distribution, also known as the inverse Gamma distribution, is characterized by two parameters: alpha (shape) and beta (scale), both of which must be greater than zero. It is particularly useful for modeling time delays where there is a minimum delay and the maximum delay is unbounded. The mean and variance of the Pearson Type V distribution can be directly computed for certain values of the shape parameter.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">PearsonVI</span></code> (Pearson Type 6) distribution, an inverted beta distribution, is defined by three parameters: alpha1 (shape parameter 1), alpha2 (shape parameter 2), and beta (scale parameter), all of which must be greater than zero. The Pearson Type VI distribution can be used to model the time to complete tasks and is sampled using the transformation Pearson6(a1, a2, b) = b * X / (1 - X), where X is a Beta-distributed random variable with parameters alpha1 and alpha2. The mean and variance can be computed directly for certain values of the second shape parameter.</p></li>
+</ol>
+</section>
+<section id="importing-distribution-classes">
+<h2>Importing distribution classes<a class="headerlink" href="#importing-distribution-classes" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">sim_tools.distributions</span></code> module contains all of the distribution classes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import all distributions</span>
+<span class="kn">from</span> <span class="nn">sim_tools.distributions</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Exponential</span><span class="p">,</span>
+    <span class="n">Poisson</span><span class="p">,</span>
+    <span class="n">Bernoulli</span><span class="p">,</span>
+    <span class="n">Lognormal</span><span class="p">,</span>
+    <span class="n">Normal</span><span class="p">,</span>
+    <span class="n">Uniform</span><span class="p">,</span>
+    <span class="n">Triangular</span><span class="p">,</span>
+    <span class="n">FixedDistribution</span><span class="p">,</span>
+    <span class="n">CombinationDistribution</span><span class="p">,</span>
+    <span class="n">ContinuousEmpirical</span><span class="p">,</span>
+    <span class="n">Erlang</span><span class="p">,</span>
+    <span class="n">ErlangK</span><span class="p">,</span>
+    <span class="n">Weibull</span><span class="p">,</span>
+    <span class="n">Gamma</span><span class="p">,</span>
+    <span class="n">Beta</span><span class="p">,</span>
+    <span class="n">Discrete</span><span class="p">,</span>
+    <span class="n">PearsonV</span><span class="p">,</span>
+    <span class="n">PearsonVI</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-and-visualise-the-distributions">
+<h2>Create and visualise the distributions<a class="headerlink" href="#create-and-visualise-the-distributions" title="Link to this heading">#</a></h2>
+<p>The code below creates an instance of the distributions on offer. Here we have used the <code class="docutils literal notranslate"><span class="pre">size</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">sample()</span></code> to produce a large number of samples to allow for visualisation and plotting.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Create an instance of each distribution and generate 10,000 samples</span>
+<span class="n">distributions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Exponential</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+    <span class="n">Poisson</span><span class="p">(</span><span class="n">rate</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+    <span class="n">Erlang</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="mf">32.0</span><span class="p">,</span> <span class="n">stdev</span><span class="o">=</span><span class="mf">9.26</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="mf">2.83</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+    <span class="n">ErlangK</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+    <span class="n">Bernoulli</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+    <span class="n">Lognormal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">stdev</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+    <span class="n">Normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">allow_neg</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+    <span class="n">Uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+    <span class="n">Triangular</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+    <span class="n">FixedDistribution</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
+    <span class="n">CombinationDistribution</span><span class="p">(</span>
+        <span class="n">Exponential</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span> <span class="n">Normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">allow_neg</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="p">),</span>
+    <span class="n">ContinuousEmpirical</span><span class="p">(</span>
+        <span class="n">lower_bounds</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">480</span><span class="p">],</span>
+        <span class="n">upper_bounds</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">2880</span><span class="p">],</span>
+        <span class="n">freq</span><span class="o">=</span><span class="p">[</span><span class="mi">34</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">73</span><span class="p">],</span>
+        <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">Weibull</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.93</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">19.15</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+    <span class="n">Gamma</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">2.84</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">7.42</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+    <span class="n">Beta</span><span class="p">(</span><span class="n">alpha1</span><span class="o">=</span><span class="mf">1.32</span><span class="p">,</span> <span class="n">alpha2</span><span class="o">=</span><span class="mf">2.56</span><span class="p">,</span> <span class="n">lower_bound</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">upper_bound</span><span class="o">=</span><span class="mf">15.0</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+    <span class="n">Discrete</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">freq</span><span class="o">=</span><span class="p">[</span><span class="mi">95</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+    <span class="n">PearsonV</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+    <span class="n">PearsonVI</span><span class="p">(</span><span class="n">alpha1</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">alpha2</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">distributions</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">distribution</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">distributions</span><span class="p">):</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="n">i</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">col</span> <span class="o">=</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">distribution</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">100_000</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">distribution</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/2704f3202e5d9d512050bf9efe4e90e962a82fdd41e15b48bf0895edcf651da6.png" src="../../_images/2704f3202e5d9d512050bf9efe4e90e962a82fdd41e15b48bf0895edcf651da6.png" />
+</div>
+</div>
+</section>
+<section id="generating-individual-samples">
+<h2>Generating individual samples<a class="headerlink" href="#generating-individual-samples" title="Link to this heading">#</a></h2>
+<p>In a discrete-event simulation you are more likely to generate samples as time progresses.  The code below illustrates how to generate single samples from the <code class="docutils literal notranslate"><span class="pre">Exponential</span></code> and <code class="docutils literal notranslate"><span class="pre">ContinuousEmpirical</span></code> distributions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arrival_dist</span> <span class="o">=</span> <span class="n">Exponential</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">arrival_dist</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>72.12625811897983
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">activity_time</span> <span class="o">=</span> <span class="n">ContinuousEmpirical</span><span class="p">(</span>
+    <span class="n">lower_bounds</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">480</span><span class="p">],</span>
+    <span class="n">upper_bounds</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">2880</span><span class="p">],</span>
+    <span class="n">freq</span><span class="o">=</span><span class="p">[</span><span class="mi">34</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">73</span><span class="p">],</span>
+    <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">activity_time</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1297.0730413946362
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "health-data-science-OR/natcor-simpy",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/02_simpy"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_sampling.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Random variables and simulation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02_basic_simpy.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">A first look at simpy</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-implemented-distributions">Summary of implemented distributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-distribution-classes">Importing distribution classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-and-visualise-the-distributions">Create and visualise the distributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-individual-samples">Generating individual samples</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Thomas Monks
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

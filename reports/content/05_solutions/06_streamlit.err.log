@@ -1,23 +1,23 @@
 Traceback (most recent call last):
-  File "/home/tom/miniconda3/lib/python3.10/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+  File "/home/tom/miniconda3/envs/sim/lib/python3.10/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
-  File "/home/tom/miniconda3/lib/python3.10/site-packages/nbclient/client.py", line 1305, in execute
+  File "/home/tom/miniconda3/envs/sim/lib/python3.10/site-packages/nbclient/client.py", line 1314, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-  File "/home/tom/miniconda3/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 173, in wrapped
+  File "/home/tom/miniconda3/envs/sim/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
     return loop.run_until_complete(inner)
-  File "/home/tom/miniconda3/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+  File "/home/tom/miniconda3/envs/sim/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
     return future.result()
-  File "/home/tom/miniconda3/lib/python3.10/site-packages/nbclient/client.py", line 705, in async_execute
+  File "/home/tom/miniconda3/envs/sim/lib/python3.10/site-packages/nbclient/client.py", line 709, in async_execute
     await self.async_execute_cell(
-  File "/home/tom/miniconda3/lib/python3.10/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+  File "/home/tom/miniconda3/envs/sim/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/home/tom/miniconda3/lib/python3.10/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+  File "/home/tom/miniconda3/envs/sim/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
 '''
 Script to complete a basic run of the model and display a table of
-results.
+results in a streamlit app.
 
 The model is imported from a pypi package 'treat_sim'
 
@@ -27,48 +27,90 @@ Full documentation and source code for `treat_sim` is available as
 
 A conda environment has been provided locally,but the model can be pip installed
 `pip install treat_sim==1.0.0`
-
-This will be adapted into a basic streamlit app
 '''
 from treat_sim.model import Scenario, multiple_replications
+import streamlit as st
 
-# set the variables for the run.
+################################################################################
+# MODIFICATION 1: Read in markdown and display
+INTRO_FILE = 'resources/overview.md'
+
+def read_file_contents(file_name):
+    ''''
+    Read the contents of a file.
+
+    Params:
+    ------
+    file_name: str
+        Path to file.
+
+    Returns:
+    -------
+    str
+    '''
+    with open(file_name) as f:
+        return f.read()
+
+# give the page a title
+st.title('Treatment Centre Simulation Model')
+
+# show the introductory markdown
+st.markdown(read_file_contents(INTRO_FILE))
+################################################################################
+
+################################################################################
+# MODIFICATION 2: set the variables for the run using sliders
 # these are just a subset of the total available for this example...
-n_triage = 1
-n_exam = 3
-n_cubicles_1 = 1
+n_triage = st.slider('Triage bays', 1, 5, 1)
+n_exam = st.slider('Exam rooms', 1, 5, 3)
+n_cubicles_1 = st.slider('Non-Trauma Treatment cubicles', 1, 5, 1, 
+                         help='Set the number of non trauma pathway '
+                         + 'treatment cubicles')
 
 # examination mean
-exam_mean = 16.0
+exam_mean = st.slider('Mean examination time', 10.0, 45.0, 
+                       16.0, 1.0)
 
 # runs
-replications = 10
+replications = st.slider('No. replications', 1, 50, 10)
+################################################################################
 
 # Setup scenario using supplied variables
 args = Scenario(n_triage=n_triage, n_exam=n_exam, n_cubicles_1=n_cubicles_1,
                 exam_mean=exam_mean)
 
-# run multiple replications of the model.
-results = multiple_replications(args, n_reps=replications)
+################################################################################
+# MODIFICATION 3: Only execute model if a streamlit button is pressed.
+if st.button('Simulate treatment centre'):
 
-# print mean results.
-print(results.mean().round(1))
+    # in this example run a single replication of the model.
+    with st.spinner('Simulating the treatment centre...'):
+        results = multiple_replications(args, n_reps=replications)
+
+    st.success('Done!')
+
+################################################################################
+# MODIFICATION 4: display results using st.table (or st.dataframe)
+    st.table(results.mean().round(1))
+################################################################################
+
 ------------------
 
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Cell [0;32mIn[1], line 16[0m
+Cell [0;32mIn[2], line 15[0m
 [1;32m      1[0m [38;5;124;03m'''[39;00m
 [1;32m      2[0m [38;5;124;03mScript to complete a basic run of the model and display a table of[39;00m
-[1;32m      3[0m [38;5;124;03mresults.[39;00m
+[1;32m      3[0m [38;5;124;03mresults in a streamlit app.[39;00m
 [0;32m   (...)[0m
-[1;32m     14[0m [38;5;124;03mThis will be adapted into a basic streamlit app[39;00m
-[1;32m     15[0m [38;5;124;03m'''[39;00m
-[0;32m---> 16[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtreat_sim[39;00m[38;5;21;01m.[39;00m[38;5;21;01mmodel[39;00m [38;5;28;01mimport[39;00m Scenario, multiple_replications
-[1;32m     18[0m [38;5;66;03m# set the variables for the run.[39;00m
-[1;32m     19[0m [38;5;66;03m# these are just a subset of the total available for this example...[39;00m
-[1;32m     20[0m n_triage [38;5;241m=[39m [38;5;241m1[39m
+[1;32m     12[0m [38;5;124;03m`pip install treat_sim==1.0.0`[39;00m
+[1;32m     13[0m [38;5;124;03m'''[39;00m
+[1;32m     14[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtreat_sim[39;00m[38;5;21;01m.[39;00m[38;5;21;01mmodel[39;00m [38;5;28;01mimport[39;00m Scenario, multiple_replications
+[0;32m---> 15[0m [38;5;28;01mimport[39;00m [38;5;21;01mstreamlit[39;00m [38;5;28;01mas[39;00m [38;5;21;01mst[39;00m
+[1;32m     17[0m [38;5;66;03m################################################################################[39;00m
+[1;32m     18[0m [38;5;66;03m# MODIFICATION 1: Read in markdown and display[39;00m
+[1;32m     19[0m INTRO_FILE [38;5;241m=[39m [38;5;124m'[39m[38;5;124mresources/overview.md[39m[38;5;124m'[39m
 
-[0;31mModuleNotFoundError[0m: No module named 'treat_sim'
+[0;31mModuleNotFoundError[0m: No module named 'streamlit'
 
