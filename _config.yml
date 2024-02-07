@@ -4,7 +4,7 @@ author: Thomas Monks
 email: t.m.w.monks@exeter.ac.uk
 description: >- # this means to ignore newlines until "baseurl:"
        An introduction to simulation and SimPy for DES 
-#logo: content/imgs/small_logo.png
+logo: imgs/sim_book_logo.png
 #logo: content/imgs/logo_v1.png
 
 # only build files specified in table of contents file
