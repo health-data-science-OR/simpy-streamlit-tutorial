@@ -1,6 +1,6 @@
 # Install python and an IDE
 
-The code in this tutorial is written in using python 3.9.16 and a number of other python data science dependencies.
+The code in this tutorial is written in using python 3.10.13 and a number of other python data science dependencies.
 
 ## Python installation
 
@@ -10,7 +10,7 @@ https://www.anaconda.com/download/
 
 ```{admonition} See also
 :class: tip
-Anaconda includes 'conda' (a package manager).  We are going to use `conda` to create a virtual environment that includes python 3.9.16 and Jupyter-Lab 3.x
+Anaconda includes 'conda' (a package manager).  We are going to use `conda` to create a virtual environment that includes python 3.10.13 and Jupyter-Lab 3.x
 ```
 
 ```{admonition} My personal preferences
