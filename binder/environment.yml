@@ -15,4 +15,6 @@ dependencies:
   - pip:
     - ciw==2.3.1
     - streamlit
+    - sim-tools==0.3.1
     - treat-sim==1.0.0
+    
