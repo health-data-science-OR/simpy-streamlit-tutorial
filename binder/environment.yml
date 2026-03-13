@@ -12,6 +12,7 @@ dependencies:
   - scipy=1.17.1
   - simpy=4.1.1
   - pip:
+    - ciw==3.2.7
     - streamlit
     - sim-tools==1.0.3
     - treat-sim==3.0.0
