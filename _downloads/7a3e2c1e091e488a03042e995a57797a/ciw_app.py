@@ -148,4 +148,4 @@ if st.button("Run simulation"):
     with col2.expander('Histogram', expanded=True):
         # call updated plotly function
         fig = create_user_filtered_hist(results)     
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width='stretch')
