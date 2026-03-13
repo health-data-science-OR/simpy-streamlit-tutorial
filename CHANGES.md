@@ -17,6 +17,7 @@ Quick refresh and rebuild of site with correct dependencies and Jupyter book ver
 ### Fixes
 
 * Fixed typo in `_toc.yml` to add missing filtering page for `streamlit` materials.
+* Upgrade `simpy` to 4.1.1 to avoid import errors.
 
 ## [2.0.0](https://github.com/health-data-science-OR/simpy-streamlit-tutorial/releases/edit/v2.0.0)
 
