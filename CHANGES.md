@@ -12,12 +12,13 @@ Quick refresh and rebuild of site with correct dependencies and Jupyter book ver
 
 ### Changes
 
-* Pinned Jupyter-book=1.0.4 dependency in environment.yml
+* Pinned Jupyter-book=1.0.4 dependency in `environment.yml`
 
 ### Fixes
 
 * Fixed typo in `_toc.yml` to add missing filtering page for `streamlit` materials.
 * Upgrade `simpy` to 4.1.1 to avoid import errors.
+* Converted executable `streamlit` code cells in notebooks into copy-pastable markdown to remove warnings.
 
 ## [2.0.0](https://github.com/health-data-science-OR/simpy-streamlit-tutorial/releases/edit/v2.0.0)
 
