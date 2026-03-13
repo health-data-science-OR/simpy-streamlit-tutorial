@@ -29,11 +29,23 @@ launch_buttons:
   colab_url: "https://colab.research.google.com"
   thebe: true
 
+
+
+
 # to enable plotly visualisations
 sphinx:
   config:
     html_js_files:
     - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
+
+
+# sphinx:
+#   recursive_update: true
+#   config:
+#     suppress_warnings: ["mystnb.unknown_mime_type"]
+#     html_js_files:
+#       - "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"
+
   
 # citations
 # In _config.yml

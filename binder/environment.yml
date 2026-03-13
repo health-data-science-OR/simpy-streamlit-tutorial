@@ -17,4 +17,5 @@ dependencies:
     - streamlit
     - sim-tools==0.3.3
     - treat-sim==1.0.0
+    - jupyter-book==1.0.3
     
