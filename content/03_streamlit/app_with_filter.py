@@ -159,7 +159,7 @@ if st.button("Run simulation"):
         fig = create_user_filtered_hist(results)
         ###########################################################################
      
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width='stretch')
 
 
     

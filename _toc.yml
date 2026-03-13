@@ -10,7 +10,6 @@ parts:
 - caption: Simulation with simpy
   chapters:
   - file: content/02_simpy/01_sampling
-  - file: content/02_simpy/01a_sim_tools
   - file: content/02_simpy/02_basic_simpy
   - file: content/02_simpy/03_111_model
   - file: content/02_simpy/04_basic_results
@@ -28,7 +27,7 @@ parts:
   - file: content/03_streamlit/08_sidebar
   - file: content/03_streamlit/09_adding_text
   - file: content/03_streamlit/10_adding_plots
-  - file: content/03_streamlit/11_filtering_results
+  - file: content/03_streamlit/11_filter_results
   - file: content/03_streamlit/12_multiple_experiments
   - file: content/03_streamlit/13_ciw_backend
 - caption: Exercises

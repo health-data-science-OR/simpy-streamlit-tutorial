@@ -116,7 +116,7 @@ if st.button("Run simulation"):
         fig = create_hist(results, '01_mean_waiting_time', 
                           'Mean waiting time for operator')
      
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width='stretch')
         
      ############################################################################
 
