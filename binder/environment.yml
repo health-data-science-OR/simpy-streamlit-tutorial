@@ -11,7 +11,7 @@ dependencies:
   - plotly=5.15.0
   - python=3.10.13
   - scipy=1.10.1
-  - simpy=4.0.1
+  - simpy=4.1.1
   - pip:
     - ciw==2.3.1
     - streamlit
